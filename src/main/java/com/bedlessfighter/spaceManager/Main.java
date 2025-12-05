@@ -16,6 +16,7 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
         plugin = this;
 
+
         // Handling commands
         getCommand("reloadmanager").setExecutor(new ReloadCommand());
         getCommand("setspawn").setExecutor(new SetSpawnCommand());

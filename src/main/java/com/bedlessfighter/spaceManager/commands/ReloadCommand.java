@@ -16,7 +16,7 @@ public class ReloadCommand implements CommandExecutor {
                              @NotNull String @NotNull [] args) {
 
         var cfg = Main.getPlugin().getConfig();
-        String prefixRaw = cfg.getString("messages.prefix", "&7[SpaceManager]&r");
+        String prefixRaw = cfg.getString("messages.prefix", "&b[SpaceManager]&r");
         String prefix = ChatColor.translateAlternateColorCodes('&', prefixRaw);
 
         if (!sender.hasPermission("spacemanager.admin")) {

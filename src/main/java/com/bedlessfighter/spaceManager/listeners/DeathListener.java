@@ -14,6 +14,7 @@ public class DeathListener implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player player = e.getPlayer();
         var cfg = Main.getPlugin().getConfig();
+
         String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix"));
 
         e.setDeathMessage("%prefix% %message%".replace("%prefix%", prefix).replace("%message%", e.getDeathMessage()));

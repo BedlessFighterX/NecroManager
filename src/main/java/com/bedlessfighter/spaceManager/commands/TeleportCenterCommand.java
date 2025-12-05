@@ -14,6 +14,7 @@ public class TeleportCenterCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         var cfg = Main.getPlugin().getConfig();
         String noperm = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.no-perm"));
+
         String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix"));
         String message = ChatColor.translateAlternateColorCodes('&', "%prefix% &rYou have been centered &asuccessfully!".replace("%prefix%", prefix));
 

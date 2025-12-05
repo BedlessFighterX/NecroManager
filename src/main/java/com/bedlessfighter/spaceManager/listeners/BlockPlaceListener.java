@@ -15,6 +15,7 @@ public class BlockPlaceListener implements Listener {
         var cfg = Main.getPlugin().getConfig();
 
         boolean blockPlaceStatus = cfg.getBoolean("disabler.blockplace");
+
         String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
         String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockplace", "&cYou can't place blocks here."));
 

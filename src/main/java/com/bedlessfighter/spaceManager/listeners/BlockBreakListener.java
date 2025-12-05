@@ -15,6 +15,7 @@ public class BlockBreakListener implements Listener {
         var cfg = Main.getPlugin().getConfig();
 
         boolean blockBreakStatus = cfg.getBoolean("disabler.blockbreak");
+
         String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
         String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockbreak", "&cYou can't break blocks here."));
 

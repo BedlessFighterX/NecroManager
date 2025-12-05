@@ -14,6 +14,7 @@ public class SpawnManager {
         String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
         String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.spawnmessage", "&aTeleported to spawn."));
 
+
         if (location != null) {
             player.teleport(location);
             player.sendMessage("%prefix% %message%"

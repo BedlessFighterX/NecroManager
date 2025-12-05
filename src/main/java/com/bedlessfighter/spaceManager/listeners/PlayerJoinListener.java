@@ -23,6 +23,7 @@ public class PlayerJoinListener implements Listener {
                 || p.hasPermission("spacemanager.silent-join")
                 || p.isOp();
 
+
         if (joinEnabled) {
             String msgRaw = cfg.getString("joins.message", "&7%player% joined the server.");
             String msg = ChatColor.translateAlternateColorCodes('&', msgRaw.replace("%player%", p.getName()));

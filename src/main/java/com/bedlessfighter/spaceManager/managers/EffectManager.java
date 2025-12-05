@@ -10,6 +10,7 @@ public class EffectManager {
         player.addPotionEffect(new PotionEffect(type, duration, amplifier, false, false, false));
     }
 
+
     public static void removeEffects(Player player, PotionEffectType type) {
         player.removePotionEffect(type);
     }

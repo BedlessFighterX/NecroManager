@@ -9,6 +9,7 @@ disabler:
   damage-others: true
   fall-damage: true
 
+
 effects:
   enabled: true
   speed: true

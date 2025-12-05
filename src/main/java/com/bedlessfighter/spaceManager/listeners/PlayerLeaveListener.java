@@ -20,6 +20,7 @@ public class PlayerLeaveListener implements Listener {
             return;
         }
 
+
         boolean silentStaff = cfg.getBoolean("quit.silent-staffs");
         boolean staff = p.hasPermission("spacemanager.admin")
                 || p.hasPermission("spacemanager.silent-leave")

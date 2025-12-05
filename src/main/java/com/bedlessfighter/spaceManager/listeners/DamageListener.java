@@ -19,6 +19,7 @@ public class DamageListener implements Listener {
         if (e.getDamager() instanceof Player player) {
             boolean isStaff = player.hasPermission("spacemanager.admin");
             if (!isStaff && isDamageByOthersEnabled) {
+
                 String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
                 String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.damage-others", "&cYou can't damage others here."));
                 e.setCancelled(true);
