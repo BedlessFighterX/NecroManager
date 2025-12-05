@@ -1,34 +1,30 @@
-# Configuration for SpaceManager
-# Developed by @bacheyerasht on Discord
-# Private plugin for SpaceMC at https://discord.gg/C6aZffxXUd
-# Open a ticket for furthur support of this plugin!
+messages:
+  prefix: "&7[&bSpaceManager&7]&r"
+  spawnmessage: "&aTeleported to spawn!"
+  blockbreak: "&cYou can't break blocks here."
+  blockplace: "&cYou can't place blocks here."
+  damage-others: "&cYou can't damage other players here."
+  setspawn: "&eSpawn location set and saved successfully!"
 
 disabler:
-  blockplace: true
   blockbreak: true
+  blockplace: true
   damage-others: true
   fall-damage: true
+
+joins:
+  enabled: true
+  message: "&a%player% &7joined the server!"
+  silent-staffs: false
+  spawn-on-join: true
+
+quit:
+  enabled: true
+  message: "&c%player% &7left the server!"
+  silent-staffs: false
 
 effects:
   enabled: true
   speed: true
+  regeneration: false
   feather-falling: true
-  regeneration: true
-
-joins:
-  enabled: true
-  spawn-on-join: true
-  message: "&8[&a+&8] &f%player%"
-  silent-staffs: true
-
-quit:
-  enabled: true
-  message: "&8[&c-&8] &f%player%"
-  silent-staffs: true
-
-messages:
-  prefix: "&b&lSPACE&9&lMC &8|&r"
-  blockbreak: "&cYou may not break blocks in this territory."
-  blockplace: "&cYou may not place blocks in this territory."
-  damage-others: "&cYou may not damage other players."
-  spawnmessage: "&rYou have been &ateleported&r to the &espawn!"

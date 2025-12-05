@@ -5,24 +5,31 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class ReloadCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
-        String prefix = ChatColor.translateAlternateColorCodes('&', Main.getPlugin().getConfig().getString("messages.prefix"));
+    public boolean onCommand(@NotNull CommandSender sender,
+                             @NotNull Command command,
+                             @NotNull String label,
+                             @NotNull String @NotNull [] args) {
 
-        if (sender instanceof Player player) {
-            if (player.hasPermission("spacemanager.admin")) {
-                Main.getPlugin().reloadConfig();
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "%prefix% &rConfigs reloaded &asuccessfully!").replace("%prefix%", prefix));
-            } else {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "%prefix% &rYou don't have permission to use this command!)").replace("%prefix%", prefix));
-            }
+        var cfg = Main.getPlugin().getConfig();
+        String prefixRaw = cfg.getString("messages.prefix", "&7[SpaceManager]&r");
+        String prefix = ChatColor.translateAlternateColorCodes('&', prefixRaw);
+
+        if (!sender.hasPermission("spacemanager.admin")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            "%prefix% &cYou don't have permission to use this command!")
+                    .replace("%prefix%", prefix));
+            return true;
         }
 
+        Main.getPlugin().reloadConfig();
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                        "%prefix% &aConfigs reloaded successfully!")
+                .replace("%prefix%", prefix));
         return true;
     }
 }

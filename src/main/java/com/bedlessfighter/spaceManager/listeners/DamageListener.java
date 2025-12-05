@@ -9,23 +9,33 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 
 public class DamageListener implements Listener {
-    @EventHandler
-    public void onDamage(EntityDamageByEntityEvent e) {
-        boolean isDamageByOthersEnabled = Main.getPlugin().getConfig().getBoolean("disabler.damage-others");
-        boolean isDamageByFallEnabled = Main.getPlugin().getConfig().getBoolean("disabler.fall-damage");
-        String prefix = ChatColor.translateAlternateColorCodes('&', Main.getPlugin().getConfig().getString("messages.prefix"));
-        String message = ChatColor.translateAlternateColorCodes('&', Main.getPlugin().getConfig().getString("messages.damage-others"));
-        boolean isPlayer = e.getDamager() instanceof Player;
-        Player player = (Player) e.getDamager();
-        boolean isStaff = player.hasPermission("spacemanager.admin");
 
-        if (!isStaff) {
-            if (isPlayer && isDamageByOthersEnabled) {
+    @EventHandler
+    public void onDamageByEntity(EntityDamageByEntityEvent e) {
+        var cfg = Main.getPlugin().getConfig();
+
+        boolean isDamageByOthersEnabled = cfg.getBoolean("disabler.damage-others");
+
+        if (e.getDamager() instanceof Player player) {
+            boolean isStaff = player.hasPermission("spacemanager.admin");
+            if (!isStaff && isDamageByOthersEnabled) {
+                String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
+                String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.damage-others", "&cYou can't damage others here."));
                 e.setCancelled(true);
-                player.sendMessage("%prefix% %message%".replace("%prefix%", prefix).replace("%message%", message));
+                player.sendMessage("%prefix% %message%"
+                        .replace("%prefix%", prefix)
+                        .replace("%message%", message));
             }
         }
+    }
 
-        if (e.getCause() == EntityDamageEvent.DamageCause.FALL && isDamageByFallEnabled) e.setCancelled(true);
+    @EventHandler
+    public void onFallDamage(EntityDamageEvent e) {
+        var cfg = Main.getPlugin().getConfig();
+        boolean isDamageByFallEnabled = cfg.getBoolean("disabler.fall-damage");
+
+        if (isDamageByFallEnabled && e.getCause() == EntityDamageEvent.DamageCause.FALL) {
+            e.setCancelled(true);
+        }
     }
 }

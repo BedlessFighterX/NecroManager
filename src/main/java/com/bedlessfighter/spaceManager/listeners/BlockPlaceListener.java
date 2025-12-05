@@ -8,20 +8,24 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
 public class BlockPlaceListener implements Listener {
+
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent e) {
         Player player = e.getPlayer();
-        boolean blockPlaceStatus = Main.getPlugin().getConfig().getBoolean("disabler.blockplace");
-        String prefix = ChatColor.translateAlternateColorCodes('&', Main.getPlugin().getConfig().getString("messages.prefix"));
-        String message = ChatColor.translateAlternateColorCodes('&', Main.getPlugin().getConfig().getString("messages.blockplace"));
+        var cfg = Main.getPlugin().getConfig();
 
-        if (blockPlaceStatus) {
-            if (!player.hasPermission("spacemanager.admin") || !player.hasPermission("spacemanager.blockplace")) {
-                e.setCancelled(true);
-                player.sendMessage("%prefix% %message%".replace("%prefix%", prefix).replace("%message%", message));
-            }
-        } else {
-            e.setCancelled(false);
+        boolean blockPlaceStatus = cfg.getBoolean("disabler.blockplace");
+        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
+        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockplace", "&cYou can't place blocks here."));
+
+        if (!blockPlaceStatus) return;
+
+        if (!player.hasPermission("spacemanager.blockplace")
+                || !player.hasPermission("spacemanager.admin")) {
+            e.setCancelled(true);
+            player.sendMessage("%prefix% %message%"
+                    .replace("%prefix%", prefix)
+                    .replace("%message%", message));
         }
     }
 }

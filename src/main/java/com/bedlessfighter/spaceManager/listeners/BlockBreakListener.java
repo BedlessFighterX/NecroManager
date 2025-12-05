@@ -8,20 +8,24 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class BlockBreakListener implements Listener {
+
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
         Player player = e.getPlayer();
-        boolean blockBreakStatus = Main.getPlugin().getConfig().getBoolean("disabler.blockbreak");
-        String prefix = ChatColor.translateAlternateColorCodes('&', Main.getPlugin().getConfig().getString("messages.prefix"));
-        String message = ChatColor.translateAlternateColorCodes('&', Main.getPlugin().getConfig().getString("messages.blockbreak"));
+        var cfg = Main.getPlugin().getConfig();
 
-        if (blockBreakStatus) {
-            if (!player.hasPermission("spacemanager.blockbreak") || !player.hasPermission("spacemanager.admin")) {
-                e.setCancelled(true);
-                player.sendMessage("%prefix% %message%".replace("%prefix%", prefix).replace("%message%", message));
-            }
-        } else {
-            e.setCancelled(false);
+        boolean blockBreakStatus = cfg.getBoolean("disabler.blockbreak");
+        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
+        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockbreak", "&cYou can't break blocks here."));
+
+        if (!blockBreakStatus) return;
+
+        if (!player.hasPermission("spacemanager.blockbreak")
+                || !player.hasPermission("spacemanager.admin")) {
+            e.setCancelled(true);
+            player.sendMessage("%prefix% %message%"
+                    .replace("%prefix%", prefix)
+                    .replace("%message%", message));
         }
     }
 }

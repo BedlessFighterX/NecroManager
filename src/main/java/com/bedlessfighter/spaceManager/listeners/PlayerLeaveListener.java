@@ -14,19 +14,21 @@ public class PlayerLeaveListener implements Listener {
         Player p = e.getPlayer();
         var cfg = Main.getPlugin().getConfig();
 
-        String msg = cfg.getString("quit.message").replace("%player%", p.getName());
         boolean quitEnabled = cfg.getBoolean("quit.enabled");
-        boolean silentStaff = cfg.getBoolean("quit.silent-staffs");
-        boolean staff = p.hasPermission("spacemanager.admin") || p.hasPermission("spacemanager.silent-leave") || p.isOp();
-
-        if (quitEnabled) {
-            if (staff && !silentStaff) e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', msg));
-            else if (!staff) e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', msg));
-            else if (staff && silentStaff) e.setQuitMessage(null);
+        if (!quitEnabled) {
+            e.setQuitMessage(null);
+            return;
         }
 
-        if (staff && !silentStaff) e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', msg));
-        else if (!staff) e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', msg));
-        else if (staff && silentStaff) e.setQuitMessage(null);
+        boolean silentStaff = cfg.getBoolean("quit.silent-staffs");
+        boolean staff = p.hasPermission("spacemanager.admin")
+                || p.hasPermission("spacemanager.silent-leave")
+                || p.isOp();
+
+        String msgRaw = cfg.getString("quit.message", "&7%player% left the server.");
+        String msg = ChatColor.translateAlternateColorCodes('&', msgRaw.replace("%player%", p.getName()));
+
+        if (staff && silentStaff) e.setQuitMessage(null);
+        else e.setQuitMessage(msg);
     }
 }

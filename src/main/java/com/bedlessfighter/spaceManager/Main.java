@@ -12,16 +12,16 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Handling inner main file configs
         saveDefaultConfig();
         plugin = this;
 
-        // Handling commands
-        getCommand("reloadmanager").setExecutor(new ReloadCommand());
-        getCommand("setspawn").setExecutor(new SetSpawnCommand());
-        getCommand("spawn").setExecutor(new SpawnCommand());
+        if (getCommand("reloadmanager") != null)
+            getCommand("reloadmanager").setExecutor(new ReloadCommand());
+        if (getCommand("setspawn") != null)
+            getCommand("setspawn").setExecutor(new SetSpawnCommand());
+        if (getCommand("spawn") != null)
+            getCommand("spawn").setExecutor(new SpawnCommand());
 
-        // Handling events
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new BlockPlaceListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
