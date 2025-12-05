@@ -11,9 +11,8 @@ public class SpawnManager {
         var cfg = Main.getPlugin().getConfig();
 
         Location location = cfg.getLocation("spawn");
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
-        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.spawnmessage", "&aTeleported to spawn."));
-
+        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix"));
+        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.spawnmessage"));
 
         if (location != null) {
             player.teleport(location);
