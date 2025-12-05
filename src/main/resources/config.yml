@@ -1,3 +1,8 @@
+# Configuration for SpaceManager
+# Developed by @bacheyerasht on Discord
+# Private plugin for SpaceMC at https://discord.gg/C6aZffxXUd
+# Open a ticket for furthur support of this plugin!
+
 disabler:
   blockplace: true
   blockbreak: true
