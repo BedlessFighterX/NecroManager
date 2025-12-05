@@ -33,3 +33,4 @@ messages:
   blockplace: "&cYou may not place blocks in this territory."
   damage-others: "&cYou may not damage other players."
   spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
+  no-perm: "&cYou don't have enough permissions to issue this command!"
