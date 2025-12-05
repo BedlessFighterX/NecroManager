@@ -1,0 +1,33 @@
+name: SpaceManager
+version: '1.0'
+main: com.bedlessfighter.spaceManager.Main
+api-version: '1.21'
+commands:
+  reloadmanager:
+    description: Reloads the SpaceManager plugin
+    permission: spacemanager.admin
+    usage: /<command>
+  setspawn:
+    description: Sets spawn location for the server
+    permission: spacemanager.admin
+    usage: /<command>
+  spawn:
+    description: Teleports the player to the spawn
+    permission: spacemanager.admin
+    usage: /<command>
+permissions:
+  spacemanager.admin:
+    description: Makes the player immune to plugin actions
+    default: op
+  spacemanager.breakblock:
+    description: Makes the player immune to plugin affects on block breaking events
+    default: op
+  spacemanager.blockplace:
+    description: Makes the player immune to plugin affects on block placing events
+    default: op
+  spacemanager.silent-join:
+    description: Makes the player invisible to plugin join listener
+    default: op
+  spacemanager.silent-leave:
+    description: Makes the player invisible to plugin leave listener
+    default: op

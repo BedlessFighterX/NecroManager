@@ -1,0 +1,29 @@
+disabler:
+  blockplace: true
+  blockbreak: true
+  damage-others: true
+  fall-damage: true
+
+effects:
+  enabled: true
+  speed: true
+  feather-falling: true
+  regeneration: true
+
+joins:
+  enabled: true
+  spawn-on-join: true
+  message: "&8[&a+&8] &f%player%"
+  silent-staffs: true
+
+quit:
+  enabled: true
+  message: "&8[&c-&8] &f%player%"
+  silent-staffs: true
+
+messages:
+  prefix: "&b&lSPACE&9&lMC &8|&r"
+  blockbreak: "&cYou may not break blocks in this territory."
+  blockplace: "&cYou may not place blocks in this territory."
+  damage-others: "&cYou may not damage other players."
+  spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
