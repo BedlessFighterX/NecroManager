@@ -2,6 +2,7 @@ package com.bedlessfighter.spaceManager.listeners;
 
 import com.bedlessfighter.spaceManager.Main;
 import com.bedlessfighter.spaceManager.managers.EffectManager;
+import com.bedlessfighter.spaceManager.managers.SpawnManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,6 +22,7 @@ public class PlayerJoinListener implements Listener {
         boolean joinEnabled = cfg.getBoolean("joins.enabled");
         boolean silentStaff = cfg.getBoolean("joins.silent-staffs");
         boolean staff = p.hasPermission("spacemanager.admin") || p.hasPermission("spacemanager.silent-join") || p.isOp();
+        boolean isSpawnJoinEnabled = cfg.getBoolean("joins.spawn-on-join");
 
         if (joinEnabled) {
             if (staff && !silentStaff) e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', msg));
@@ -40,6 +42,8 @@ public class PlayerJoinListener implements Listener {
         }
 
         // Spawn handling
-
+        if (isSpawnJoinEnabled) {
+            SpawnManager.sendToSpawn(p);
+        }
     }
 }
