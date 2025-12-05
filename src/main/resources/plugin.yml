@@ -15,6 +15,10 @@ commands:
     description: Teleports the player to the spawn
     permission: spacemanager.admin
     usage: /<command>
+  tpcenter:
+    description: Teleports the staff to the center of the block
+    permission: spacemanager.admin
+    usage: /<command>
 permissions:
   spacemanager.admin:
     description: Makes the player immune to plugin actions

@@ -30,5 +30,6 @@ messages:
   prefix: "&b&lSPACE&9&lMC &8|&r"
   blockbreak: "&cYou may not break blocks in this territory."
   blockplace: "&cYou may not place blocks in this territory."
+  no-perm: "&cYou don't have enough permissions to do this!"
   damage-others: "&cYou may not damage other players."
   spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
