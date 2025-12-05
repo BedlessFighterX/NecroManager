@@ -3,6 +3,7 @@ package com.bedlessfighter.spaceManager;
 import com.bedlessfighter.spaceManager.commands.ReloadCommand;
 import com.bedlessfighter.spaceManager.commands.SetSpawnCommand;
 import com.bedlessfighter.spaceManager.commands.SpawnCommand;
+import com.bedlessfighter.spaceManager.commands.TeleportCenterCommand;
 import com.bedlessfighter.spaceManager.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,6 +22,7 @@ public final class Main extends JavaPlugin {
         getCommand("reloadmanager").setExecutor(new ReloadCommand());
         getCommand("setspawn").setExecutor(new SetSpawnCommand());
         getCommand("spawn").setExecutor(new SpawnCommand());
+        getCommand("tpcenter").setExecutor(new TeleportCenterCommand());
 
         // Handling events
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
