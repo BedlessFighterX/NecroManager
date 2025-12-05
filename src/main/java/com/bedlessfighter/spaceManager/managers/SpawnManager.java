@@ -31,8 +31,8 @@ public class SpawnManager {
                 || player.hasPermission("spacemanager.admin")
                 || player.isOp();
 
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
-        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.setspawn", "&eSpawn location set and saved successfully!"));
+        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix"));
+        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.setspawn"));
 
         if (isStaff) {
             cfg.set("spawn", location);
