@@ -1,6 +1,6 @@
-package com.bedlessfighter.spaceManager.commands;
+package com.bedlessfighter.necroManager.commands;
 
-import com.bedlessfighter.spaceManager.Main;
+import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,10 +16,10 @@ public class ReloadCommand implements CommandExecutor {
                              @NotNull String @NotNull [] args) {
 
         var cfg = Main.getPlugin().getConfig();
-        String prefixRaw = cfg.getString("messages.prefix", "&b[SpaceManager]&r");
+        String prefixRaw = cfg.getString("messages.prefix", "&b[NecroManager]&r");
         String prefix = ChatColor.translateAlternateColorCodes('&', prefixRaw);
 
-        if (!sender.hasPermission("spacemanager.admin")) {
+        if (!sender.hasPermission("necromanager.admin")) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
                             "%prefix% &cYou don't have permission to use this command!")
                     .replace("%prefix%", prefix));

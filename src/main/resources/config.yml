@@ -1,6 +1,5 @@
-# Configuration for SpaceManager
+# Configuration for NecroManager
 # Developed by @bacheyerasht on Discord
-# Private plugin for SpaceMC at https://discord.gg/C6aZffxXUd
 # Open a ticket for furthur support of this plugin!
 
 disabler:
@@ -28,7 +27,7 @@ quit:
   silent-staffs: true
 
 messages:
-  prefix: "&b&lSPACE&9&lMC &8|&r"
+  prefix: "&a&lNECRO&f&lMC &8|&r"
   blockbreak: "&cYou may not break blocks in this territory."
   blockplace: "&cYou may not place blocks in this territory."
   damage-others: "&cYou may not damage other players."

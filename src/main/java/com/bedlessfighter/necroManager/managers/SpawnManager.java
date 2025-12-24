@@ -1,6 +1,6 @@
-package com.bedlessfighter.spaceManager.managers;
+package com.bedlessfighter.necroManager.managers;
 
-import com.bedlessfighter.spaceManager.Main;
+import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -27,8 +27,8 @@ public class SpawnManager {
     public static void setSpawn(Player player, Location location) {
         var cfg = Main.getPlugin().getConfig();
 
-        boolean isStaff = player.hasPermission("spacemanager.setspawn")
-                || player.hasPermission("spacemanager.admin")
+        boolean isStaff = player.hasPermission("necromanager.setspawn")
+                || player.hasPermission("necromanager.admin")
                 || player.isOp();
 
         String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix"));

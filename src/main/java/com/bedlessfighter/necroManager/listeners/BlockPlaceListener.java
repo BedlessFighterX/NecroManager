@@ -1,6 +1,6 @@
-package com.bedlessfighter.spaceManager.listeners;
+package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.spaceManager.Main;
+import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,13 +16,13 @@ public class BlockPlaceListener implements Listener {
 
         boolean blockPlaceStatus = cfg.getBoolean("disabler.blockplace");
 
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
+        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[NecroManager]&r"));
         String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockplace", "&cYou can't place blocks here."));
 
         if (!blockPlaceStatus) return;
 
-        if (!player.hasPermission("spacemanager.blockplace")
-                || !player.hasPermission("spacemanager.admin")) {
+        if (!player.hasPermission("necromanager.blockplace")
+                || !player.hasPermission("necromanager.admin")) {
             e.setCancelled(true);
             player.sendMessage("%prefix% %message%"
                     .replace("%prefix%", prefix)

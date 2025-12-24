@@ -1,37 +1,37 @@
-name: SpaceManager
+name: NecroManager
 version: '1.0'
-main: com.bedlessfighter.spaceManager.Main
+main: com.bedlessfighter.necroManager.Main
 api-version: '1.21'
 commands:
   reloadmanager:
-    description: Reloads the SpaceManager plugin
-    permission: spacemanager.admin
+    description: Reloads the necromanager plugin
+    permission: necromanager.admin
     usage: /<command>
   setspawn:
     description: Sets spawn location for the server
-    permission: spacemanager.admin
+    permission: necromanager.admin
     usage: /<command>
   spawn:
     description: Teleports the player to the spawn
-    permission: spacemanager.admin
+    permission: necromanager.admin
     usage: /<command>
   tpcenter:
     description: Teleports the staff to the center of the block
-    permission: spacemanager.admin
+    permission: necromanager.admin
     usage: /<command>
 permissions:
-  spacemanager.admin:
+  necromanager.admin:
     description: Makes the player immune to plugin actions
     default: op
-  spacemanager.breakblock:
+  necromanager.breakblock:
     description: Makes the player immune to plugin affects on block breaking events
     default: op
-  spacemanager.blockplace:
+  necromanager.blockplace:
     description: Makes the player immune to plugin affects on block placing events
     default: op
-  spacemanager.silent-join:
+  necromanager.silent-join:
     description: Makes the player invisible to plugin join listener
     default: op
-  spacemanager.silent-leave:
+  necromanager.silent-leave:
     description: Makes the player invisible to plugin leave listener
     default: op

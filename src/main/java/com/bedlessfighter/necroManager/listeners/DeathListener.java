@@ -1,13 +1,11 @@
-package com.bedlessfighter.spaceManager.listeners;
+package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.spaceManager.Main;
-import com.bedlessfighter.spaceManager.managers.EffectManager;
+import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.potion.PotionEffectType;
 
 public class DeathListener implements Listener {
     @EventHandler

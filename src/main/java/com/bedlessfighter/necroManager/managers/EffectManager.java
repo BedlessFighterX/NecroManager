@@ -1,4 +1,4 @@
-package com.bedlessfighter.spaceManager.managers;
+package com.bedlessfighter.necroManager.managers;
 
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;

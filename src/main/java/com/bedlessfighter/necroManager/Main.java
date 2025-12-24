@@ -1,10 +1,10 @@
-package com.bedlessfighter.spaceManager;
+package com.bedlessfighter.necroManager;
 
-import com.bedlessfighter.spaceManager.commands.ReloadCommand;
-import com.bedlessfighter.spaceManager.commands.SetSpawnCommand;
-import com.bedlessfighter.spaceManager.commands.SpawnCommand;
-import com.bedlessfighter.spaceManager.commands.TeleportCenterCommand;
-import com.bedlessfighter.spaceManager.listeners.*;
+import com.bedlessfighter.necroManager.commands.ReloadCommand;
+import com.bedlessfighter.necroManager.commands.SetSpawnCommand;
+import com.bedlessfighter.necroManager.commands.SpawnCommand;
+import com.bedlessfighter.necroManager.commands.TeleportCenterCommand;
+import com.bedlessfighter.necroManager.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {

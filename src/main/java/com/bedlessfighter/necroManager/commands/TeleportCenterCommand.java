@@ -1,6 +1,6 @@
-package com.bedlessfighter.spaceManager.commands;
+package com.bedlessfighter.necroManager.commands;
 
-import com.bedlessfighter.spaceManager.Main;
+import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,7 +19,7 @@ public class TeleportCenterCommand implements CommandExecutor {
         String message = ChatColor.translateAlternateColorCodes('&', "%prefix% &rYou have been centered &asuccessfully!".replace("%prefix%", prefix));
 
         if (sender instanceof Player player) {
-            boolean staff = player.hasPermission("spacemanager.admin") || player.isOp();
+            boolean staff = player.hasPermission("necromanager.admin") || player.isOp();
 
             if (staff) {
                 player.teleport(player.getLocation().toCenterLocation());

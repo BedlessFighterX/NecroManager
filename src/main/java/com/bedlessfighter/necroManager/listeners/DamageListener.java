@@ -1,6 +1,6 @@
-package com.bedlessfighter.spaceManager.listeners;
+package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.spaceManager.Main;
+import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,11 +16,11 @@ public class DamageListener implements Listener {
 
         boolean isDamageByOthersEnabled = cfg.getBoolean("disabler.damage-others");
 
-        if (e.getDamager() instanceof Player player) {
-            boolean isStaff = player.hasPermission("spacemanager.admin");
+        if (e.getDamager() instanceof Player player && player.isOnline()) {
+            boolean isStaff = player.hasPermission("necromanager.admin");
             if (!isStaff && isDamageByOthersEnabled) {
 
-                String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[SpaceManager]&r"));
+                String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[NecroManager]&r"));
                 String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.damage-others", "&cYou can't damage others here."));
                 e.setCancelled(true);
                 player.sendMessage("%prefix% %message%"

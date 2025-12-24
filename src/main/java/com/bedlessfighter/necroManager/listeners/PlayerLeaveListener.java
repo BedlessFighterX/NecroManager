@@ -1,6 +1,6 @@
-package com.bedlessfighter.spaceManager.listeners;
+package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.spaceManager.Main;
+import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,8 +22,8 @@ public class PlayerLeaveListener implements Listener {
 
 
         boolean silentStaff = cfg.getBoolean("quit.silent-staffs");
-        boolean staff = p.hasPermission("spacemanager.admin")
-                || p.hasPermission("spacemanager.silent-leave")
+        boolean staff = p.hasPermission("necromanager.admin")
+                || p.hasPermission("necromanager.silent-leave")
                 || p.isOp();
 
         String msgRaw = cfg.getString("quit.message", "&7%player% left the server.");

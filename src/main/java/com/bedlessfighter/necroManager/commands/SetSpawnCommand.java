@@ -1,6 +1,6 @@
-package com.bedlessfighter.spaceManager.commands;
+package com.bedlessfighter.necroManager.commands;
 
-import com.bedlessfighter.spaceManager.managers.SpawnManager;
+import com.bedlessfighter.necroManager.managers.SpawnManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -17,8 +17,8 @@ public class SetSpawnCommand implements CommandExecutor {
             return true;
         }
 
-        if (!player.hasPermission("spacemanager.setspawn")
-                && !player.hasPermission("spacemanager.admin")
+        if (!player.hasPermission("necromanager.setspawn")
+                && !player.hasPermission("necromanager.admin")
                 && !player.isOp()) {
             player.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
             return true;

@@ -1,6 +1,6 @@
-package com.bedlessfighter.spaceManager.commands;
+package com.bedlessfighter.necroManager.commands;
 
-import com.bedlessfighter.spaceManager.managers.SpawnManager;
+import com.bedlessfighter.necroManager.managers.SpawnManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
