@@ -1,7 +1,6 @@
-<p align="center">
-  <h1 align="center">NecroManager</h1>
-  <p align="center">A Paper plugin prototype for lobby, spawn, and lightweight server-management behavior.</p>
-</p>
+# NecroManager
+
+<p align="center">A Paper plugin prototype for lobby, spawn, and lightweight server-management behavior.</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Paper-2D2D2D?style=flat-square" alt="Paper" />
