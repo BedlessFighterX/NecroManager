@@ -1,94 +1,76 @@
 # NecroManager
 
-<p align="center">A Paper plugin prototype for lobby, spawn, and lightweight server-management behavior.</p>
+A Paper plugin for basic lobby and spawn management. The current code includes join and quit messages, spawn handling, configurable gameplay restrictions, and join effects.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Platform-Paper-2D2D2D?style=flat-square" alt="Paper" />
-  <img src="https://img.shields.io/badge/Minecraft_API-1.21-2563EB?style=flat-square" alt="Minecraft API 1.21" />
-  <img src="https://img.shields.io/badge/Java-21-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Java 21" />
-  <img src="https://img.shields.io/badge/Build-Gradle-02303A?style=flat-square&logo=gradle&logoColor=white" alt="Gradle" />
-</p>
-
-> **Project status:** Early-stage. This README describes the behavior currently visible in the source; it is not a production-readiness or security guarantee. Test on a staging server and review permissions before deployment.
-
-## Overview
-
-NecroManager is a Paper server plugin built around basic lobby and spawn workflows. Its current source includes spawn management, join/quit message handling, configurable block and damage restrictions, and player effects applied when a player joins.
+> This project is still early in development. Check the permissions and test it on a staging server before using it on a live server.
 
 ## Current features
 
-- **Spawn management** — save a spawn location, teleport players to it, and optionally send players there when they join.
-- **Join and quit messages** — configure message formats and suppress messages for staff.
-- **Gameplay restrictions** — toggle block breaking, block placing, player-versus-player damage, and fall damage behavior.
-- **Join effects** — independently toggle speed, regeneration, and slow-falling effects.
-- **Administrative commands** — reload the configuration and center an administrator at the current block location.
+- Set a spawn location and teleport players to it.
+- Optionally send players to spawn when they join.
+- Configure join and quit messages, including silent staff.
+- Toggle block breaking, block placing, player damage, and fall damage restrictions.
+- Apply speed, regeneration, and slow-falling effects when players join.
+- Reload the plugin configuration.
 
-Feature behavior is controlled primarily through `src/main/resources/config.yml`.
+Most settings are in `src/main/resources/config.yml`.
 
-## Compatibility
+## Requirements
 
-The current build configuration uses:
+The current Gradle build is configured for:
 
-| Component | Configured target |
+| Component | Version |
 |---|---|
-| Server API | Paper API `1.21.10-R0.1-SNAPSHOT` |
-| Plugin descriptor | `api-version: '1.21'` |
-| Java source / target | Java 21 |
-| Build system | Gradle Wrapper |
+| Paper API | 1.21.10 snapshot |
+| Plugin API version | 1.21 |
+| Java | 21 |
+| Build | Gradle Wrapper |
 
-The project has not been documented or validated here against Spigot or older Minecraft versions. Use the Paper version compatible with the configured API, and verify startup and behavior on your own staging server.
+The project has not been checked against older Minecraft versions or Spigot. Use a compatible Paper server and test the plugin before deploying it.
 
 ## Commands
 
-| Command | Purpose | Permission declared in `plugin.yml` |
+| Command | Description | Permission |
 |---|---|---|
-| `/spawn` | Teleport to the configured spawn location | `necromanager.admin` |
-| `/setspawn` | Save the current centered location as spawn | `necromanager.admin` |
-| `/tpcenter` | Teleport yourself to the center of the current block | Checked by the command handler: `necromanager.admin` |
-| `/reloadmanager` | Reload the plugin configuration | `necromanager.admin` |
+| `/spawn` | Teleport to the configured spawn | `necromanager.admin` |
+| `/setspawn` | Set the spawn at your current location | `necromanager.admin` |
+| `/tpcenter` | Move to the center of the current block | `necromanager.admin` |
+| `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
-The command handlers also perform permission checks in code. Review the command declarations and permission checks before granting access to non-operator groups.
+The command declarations and permission checks are both in the source. Review them before changing permission assignments.
 
 ## Configuration
 
-The default configuration is stored in `src/main/resources/config.yml`.
+The default configuration is in `src/main/resources/config.yml`.
 
-| Section | Controls |
+| Section | Description |
 |---|---|
-| `disabler` | Block placement, block breaking, player damage, and fall-damage toggles |
-| `effects` | Global effects switch plus speed, regeneration, and slow-falling toggles |
-| `joins` | Join announcements, spawn-on-join behavior, and silent staff |
-| `quit` | Quit announcements and silent staff |
-| `messages` | Plugin prefix and configurable feedback messages |
+| `disabler` | Toggles block and damage restrictions |
+| `effects` | Controls join effects |
+| `joins` | Join messages, silent staff, and spawn-on-join |
+| `quit` | Quit messages and silent staff |
+| `messages` | Message prefix and plugin messages |
 
-Back up `plugins/NecroManager/config.yml` before making changes. Review all permission-related behavior on a test server before using this plugin with a live player base.
+Back up `plugins/NecroManager/config.yml` before editing it.
 
-## Build and run locally
+## Build and run
 
-**Requirements:** JDK 21.
+Requires JDK 21.
 
-Build the plugin:
+Build:
 
 ```bash
 ./gradlew clean build
 ```
 
-Run the configured Paper development server:
+Start the configured local Paper server:
 
 ```bash
 ./gradlew runServer
 ```
 
-The project configures the development server task for Minecraft 1.21. The resulting JAR is written to `build/libs/`.
+The JAR is created in `build/libs/`.
 
-## Repository notes
+## Notes
 
-- No automated test source set is currently present in the repository.
-- A `LICENSE` file is not currently present. Add an explicit license before inviting reuse or redistribution.
-- Permission declarations and handler checks should be reviewed together; do not assume every non-operator permission combination behaves as intended.
-
----
-
-<p align="center">
-  <sub>Keep configuration explicit, permissions deliberate, and server changes tested before release.</sub>
-</p>
+There are currently no automated tests or license file in the repository. Permission behavior also needs further review. Add a license before allowing others to reuse or redistribute the project.
