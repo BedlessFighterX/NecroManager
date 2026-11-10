@@ -1,0 +1,5 @@
+package com.bedlessfighter.necroManager.commands;
+import com.bedlessfighter.necroManager.managers.*;import org.bukkit.*;import org.bukkit.command.*;import org.bukkit.entity.Player;import org.jetbrains.annotations.NotNull;
+public final class WhoisCommand implements CommandExecutor {
+ @Override public boolean onCommand(@NotNull CommandSender s,@NotNull Command c,@NotNull String[] a){if(a.length!=1){MessageManager.sendRaw(s,"&cUsage: /whois <player>");return true;}if(!PermissionManager.has(s,"necromanager.whois")){MessageManager.send(s,"messages.no-perm","&cNo permission.");return true;}Player p=Bukkit.getPlayerExact(a[0]);if(p==null){MessageManager.send(s,"messages.player-not-found","&cPlayer not online.");return true;}Location l=p.getLocation();MessageManager.sendRaw(s,"&6Whois: &f"+p.getName()+" &7("+p.getUniqueId()+")");MessageManager.sendRaw(s,"&7World: &f"+l.getWorld().getName()+" &7Position: &f"+String.format(java.util.Locale.ROOT,"%.1f, %.1f, %.1f",l.getX(),l.getY(),l.getZ()));MessageManager.sendRaw(s,"&7Health: &f"+String.format(java.util.Locale.ROOT,"%.1f",p.getHealth())+" &7Ping: &f"+p.getPing()+"ms &7Mode: &f"+p.getGameMode());return true;}
+}
