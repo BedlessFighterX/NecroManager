@@ -1,6 +1,11 @@
 package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
+import com.bedlessfighter.necroManager.commands.MessageCommand;
+import com.bedlessfighter.necroManager.commands.ReplyCommand;
+import com.bedlessfighter.necroManager.commands.IgnoreCommand;
+import com.bedlessfighter.necroManager.commands.SocialSpyCommand;
+import com.bedlessfighter.necroManager.commands.WhoisCommand;
 import com.bedlessfighter.necroManager.commands.FeedCommand;
 import com.bedlessfighter.necroManager.commands.ExtinguishCommand;
 import com.bedlessfighter.necroManager.commands.EnderChestCommand;
@@ -82,6 +87,11 @@ public final class Main extends JavaPlugin {
         registerCommand("rules", new RulesCommand());
         registerCommand("motd", new MotdCommand());
         registerCommand("list", new ListCommand());
+        registerCommand("msg", new MessageCommand());
+        registerCommand("reply", new ReplyCommand());
+        registerCommand("ignore", new IgnoreCommand());
+        registerCommand("socialspy", new SocialSpyCommand());
+        registerCommand("whois", new WhoisCommand());
         registerCommand("feed", new FeedCommand());
         registerCommand("extinguish", new ExtinguishCommand());
         registerCommand("enderchest", new EnderChestCommand());
