@@ -197,6 +197,26 @@ commands:
     description: Repair inventory items for all online players
     permission: necromanager.repairall
     usage: /<command>
+  gamemodeall:
+    description: Set gamemode for all online players
+    permission: necromanager.gamemodeall
+    usage: /<command> <survival|creative|adventure|spectator>
+  teleportall:
+    description: Teleport all online players to an online player
+    permission: necromanager.teleportall
+    usage: /<command> <player>
+  timeall:
+    description: Set personal time for all online players
+    permission: necromanager.timeall
+    usage: /<command> <day|night|reset>
+  weatherall:
+    description: Set weather in all worlds
+    permission: necromanager.weatherall
+    usage: /<command> <clear|rain|thunder>
+  experienceall:
+    description: Grant experience points to all online players
+    permission: necromanager.experienceall
+    usage: /<command> <amount>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -447,6 +467,21 @@ permissions:
     default: op
   necromanager.repairall:
     description: Repair inventory items for all online players
+    default: op
+  necromanager.gamemodeall:
+    description: Set gamemode for all online players
+    default: op
+  necromanager.teleportall:
+    description: Teleport all online players
+    default: op
+  necromanager.timeall:
+    description: Set personal time for all online players
+    default: op
+  necromanager.weatherall:
+    description: Set weather in all worlds
+    default: op
+  necromanager.experienceall:
+    description: Grant experience to all online players
     default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
