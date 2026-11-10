@@ -182,6 +182,13 @@ Audit scope: current `main` source and resource files. This is a source inspecti
 - Added console targeting, permission-aware online-player tab completion, and dedicated `necromanager.enderchest` permission (operator default; admins inherit access).
 - Added configurable feedback to both the target and command sender when an administrator opens another player's ender chest.
 
+## Phase 5.7 — Inventory inspection
+
+- Added `/invsee <player>` to open an exact online target's player inventory for administrative inspection and management.
+- Restricted use to in-game viewers, rejects self-targeting, and notifies the target when an administrator opens their inventory.
+- Added permission-aware online-player tab completion and dedicated `necromanager.invsee` permission (operator default; admins inherit access).
+- Added configurable feedback for console restrictions, self-targeting, viewer success, and target notification.
+
 ## Verification status
 
 - Source files and primary resource/build files inspected.
