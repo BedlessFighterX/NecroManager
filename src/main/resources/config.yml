@@ -31,3 +31,5 @@ messages:
   spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
   setspawn: "&aSpawn location has been updated."
   no-perm: "&cYou don't have enough permissions to issue this command!"
+  reload: "&aConfiguration reloaded successfully."
+  tpcenter: "&rYou have been centered &asuccessfully!"
