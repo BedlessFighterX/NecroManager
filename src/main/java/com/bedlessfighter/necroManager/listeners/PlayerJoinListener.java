@@ -26,8 +26,7 @@ public final class PlayerJoinListener implements Listener {
                     || player.hasPermission("necromanager.silent-join");
 
             if (staff && silentStaff) {
- {
-                event.setJoinMessage(null);
+                                event.setJoinMessage(null);
             } else {
                 String raw = config.getString("joins.message", "&7%player% joined the server.");
                 String message = raw == null ? "" : raw.replace("%player%", player.getName());
