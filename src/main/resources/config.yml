@@ -93,4 +93,8 @@ messages:
   enderchest-self: "&aOpened your ender chest."
   enderchest-target: "&eAn administrator opened your ender chest."
   enderchest-other: "&aOpened the ender chest of %player%."
+  invsee-player-only: "&cOnly players can inspect an inventory."
+  invsee-self: "&cYou cannot inspect your own inventory with this command."
+  invsee-opened: "&aOpened the inventory of %player%."
+  invsee-target: "&eAn administrator is viewing your inventory."
   death-prefix: "&8[&c☠&8]"
