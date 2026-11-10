@@ -16,6 +16,9 @@ commands:
   feed:
     description: Restores hunger to yourself or an online player
     usage: /<command> [player]
+  extinguish:
+    description: Extinguishes yourself or an online player
+    usage: /<command> [player]
   enderchest:
     aliases: [ec]
     description: Opens your ender chest or an online player's ender chest
@@ -56,6 +59,9 @@ permissions:
     default: op
   necromanager.feed:
     description: Allows use of the feed command
+    default: op
+  necromanager.extinguish:
+    description: Allows use of the extinguish command
     default: op
   necromanager.enderchest:
     description: Allows use of the enderchest command
