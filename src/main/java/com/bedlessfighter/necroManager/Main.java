@@ -2,8 +2,6 @@ package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
 import com.bedlessfighter.necroManager.commands.RepairAllCommand;
-import com.bedlessfighter.necroManager.commands.ClearInventoryAllCommand;
-import com.bedlessfighter.necroManager.commands.FlyAllCommand;
 import com.bedlessfighter.necroManager.commands.ClearEffectsAllCommand;
 import com.bedlessfighter.necroManager.commands.ExtinguishAllCommand;
 import com.bedlessfighter.necroManager.commands.PlayerTimeCommand;
@@ -152,8 +150,6 @@ public final class Main extends JavaPlugin {
         registerCommand("ptime", new PlayerTimeCommand());
         registerCommand("extinguishall", new ExtinguishAllCommand());
         registerCommand("cleareffectsall", new ClearEffectsAllCommand());
-        registerCommand("flyall", new FlyAllCommand());
-        registerCommand("clearinvall", new ClearInventoryAllCommand());
         registerCommand("repairall", new RepairAllCommand());
         registerCommand("reloadmanager", new ReloadCommand());
         registerCommand("heal", new HealCommand());
