@@ -13,6 +13,11 @@ public final class TeleportCenterCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
                              @NotNull String label, @NotNull String @NotNull [] args) {
+        if (args.length != 0) {
+            MessageManager.sendRaw(sender, MessageManager.prefix()
+                    + " &cUsage: /" + label);
+            return true;
+        }
         if (!(sender instanceof Player player)) {
             MessageManager.sendRaw(sender, MessageManager.prefix()
                     + " &cThis command can only be used by a player.");
