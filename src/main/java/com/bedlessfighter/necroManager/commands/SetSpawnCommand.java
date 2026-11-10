@@ -2,30 +2,26 @@ package com.bedlessfighter.necroManager.commands;
 
 import com.bedlessfighter.necroManager.managers.SpawnManager;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class SetSpawnCommand implements CommandExecutor {
+public final class SetSpawnCommand implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player player)) {
-            sender.sendMessage(ChatColor.RED + "Only players can use this shit command.");
+            sender.sendMessage(ChatColor.RED + "Only players can set the spawn location.");
             return true;
         }
 
-        if (!player.hasPermission("necromanager.setspawn")
-                && !player.hasPermission("necromanager.admin")
-                && !player.isOp()) {
+        if (!player.hasPermission("necromanager.admin")) {
             player.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
             return true;
         }
 
-        Location location = player.getLocation().toCenterLocation();
-        SpawnManager.setSpawn(player, location);
+        SpawnManager.setSpawn(player, player.getLocation());
         return true;
     }
 }
