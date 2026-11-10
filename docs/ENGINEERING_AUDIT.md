@@ -89,6 +89,13 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Migrated commands, spawn management, gameplay restriction listeners, and silent join/quit checks.
 - Preserved existing permission nodes and operator/admin bypass semantics.
 
+## Step 1.5 completion — Plugin lifecycle
+
+- Split command and listener registration into dedicated lifecycle methods.
+- Added startup failure handling: missing required command metadata is logged and the plugin is disabled rather than leaving a partially initialized plugin active.
+- Made the static plugin reference clear only when the owning plugin instance shuts down.
+- Added version-aware startup logging and retained scheduler task cleanup on disable.
+
 ## Verification status
 
 - Source files and primary resource/build files inspected.
