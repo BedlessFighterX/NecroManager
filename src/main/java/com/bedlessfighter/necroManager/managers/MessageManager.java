@@ -1,7 +1,9 @@
 package com.bedlessfighter.necroManager.managers;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Map;
 
@@ -34,6 +36,19 @@ public final class MessageManager {
             }
         }
         return color(message);
+    }
+
+    /**
+     * Common player placeholders for join, quit, death, and command messages.
+     */
+    public static Map<String, String> playerPlaceholders(Player player) {
+        if (player == null) return Map.of();
+        return Map.of(
+                "player", player.getName(),
+                "displayname", player.getDisplayName(),
+                "world", player.getWorld().getName(),
+                "online", Integer.toString(Bukkit.getOnlinePlayers().size())
+        );
     }
 
     public static String configured(String path, String fallback) {
