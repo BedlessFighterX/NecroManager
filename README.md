@@ -19,6 +19,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Restore hunger and saturation with `/feed [player]`.
 - Extinguish yourself or an online player with `/extinguish [player]`.
 - View your own or an online player's server-reported latency with `/ping [player]`.
+- Inspect a player's world, coordinates, and rotation with `/getpos [player]`.
 - Clear active potion effects with `/cleareffects [player]`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
 - Open your ender chest or inspect an online player's ender chest with `/enderchest [player]` (`/ec` alias).
@@ -55,6 +56,7 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/feed [player]` | Restore your hunger or feed an online player | `necromanager.feed` or admin |
 | `/extinguish [player]` | Extinguish yourself or an online player | `necromanager.extinguish` or admin |
 | `/ping [player]` | Show your ping or an online player's ping | `necromanager.ping` or admin |
+| `/getpos [player]` | Show a player's world, coordinates, and rotation | `necromanager.getpos` or admin |
 | `/cleareffects [player]` | Remove active potion effects from yourself or an online player | `necromanager.cleareffects` or admin |
 | `/fly [player]` | Toggle flight for yourself or an online player | `necromanager.fly` or admin |
 | `/enderchest [player]`, `/ec` | Open your ender chest or an online player's ender chest | `necromanager.enderchest` or admin |
@@ -72,6 +74,7 @@ The command declarations and permission checks are both in the source. The `necr
 | `necromanager.feed` | Use `/feed` | Operators |
 | `necromanager.extinguish` | Use `/extinguish` | Operators |
 | `necromanager.ping` | Use `/ping` | Everyone |
+| `necromanager.getpos` | Use `/getpos` | Operators |
 | `necromanager.cleareffects` | Use `/cleareffects` | Operators |
 | `necromanager.fly` | Use `/fly` | Operators |
 | `necromanager.enderchest` | Use `/enderchest` | Operators |
