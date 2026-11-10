@@ -19,6 +19,9 @@ commands:
   extinguish:
     description: Extinguishes yourself or an online player
     usage: /<command> [player]
+  ping:
+    description: Displays your ping or an online player's ping
+    usage: /<command> [player]
   enderchest:
     aliases: [ec]
     description: Opens your ender chest or an online player's ender chest
@@ -63,6 +66,9 @@ permissions:
   necromanager.extinguish:
     description: Allows use of the extinguish command
     default: op
+  necromanager.ping:
+    description: Allows use of the ping command
+    default: true
   necromanager.enderchest:
     description: Allows use of the enderchest command
     default: op
