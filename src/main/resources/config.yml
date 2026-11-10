@@ -1,13 +1,10 @@
 # Configuration for NecroManager
-# Developed by @bacheyerasht on Discord
-# Open a ticket for furthur support of this plugin!
 
 disabler:
   blockplace: true
   blockbreak: true
   damage-others: true
   fall-damage: true
-
 
 effects:
   enabled: true
@@ -32,4 +29,5 @@ messages:
   blockplace: "&cYou may not place blocks in this territory."
   damage-others: "&cYou may not damage other players."
   spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
+  setspawn: "&aSpawn location has been updated."
   no-perm: "&cYou don't have enough permissions to issue this command!"
