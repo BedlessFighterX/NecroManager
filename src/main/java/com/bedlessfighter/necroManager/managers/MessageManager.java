@@ -1,0 +1,60 @@
+package com.bedlessfighter.necroManager.managers;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+
+import java.util.Map;
+
+/**
+ * Shared message formatting and delivery for commands and event handlers.
+ *
+ * Message templates are read from the existing configuration paths, support
+ * legacy ampersand color codes, and accept simple %placeholder% tokens.
+ */
+public final class MessageManager {
+
+    private MessageManager() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
+    public static String color(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
+    }
+
+    public static String prefix() {
+        return color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"));
+    }
+
+    public static String format(String template, Map<String, String> placeholders) {
+        String message = template == null ? "" : template;
+        if (placeholders != null) {
+            for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+                if (entry.getKey() == null || entry.getValue() == null) continue;
+                message = message.replace("%" + entry.getKey() + "%", entry.getValue());
+            }
+        }
+        return color(message);
+    }
+
+    public static String configured(String path, String fallback) {
+        return format(ConfigManager.getString(path, fallback), Map.of());
+    }
+
+    public static String prefixed(String path, String fallback) {
+        return prefix() + " " + configured(path, fallback);
+    }
+
+    public static void send(CommandSender recipient, String path, String fallback) {
+        recipient.sendMessage(prefixed(path, fallback));
+    }
+
+    public static void sendRaw(CommandSender recipient, String message) {
+        recipient.sendMessage(color(message));
+    }
+
+    public static void send(CommandSender recipient, String path, String fallback,
+                            Map<String, String> placeholders) {
+        recipient.sendMessage(prefix() + " "
+                + format(ConfigManager.getString(path, fallback), placeholders));
+    }
+}
