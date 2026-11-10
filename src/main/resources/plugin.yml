@@ -20,6 +20,9 @@ commands:
     aliases: [ec]
     description: Opens your ender chest or an online player's ender chest
     usage: /<command> [player]
+  invsee:
+    description: Opens an online player's inventory for inspection
+    usage: /<command> <player>
   reloadmanager:
     description: Reloads the NecroManager configuration
     permission: necromanager.admin
@@ -52,6 +55,9 @@ permissions:
     default: op
   necromanager.enderchest:
     description: Allows use of the enderchest command
+    default: op
+  necromanager.invsee:
+    description: Allows inspection of online player inventories
     default: op
   necromanager.admin:
     description: Allows administration of NecroManager commands
