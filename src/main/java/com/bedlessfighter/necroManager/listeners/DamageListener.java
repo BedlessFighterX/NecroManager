@@ -2,6 +2,7 @@ package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -18,8 +19,7 @@ public final class DamageListener implements Listener {
 
         Player attacker = resolvePlayerAttacker(event.getDamager());
         if (attacker == null) return;
-        if (attacker.isOp() || attacker.hasPermission("necromanager.admin")
-                || attacker.hasPermission("necromanager.damage-others")) return;
+        if (PermissionManager.has(attacker, "necromanager.damage-others")) return;
 
         event.setCancelled(true);
         MessageManager.send(attacker, "messages.damage-others",
@@ -39,8 +39,7 @@ public final class DamageListener implements Listener {
                 || event.getCause() != EntityDamageEvent.DamageCause.FALL) return;
 
         if (event.getEntity() instanceof Player player
-                && (player.isOp() || player.hasPermission("necromanager.admin")
-                || player.hasPermission("necromanager.falldamage"))) return;
+                && (PermissionManager.has(player, "necromanager.falldamage"))) return;
 
         event.setCancelled(true);
         if (event.getEntity() instanceof Player player) {
