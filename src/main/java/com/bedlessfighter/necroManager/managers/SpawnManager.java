@@ -153,11 +153,20 @@ public final class SpawnManager {
      * @return true when the teleport succeeds
      */
     public static boolean teleportToSpawn(Player player, boolean notify) {
-        Location spawn = getSafeSpawn();
-        if (!isValid(spawn)) {
+        Location configuredSpawn = getSpawn();
+        if (!isValid(configuredSpawn)) {
             if (notify) {
                 MessageManager.send(player, "messages.spawn-not-set",
                         "&cSpawn has not been set yet.");
+            }
+            return false;
+        }
+
+        Location spawn = getSafeSpawn();
+        if (!isValid(spawn)) {
+            if (notify) {
+                MessageManager.send(player, "messages.spawn-unsafe",
+                        "&cNo safe location could be found near the configured spawn.");
             }
             return false;
         }
