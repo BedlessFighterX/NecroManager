@@ -36,6 +36,9 @@ permissions:
   necromanager.damage-others:
     description: Bypasses NecroManager player-damage restrictions
     default: op
+  necromanager.falldamage:
+    description: Bypasses NecroManager fall-damage restrictions
+    default: op
   necromanager.silent-join:
     description: Hides the player from NecroManager join messages
     default: op
