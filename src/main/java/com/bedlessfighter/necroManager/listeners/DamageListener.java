@@ -1,6 +1,6 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
+import com.bedlessfighter.necroManager.managers.ConfigManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -14,8 +14,7 @@ public final class DamageListener implements Listener {
 
     @EventHandler
     public void onDamageByEntity(EntityDamageByEntityEvent event) {
-        var config = Main.getPlugin().getConfig();
-        if (!config.getBoolean("disabler.damage-others", true)) return;
+        if (!ConfigManager.getBoolean("disabler.damage-others", true)) return;
 
         Player attacker = resolvePlayerAttacker(event.getDamager());
         if (attacker == null) return;
@@ -23,7 +22,7 @@ public final class DamageListener implements Listener {
                 || attacker.hasPermission("necromanager.damage-others")) return;
 
         event.setCancelled(true);
-        String prefix = color(config.getString("messages.prefix", "&7[NecroManager]&r"));
+        String prefix = color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"));
         String message = color(config.getString("messages.damage-others",
                 "&cYou may not damage other players."));
         attacker.sendMessage(prefix + " " + message);
