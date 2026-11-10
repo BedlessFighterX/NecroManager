@@ -5,6 +5,7 @@ import com.bedlessfighter.necroManager.commands.FeedCommand;
 import com.bedlessfighter.necroManager.commands.EnderChestCommand;
 import com.bedlessfighter.necroManager.commands.FlyCommand;
 import com.bedlessfighter.necroManager.commands.HealCommand;
+import com.bedlessfighter.necroManager.commands.GamemodeCommand;
 import com.bedlessfighter.necroManager.commands.InventorySeeCommand;
 import com.bedlessfighter.necroManager.commands.ReloadCommand;
 import com.bedlessfighter.necroManager.commands.SetSpawnCommand;
@@ -51,6 +52,7 @@ public final class Main extends JavaPlugin {
     private void registerCommands() {
         registerCommand("reloadmanager", new ReloadCommand());
         registerCommand("heal", new HealCommand());
+        registerCommand("gamemode", new GamemodeCommand());
         registerCommand("feed", new FeedCommand());
         registerCommand("enderchest", new EnderChestCommand());
         registerCommand("invsee", new InventorySeeCommand());
