@@ -18,6 +18,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Heal yourself or an online player with `/heal [player]`.
 - Restore hunger and saturation with `/feed [player]`.
 - Clear active potion effects with `/cleareffects [player]`.
+- Toggle flight for yourself or an online player with `/fly [player]`.
 - Reload the plugin configuration.
 
 Spawn teleports are safety-checked by default: NecroManager prefers the configured point, then searches nearby for two clear blocks above a solid, non-hazardous floor within the world border. The search radius and vertical range are configurable; set `spawn.safe-teleport: false` to disable relocation checks and use the exact configured coordinates. If no safe destination is found, the teleport is refused.
@@ -49,6 +50,7 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/heal [player]` | Restore your health or heal an online player | `necromanager.heal` or admin |
 | `/feed [player]` | Restore your hunger or feed an online player | `necromanager.feed` or admin |
 | `/cleareffects [player]` | Remove active potion effects from yourself or an online player | `necromanager.cleareffects` or admin |
+| `/fly [player]` | Toggle flight for yourself or an online player | `necromanager.fly` or admin |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
 The command declarations and permission checks are both in the source. The `necromanager.admin` permission defaults to operators; `necromanager.spawn` is available to everyone by default.
@@ -61,6 +63,7 @@ The command declarations and permission checks are both in the source. The `necr
 | `necromanager.heal` | Use `/heal` | Operators |
 | `necromanager.feed` | Use `/feed` | Operators |
 | `necromanager.cleareffects` | Use `/cleareffects` | Operators |
+| `necromanager.fly` | Use `/fly` | Operators |
 | `necromanager.spawn` | Use `/spawn` | Everyone |
 | `necromanager.blockbreak` | Bypass block-break restriction | Operators |
 | `necromanager.blockplace` | Bypass block-place restriction | Operators |
