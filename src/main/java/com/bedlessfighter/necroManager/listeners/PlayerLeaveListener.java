@@ -1,6 +1,6 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
+import com.bedlessfighter.necroManager.managers.ConfigManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,9 +11,8 @@ public final class PlayerLeaveListener implements Listener {
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        var config = Main.getPlugin().getConfig();
 
-        if (!config.getBoolean("quit.enabled", true)) {
+        if (!ConfigManager.getBoolean("quit.enabled", true)) {
             event.setQuitMessage(null);
             return;
         }
@@ -27,7 +26,7 @@ public final class PlayerLeaveListener implements Listener {
             return;
         }
 
-        String raw = config.getString("quit.message", "&7%player% left the server.");
+        String raw = ConfigManager.getString("quit.message", "&7%player% left the server.");
         String message = raw == null ? "" : raw.replace("%player%", player.getName());
         event.setQuitMessage(color(message));
     }
