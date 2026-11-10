@@ -26,6 +26,12 @@ public final class PlayerJoinListener implements Listener {
                     || PermissionManager.hasDirect(player, "necromanager.silent-join");
             if (staff && silentStaff) {
                 event.setJoinMessage(null);
+            } else if (!player.hasPlayedBefore()
+                    && ConfigManager.getBoolean("joins.first-join-message-enabled", false)) {
+                event.setJoinMessage(MessageManager.format(
+                        ConfigManager.getString("joins.first-join-message",
+                                "&aWelcome %player% to the server!"),
+                        Map.of("player", player.getName())));
             } else {
                 event.setJoinMessage(MessageManager.format(
                         ConfigManager.getString("joins.message", "&7%player% joined the server."),
