@@ -1,10 +1,12 @@
 package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
-import org.bukkit.ChatColor;
+import com.bedlessfighter.necroManager.managers.MessageManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+
+import java.util.Map;
 
 public final class DeathListener implements Listener {
 
@@ -15,15 +17,12 @@ public final class DeathListener implements Listener {
             return;
         }
 
-        String prefix = color(ConfigManager.getString("messages.death-prefix", "&8[&c☠&8]"));
         String deathMessage = event.getDeathMessage();
+        if (deathMessage == null || deathMessage.isBlank()) return;
 
-        if (deathMessage != null && !deathMessage.isBlank()) {
-            event.setDeathMessage(prefix + " " + deathMessage);
-        }
-    }
-
-    private String color(String message) {
-        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
+        String decorated = MessageManager.format(
+                ConfigManager.getString("messages.death-prefix", "&8[&c☠&8]") + " " + deathMessage,
+                Map.of("player", event.getEntity().getName()));
+        event.setDeathMessage(decorated);
     }
 }
