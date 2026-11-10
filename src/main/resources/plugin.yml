@@ -237,6 +237,10 @@ commands:
     description: Set a player's food level
     permission: necromanager.setfood
     usage: /<command> <0-20> [player]
+  setfoodall:
+    description: Set food level for all online players
+    permission: necromanager.setfoodall
+    usage: /<command> <0-20>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -517,6 +521,9 @@ permissions:
     default: op
   necromanager.setfood:
     description: Set a player's food level
+    default: op
+  necromanager.setfoodall:
+    description: Set food level for all online players
     default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
