@@ -1,6 +1,6 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
+import com.bedlessfighter.necroManager.managers.ConfigManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,14 +12,13 @@ public final class BlockBreakListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        var config = Main.getPlugin().getConfig();
 
-        if (!config.getBoolean("disabler.blockbreak", true)) return;
+        if (!ConfigManager.getBoolean("disabler.blockbreak", true)) return;
         if (player.isOp() || player.hasPermission("necromanager.admin")
                 || player.hasPermission("necromanager.blockbreak")) return;
 
         event.setCancelled(true);
-        player.sendMessage(color(config.getString("messages.prefix", "&7[NecroManager]&r"))
+        player.sendMessage(color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"))
                 + " " + color(config.getString("messages.blockbreak",
                 "&cYou may not break blocks in this territory.")));
     }
