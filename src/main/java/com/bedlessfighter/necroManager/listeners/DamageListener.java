@@ -1,7 +1,7 @@
 package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
-import org.bukkit.ChatColor;
+import com.bedlessfighter.necroManager.managers.MessageManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -22,10 +22,8 @@ public final class DamageListener implements Listener {
                 || attacker.hasPermission("necromanager.damage-others")) return;
 
         event.setCancelled(true);
-        String prefix = color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"));
-        String message = color(ConfigManager.getString("messages.damage-others",
-                "&cYou may not damage other players."));
-        attacker.sendMessage(prefix + " " + message);
+        MessageManager.send(attacker, "messages.damage-others",
+                "&cYou may not damage other players.");
     }
 
     private Player resolvePlayerAttacker(Entity damager) {
@@ -46,14 +44,8 @@ public final class DamageListener implements Listener {
 
         event.setCancelled(true);
         if (event.getEntity() instanceof Player player) {
-            String prefix = color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"));
-            String message = color(ConfigManager.getString("messages.fall-damage",
-                    "&cFall damage is disabled in this area."));
-            player.sendMessage(prefix + " " + message);
+            MessageManager.send(player, "messages.fall-damage",
+                    "&cFall damage is disabled in this area.");
         }
-    }
-
-    private String color(String message) {
-        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
     }
 }
