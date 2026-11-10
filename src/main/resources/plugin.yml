@@ -369,10 +369,10 @@ permissions:
     description: Show health and hunger
     default: op
   necromanager.kill:
-    description: Kill another player
-    default: op
-  necromanager.kill:
     description: Kill yourself or an online player
+    default: op
+  necromanager.kill.others:
+    description: Kill another online player
     default: op
   necromanager.healall:
     description: Heal all online players
