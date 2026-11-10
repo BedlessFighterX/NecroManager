@@ -15,7 +15,7 @@ public final class ReloadCommand implements CommandExecutor {
         String prefix = color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"));
 
         if (!sender.hasPermission("necromanager.admin") && !sender.isOp()) {
-            sender.sendMessage(prefix + " " + color(config.getString("messages.no-perm",
+            sender.sendMessage(prefix + " " + color(ConfigManager.getString("messages.no-perm",
                     "&cYou don't have enough permissions to issue this command!")));
             return true;
         }
