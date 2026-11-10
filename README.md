@@ -61,7 +61,7 @@ The command declarations and permission checks are both in the source. The `necr
 
 ## Configuration
 
-The default configuration is in `src/main/resources/config.yml`.
+The default configuration is in `src/main/resources/config.yml`. Global gameplay restrictions can be overridden per world under `world-overrides`, using the world's UUID as the key. For example, setting `world-overrides.<world-uuid>.disabler.blockbreak: false` allows block breaking in that world while retaining the global setting elsewhere. World UUIDs keep overrides stable when world folders are renamed. Damage and fall restrictions now apply only to player victims; mob-versus-mob and player-versus-mob combat are not blocked by the player-damage setting.
 
 | Section | Description |
 |---|---|
