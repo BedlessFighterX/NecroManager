@@ -27,11 +27,14 @@ permissions:
   necromanager.spawn:
     description: Allows use of the spawn command
     default: true
-  necromanager.breakblock:
+  necromanager.blockbreak:
     description: Bypasses NecroManager block-break restrictions
     default: op
   necromanager.blockplace:
     description: Bypasses NecroManager block-place restrictions
+    default: op
+  necromanager.damage-others:
+    description: Bypasses NecroManager player-damage restrictions
     default: op
   necromanager.silent-join:
     description: Hides the player from NecroManager join messages
