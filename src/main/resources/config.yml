@@ -3,7 +3,7 @@
 # Plugin spawn is independent from Minecraft's world spawn by default.
 # Set true only if /setspawn should also move the world's vanilla spawn point.
 spawn:
-  update-world-spawn: false
+  update-world-spawn: false\n  safe-teleport: true\n  safe-search-radius: 4\n  safe-search-height: 3
 
 disabler:
   blockplace: true
@@ -39,7 +39,7 @@ messages:
   fall-damage: "&cFall damage is disabled in this area."
   spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
   spawn-not-set: "&cSpawn has not been set yet."
-  spawn-failed: "&cCould not complete the spawn operation."
+  spawn-failed: "&cCould not complete the spawn operation."\n  spawn-unsafe: "&cNo safe location could be found near the configured spawn."
   player-not-found: "&cThat player is not online."
   spawn-other-success: "&aTeleported %player% to spawn."
   setspawn: "&aSpawn location has been updated."
