@@ -32,6 +32,9 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Send private messages with `/msg <player> <message>` (`/tell`, `/w`), reply with `/reply <message>` (`/r`), and toggle player ignores with `/ignore <player>`.
 - Toggle staff private-message monitoring with `/socialspy` and inspect online player details with `/whois <player>`.
 - Clear active potion effects with `/cleareffects [player]`.
+- Clear armor slots with `/cleararmor [player]` and hotbar slots with `/clearhotbar [player]`.
+- Create an online player's head with `/skull <player>`.
+- Rename held items with `/rename <name>` and manage lore with `/lore add <text>` or `/lore clear`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
 - Open your ender chest or inspect an online player's ender chest with `/enderchest [player]` (`/ec` alias).
 - Inspect an online player's editable inventory with `/invsee <player>`; the target is notified.
@@ -81,6 +84,11 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/motd` | Display configured MOTD | Everyone |
 | `/list` | List online players | Everyone |
 | `/cleareffects [player]` | Remove active potion effects from yourself or an online player | `necromanager.cleareffects` or admin |
+| `/cleararmor [player]` | Clear armor slots | `necromanager.cleararmor` or admin |
+| `/clearhotbar [player]` | Clear hotbar slots | `necromanager.clearhotbar` or admin |
+| `/skull <player>` | Create an online player's head | `necromanager.skull` or admin |
+| `/rename <name>` | Rename held item with legacy color codes | `necromanager.rename` or admin |
+| `/lore add <text>` / `/lore clear` | Add or clear held item lore | `necromanager.lore` or admin |
 | `/fly [player]` | Toggle flight for yourself or an online player | `necromanager.fly` or admin |
 | `/enderchest [player]`, `/ec` | Open your ender chest or an online player's ender chest | `necromanager.enderchest` or admin |
 | `/invsee <player>` | Open an online player's inventory for inspection | `necromanager.invsee` or admin |
