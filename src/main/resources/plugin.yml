@@ -10,12 +10,12 @@ commands:
     usage: /<command>
   setspawn:
     aliases: [setlobby]
-    description: Sets the server spawn at your current location
+    description: Sets the NecroManager plugin spawn at your current location
     permission: necromanager.admin
     usage: /<command>
   spawn:
     aliases: [lobby]
-    description: Teleports you to the configured spawn
+    description: Teleports you to the configured NecroManager spawn
     permission: necromanager.spawn
     usage: /<command>
   tpcenter:
