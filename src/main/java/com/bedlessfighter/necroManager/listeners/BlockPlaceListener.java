@@ -7,26 +7,22 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class BlockPlaceListener implements Listener {
+public final class BlockPlaceListener implements Listener {
 
     @EventHandler
-    public void onBlockPlace(BlockPlaceEvent e) {
-        Player player = e.getPlayer();
+    public void onBlockPlace(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
         var cfg = Main.getPlugin().getConfig();
 
-        boolean blockPlaceStatus = cfg.getBoolean("disabler.blockplace");
+        if (!cfg.getBoolean("disabler.blockplace")) return;
+        if (player.hasPermission("necromanager.admin")
+                || player.hasPermission("necromanager.blockplace")) return;
 
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[NecroManager]&r"));
-        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockplace", "&cYou can't place blocks here."));
-
-        if (!blockPlaceStatus) return;
-
-        if (!player.hasPermission("necromanager.blockplace")
-                || !player.hasPermission("necromanager.admin")) {
-            e.setCancelled(true);
-            player.sendMessage("%prefix% %message%"
-                    .replace("%prefix%", prefix)
-                    .replace("%message%", message));
-        }
+        event.setCancelled(true);
+        String prefix = ChatColor.translateAlternateColorCodes('&',
+                cfg.getString("messages.prefix", "&7[NecroManager]&r"));
+        String message = ChatColor.translateAlternateColorCodes('&',
+                cfg.getString("messages.blockplace", "&cYou may not place blocks here."));
+        player.sendMessage(prefix + " " + message);
     }
 }
