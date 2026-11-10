@@ -19,7 +19,7 @@ public final class BlockBreakListener implements Listener {
 
         event.setCancelled(true);
         player.sendMessage(color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"))
-                + " " + color(config.getString("messages.blockbreak",
+                + " " + color(ConfigManager.getString("messages.blockbreak",
                 "&cYou may not break blocks in this territory.")));
     }
 
