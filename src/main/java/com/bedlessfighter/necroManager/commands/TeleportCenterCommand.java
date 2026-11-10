@@ -11,24 +11,29 @@ import org.jetbrains.annotations.NotNull;
 public class TeleportCenterCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
-        var cfg = Main.getPlugin().getConfig();
-        String noperm = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.no-perm"));
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+                           @NotNull String label, @NotNull String @NotNull [] args) {
+        var config = Main.getPlugin().getConfig();
+        String prefix = color(config.getString("messages.prefix", "&7[NecroManager]&r"));
 
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix"));
-        String message = ChatColor.translateAlternateColorCodes('&', "%prefix% &rYou have been centered &asuccessfully!".replace("%prefix%", prefix));
-
-        if (sender instanceof Player player) {
-            boolean staff = player.hasPermission("necromanager.admin") || player.isOp();
-
-            if (staff) {
-                player.teleport(player.getLocation().toCenterLocation());
-                player.sendMessage(message);
-            } else {
-                player.sendMessage("%prefix% %messsage%".replace("%prefix%", prefix).replace("%message%", message));
-            }
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage(prefix + " " + color("&cThis command can only be used by a player."));
+            return true;
         }
 
+        if (!player.hasPermission("necromanager.admin") && !player.isOp()) {
+            player.sendMessage(prefix + " " + color(config.getString("messages.no-perm",
+                    "&cYou don't have enough permissions to issue this command!")));
+            return true;
+        }
+
+        player.teleport(player.getLocation().toCenterLocation());
+        player.sendMessage(prefix + " " + color(config.getString("messages.tpcenter",
+                "&rYou have been centered &asuccessfully!")));
         return true;
+    }
+
+    private String color(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
     }
 }
