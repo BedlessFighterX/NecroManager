@@ -30,15 +30,15 @@ public final class SpawnManager {
 
     public static void setSpawn(Player player, Location location) {
 
-        String prefix = color(config.getString("messages.prefix", "&a&lNECRO&f&lMC &8|&r"));
+        String prefix = color(ConfigManager.getString("messages.prefix", "&a&lNECRO&f&lMC &8|&r"));
 
         if (!player.isOp() && !player.hasPermission("necromanager.admin")) {
-            player.sendMessage(prefix + " " + color(config.getString("messages.no-perm",
+            player.sendMessage(prefix + " " + color(ConfigManager.getString("messages.no-perm",
                     "&cYou don't have enough permissions to issue this command!")));
             return;
         }
         if (location == null || location.getWorld() == null) {
-            player.sendMessage(prefix + " " + color(config.getString("messages.spawn-failed",
+            player.sendMessage(prefix + " " + color(ConfigManager.getString("messages.spawn-failed",
                     "&cCould not save this spawn location.")));
             return;
         }
@@ -47,7 +47,7 @@ public final class SpawnManager {
         ConfigManager.set("spawn", saved);
         ConfigManager.save();
         saved.getWorld().setSpawnLocation(saved.getBlockX(), saved.getBlockY(), saved.getBlockZ());
-        player.sendMessage(prefix + " " + color(config.getString("messages.setspawn",
+        player.sendMessage(prefix + " " + color(ConfigManager.getString("messages.setspawn",
                 "&aSpawn location has been updated.")));
     }
 
