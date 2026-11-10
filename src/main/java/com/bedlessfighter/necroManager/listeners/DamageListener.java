@@ -11,32 +11,39 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class DamageListener implements Listener {
 
     @EventHandler
-    public void onDamageByEntity(EntityDamageByEntityEvent e) {
-        var cfg = Main.getPlugin().getConfig();
-
-        boolean isDamageByOthersEnabled = cfg.getBoolean("disabler.damage-others");
-
-        if (e.getDamager() instanceof Player player && player.isOnline()) {
-            boolean isStaff = player.hasPermission("necromanager.admin");
-            if (!isStaff && isDamageByOthersEnabled) {
-
-                String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[NecroManager]&r"));
-                String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.damage-others", "&cYou can't damage others here."));
-                e.setCancelled(true);
-                player.sendMessage("%prefix% %message%"
-                        .replace("%prefix%", prefix)
-                        .replace("%message%", message));
-            }
+    public void onDamageByEntity(EntityDamageByEntityEvent event) {
+        var config = Main.getPlugin().getConfig();
+        if (!config.getBoolean("disabler.damage-others", true)) {
+            return;
         }
+
+        if (!(event.getDamager() instanceof Player player)) {
+            return;
+        }
+
+        if (player.hasPermission("necromanager.admin")
+                || player.hasPermission("necromanager.damage-others")
+                || player.isOp()) {
+            return;
+        }
+
+        event.setCancelled(true);
+        String prefix = color(config.getString("messages.prefix", "&7[NecroManager]&r"));
+        String message = color(config.getString("messages.damage-others",
+                "&cYou may not damage other players."));
+        player.sendMessage(prefix + " " + message);
     }
 
     @EventHandler
-    public void onFallDamage(EntityDamageEvent e) {
-        var cfg = Main.getPlugin().getConfig();
-        boolean isDamageByFallEnabled = cfg.getBoolean("disabler.fall-damage");
-
-        if (isDamageByFallEnabled && e.getCause() == EntityDamageEvent.DamageCause.FALL) {
-            e.setCancelled(true);
+    public void onFallDamage(EntityDamageEvent event) {
+        var config = Main.getPlugin().getConfig();
+        if (config.getBoolean("disabler.fall-damage", true)
+                && event.getCause() == EntityDamageEvent.DamageCause.FALL) {
+            event.setCancelled(true);
         }
+    }
+
+    private String color(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
     }
 }
