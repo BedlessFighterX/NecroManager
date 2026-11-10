@@ -1,0 +1,3 @@
+package com.bedlessfighter.necroManager.commands;
+import com.bedlessfighter.necroManager.PermissionManager;import com.bedlessfighter.necroManager.MessageManager;import org.bukkit.Bukkit;import org.bukkit.command.*;import org.bukkit.entity.Player;
+public final class ClearXPAllCommand implements CommandExecutor{public boolean onCommand(CommandSender s,Command c,String l,String[] a){if(!PermissionManager.has(s,"necromanager.clearxpall")){MessageManager.send(s,"messages.no-permission","&cYou do not have permission.");return true;}if(a.length!=0){s.sendMessage("Usage: /clearxpall");return true;}for(Player p:Bukkit.getOnlinePlayers()){p.setExp(0);p.setLevel(0);p.setTotalExperience(0);}MessageManager.sendRaw(s,"&aCleared experience for all online players.");return true;}}
