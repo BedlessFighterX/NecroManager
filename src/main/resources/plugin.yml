@@ -10,6 +10,9 @@ commands:
   heal:
     description: Restores health to yourself or an online player
     usage: /<command> [player]
+  fly:
+    description: Toggles flight for yourself or an online player
+    usage: /<command> [player]
   feed:
     description: Restores hunger to yourself or an online player
     usage: /<command> [player]
@@ -36,6 +39,9 @@ permissions:
     default: op
   necromanager.heal:
     description: Allows use of the heal command
+    default: op
+  necromanager.fly:
+    description: Allows use of the fly command
     default: op
   necromanager.feed:
     description: Allows use of the feed command
