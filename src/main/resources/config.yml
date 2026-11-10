@@ -14,6 +14,17 @@ disabler:
   damage-others: true
   fall-damage: true
 
+# Optional per-world restriction overrides keyed by world UUID.
+# Example:
+# world-overrides:
+#   00000000-0000-0000-0000-000000000000:
+#     disabler:
+#       blockbreak: false
+#       blockplace: false
+#       damage-others: false
+#       fall-damage: false
+world-overrides: {}
+
 effects:
   enabled: true
   speed: true
