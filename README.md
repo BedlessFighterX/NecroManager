@@ -65,7 +65,8 @@ The default configuration is in `src/main/resources/config.yml`. Global gameplay
 
 | Section | Description |
 |---|---|
-| `disabler` | Toggles block and damage restrictions |
+| `disabler` | Global block and damage restriction defaults |
+| `world-overrides` | Optional per-world restriction overrides keyed by world UUID |
 | `effects` | Controls join effects |
 | `joins` | Join messages, silent staff, and spawn-on-join |
 | `quit` | Quit messages and silent staff |
