@@ -1,5 +1,10 @@
 # Configuration for NecroManager
 
+# Plugin spawn is independent from Minecraft's world spawn by default.
+# Set true only if /setspawn should also move the world's vanilla spawn point.
+spawn:
+  update-world-spawn: false
+
 disabler:
   blockplace: true
   blockbreak: true
