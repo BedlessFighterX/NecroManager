@@ -3,6 +3,8 @@ package com.bedlessfighter.necroManager.managers;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import com.bedlessfighter.necroManager.managers.PermissionManager;
+
 public final class SpawnManager {
 
     private SpawnManager() {
@@ -29,7 +31,7 @@ public final class SpawnManager {
     }
 
     public static void setSpawn(Player player, Location location) {
-        if (!player.isOp() && !player.hasPermission("necromanager.admin")) {
+        if (!PermissionManager.isAdmin(player)) {
             MessageManager.send(player, "messages.no-perm",
                     "&cYou don't have enough permissions to issue this command!");
             return;
