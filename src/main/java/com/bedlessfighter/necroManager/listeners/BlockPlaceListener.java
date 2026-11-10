@@ -19,7 +19,7 @@ public final class BlockPlaceListener implements Listener {
 
         event.setCancelled(true);
         player.sendMessage(color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"))
-                + " " + color(config.getString("messages.blockplace",
+                + " " + color(ConfigManager.getString("messages.blockplace",
                 "&cYou may not place blocks in this territory.")));
     }
 
