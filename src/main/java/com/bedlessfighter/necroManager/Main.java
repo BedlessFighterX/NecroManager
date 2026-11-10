@@ -1,6 +1,11 @@
 package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
+import com.bedlessfighter.necroManager.commands.ClearArmorCommand;
+import com.bedlessfighter.necroManager.commands.ClearHotbarCommand;
+import com.bedlessfighter.necroManager.commands.SkullCommand;
+import com.bedlessfighter.necroManager.commands.RenameCommand;
+import com.bedlessfighter.necroManager.commands.LoreCommand;
 import com.bedlessfighter.necroManager.commands.ClearInventoryCommand;
 import com.bedlessfighter.necroManager.commands.MoreCommand;
 import com.bedlessfighter.necroManager.commands.HatCommand;
@@ -98,6 +103,11 @@ public final class Main extends JavaPlugin {
         registerCommand("socialspy", new SocialSpyCommand());
         registerCommand("whois", new WhoisCommand());
         registerCommand("clearinventory", new ClearInventoryCommand());
+        registerCommand("cleararmor", new ClearArmorCommand());
+        registerCommand("clearhotbar", new ClearHotbarCommand());
+        registerCommand("skull", new SkullCommand());
+        registerCommand("rename", new RenameCommand());
+        registerCommand("lore", new LoreCommand());
         registerCommand("more", new MoreCommand());
         registerCommand("hat", new HatCommand());
         registerCommand("craft", new CraftCommand());
