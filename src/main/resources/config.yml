@@ -86,6 +86,8 @@ messages:
   extinguish-other: "&aExtinguished %player%."
   ping: "&a%player% &7has &e%ping% ms&7 ping."
   getpos: "&a%player% &7is in &e%world%&7 at &e%x%, %y%, %z%&7 (yaw &e%yaw%&7, pitch &e%pitch%&7)."
+  repair-player-only: "&cOnly players can use this command."
+  repair-result: "&aRepaired &e%count%&a item(s)."
   cleareffects-self: "&aRemoved %count% active potion effects."
   cleareffects-target: "&eAn administrator cleared your active potion effects."
   cleareffects-other: "&aRemoved %count% potion effects from %player%."
