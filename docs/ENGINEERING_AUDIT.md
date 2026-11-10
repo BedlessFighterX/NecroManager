@@ -1,6 +1,6 @@
 # Engineering Audit — Phase 1.1
 
-Audit scope: current `codex/initial-implementation` source and resource files. This is a source inspection only; no compilation or runtime tests were performed.
+Audit scope: current `main` source and resource files. This is a source inspection only; no compilation or runtime tests were performed.
 
 ## Current architecture
 
@@ -176,7 +176,7 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Added guarded configuration reload feedback: runtime reload failures are logged and reported with a configurable player-facing message.
 - Kept administrative permission checks in command executors so denial behavior remains consistent with plugin-level declarations.
 
-## Verification status
+## Phase 5.3 — Player administration commands\n\n- Added `/heal [player]` with self-targeting, exact online-player targeting, console support when a target is supplied, and permission-aware tab completion. Healing uses the target's `MAX_HEALTH` attribute rather than assuming a fixed health cap.\n- Added `/feed [player]` with the same targeting, console, permission, and tab-completion behavior; restores food, saturation, and exhaustion.\n- Added dedicated `necromanager.heal` and `necromanager.feed` permission nodes (operator default); administrators inherit access through `PermissionManager`.\n- Added configurable success, target-notification, invalid-target, and health-attribute failure messages.\n\n## Verification status
 
 - Source files and primary resource/build files inspected.
 - Configuration call sites migrated and reviewed for leftover local `config` references.
