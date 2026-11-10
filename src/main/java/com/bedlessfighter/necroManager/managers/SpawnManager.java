@@ -1,6 +1,5 @@
 package com.bedlessfighter.necroManager.managers;
 
-import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -10,10 +9,8 @@ public final class SpawnManager {
     }
 
     public static void sendToSpawn(Player player) {
-        var plugin = Main.getPlugin();
-        var config = plugin.getConfig();
-        Location spawn = config.getLocation("spawn");
-        String prefix = color(config.getString("messages.prefix", "&a&lNECRO&f&lMC &8|&r"));
+        Location spawn = ConfigManager.getLocation("spawn");
+        String prefix = color(ConfigManager.getString("messages.prefix", "&a&lNECRO&f&lMC &8|&r"));
 
         if (spawn == null || spawn.getWorld() == null) {
             player.sendMessage(prefix + " " + color(config.getString("messages.spawn-not-set",
@@ -32,8 +29,7 @@ public final class SpawnManager {
     }
 
     public static void setSpawn(Player player, Location location) {
-        var plugin = Main.getPlugin();
-        var config = plugin.getConfig();
+
         String prefix = color(config.getString("messages.prefix", "&a&lNECRO&f&lMC &8|&r"));
 
         if (!player.isOp() && !player.hasPermission("necromanager.admin")) {
@@ -48,8 +44,8 @@ public final class SpawnManager {
         }
 
         Location saved = location.clone();
-        config.set("spawn", saved);
-        plugin.saveConfig();
+        ConfigManager.set("spawn", saved);
+        ConfigManager.save();
         saved.getWorld().setSpawnLocation(saved.getBlockX(), saved.getBlockY(), saved.getBlockZ());
         player.sendMessage(prefix + " " + color(config.getString("messages.setspawn",
                 "&aSpawn location has been updated.")));
