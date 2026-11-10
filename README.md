@@ -15,6 +15,8 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Apply configurable-duration speed, regeneration, and slow-falling effects when players join.
 - Customize or disable the decorated player-death message.
 - Show players a configurable notice when fall damage is disabled.
+- Heal yourself or an online player with `/heal [player]`.
+- Restore hunger and saturation with `/feed [player]`.
 - Reload the plugin configuration.
 
 Spawn teleports are safety-checked by default: NecroManager prefers the configured point, then searches nearby for two clear blocks above a solid, non-hazardous floor within the world border. The search radius and vertical range are configurable; set `spawn.safe-teleport: false` to disable relocation checks and use the exact configured coordinates. If no safe destination is found, the teleport is refused.
@@ -43,6 +45,8 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/spawn`, `/lobby` | Teleport to the configured spawn; admins may use `/spawn <player>` with online-player tab completion | `necromanager.spawn` (self), `necromanager.admin` (other players) |
 | `/setspawn`, `/setlobby` | Set the spawn at your current location | `necromanager.admin` |
 | `/tpcenter` | Move to the center of the current block | `necromanager.admin` |
+| `/heal [player]` | Restore your health or heal an online player | `necromanager.heal` or admin |
+| `/feed [player]` | Restore your hunger or feed an online player | `necromanager.feed` or admin |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
 The command declarations and permission checks are both in the source. The `necromanager.admin` permission defaults to operators; `necromanager.spawn` is available to everyone by default.
@@ -52,6 +56,8 @@ The command declarations and permission checks are both in the source. The `necr
 | Permission | Purpose | Default |
 |---|---|---|
 | `necromanager.admin` | Administrative commands and restriction bypass | Operators |
+| `necromanager.heal` | Use `/heal` | Operators |
+| `necromanager.feed` | Use `/feed` | Operators |
 | `necromanager.spawn` | Use `/spawn` | Everyone |
 | `necromanager.blockbreak` | Bypass block-break restriction | Operators |
 | `necromanager.blockplace` | Bypass block-place restriction | Operators |
