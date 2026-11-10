@@ -19,7 +19,7 @@ public final class SpawnManager {
         }
 
         if (!player.teleport(spawn)) {
-            player.sendMessage(prefix + " " + color(config.getString("messages.spawn-failed",
+            player.sendMessage(prefix + " " + color(ConfigManager.getString("messages.spawn-failed",
                     "&cCould not teleport you to spawn.")));
             return;
         }
