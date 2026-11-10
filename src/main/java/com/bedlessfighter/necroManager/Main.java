@@ -1,6 +1,11 @@
 package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
+import com.bedlessfighter.necroManager.commands.PlayerTimeCommand;
+import com.bedlessfighter.necroManager.commands.TeleportToCommand;
+import com.bedlessfighter.necroManager.commands.TeleportHereCommand;
+import com.bedlessfighter.necroManager.commands.SetWorldSpawnCommand;
+import com.bedlessfighter.necroManager.commands.WorldSpawnCommand;
 import com.bedlessfighter.necroManager.commands.SetHealthCommand;
 import com.bedlessfighter.necroManager.commands.ExperienceCommand;
 import com.bedlessfighter.necroManager.commands.FeedAllCommand;
@@ -135,6 +140,11 @@ public final class Main extends JavaPlugin {
         registerCommand("feedall", new FeedAllCommand());
         registerCommand("experience", new ExperienceCommand());
         registerCommand("sethealth", new SetHealthCommand());
+        registerCommand("worldspawn", new WorldSpawnCommand());
+        registerCommand("setworldspawn", new SetWorldSpawnCommand());
+        registerCommand("tphere", new TeleportHereCommand());
+        registerCommand("teleportto", new TeleportToCommand());
+        registerCommand("ptime", new PlayerTimeCommand());
         registerCommand("reloadmanager", new ReloadCommand());
         registerCommand("heal", new HealCommand());
         registerCommand("gamemode", new GamemodeCommand());
