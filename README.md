@@ -49,6 +49,7 @@ The command declarations and permission checks are both in the source. The `necr
 | `necromanager.blockbreak` | Bypass block-break restriction | Operators |
 | `necromanager.blockplace` | Bypass block-place restriction | Operators |
 | `necromanager.damage-others` | Bypass player-damage restriction | Operators |
+| `necromanager.falldamage` | Bypass fall-damage restriction | Operators |
 | `necromanager.silent-join` | Hide from NecroManager join messages | Operators |
 | `necromanager.silent-leave` | Hide from NecroManager quit messages | Operators |
 
