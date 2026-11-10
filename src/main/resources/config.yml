@@ -40,6 +40,8 @@ messages:
   spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
   spawn-not-set: "&cSpawn has not been set yet."
   spawn-failed: "&cCould not complete the spawn operation."
+  player-not-found: "&cThat player is not online."
+  spawn-other-success: "&aTeleported %player% to spawn."
   setspawn: "&aSpawn location has been updated."
   no-perm: "&cYou don't have enough permissions to issue this command!"
   reload: "&aConfiguration reloaded successfully."
