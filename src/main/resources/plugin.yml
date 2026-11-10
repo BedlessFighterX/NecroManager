@@ -16,7 +16,6 @@ commands:
   spawn:
     aliases: [lobby]
     description: Teleports you to the configured NecroManager spawn
-    permission: necromanager.spawn
     usage: /<command> [player]
   tpcenter:
     description: Teleports you to the center of your current block
