@@ -61,21 +61,39 @@ public final class SpawnManager {
     }
 
     public static void sendToSpawn(Player player) {
+        teleportToSpawn(player, true);
+    }
+
+    /**
+     * Teleports a player to the configured plugin spawn.
+     *
+     * @param player player to teleport
+     * @param notify whether command-style feedback should be sent
+     * @return true when the teleport succeeds
+     */
+    public static boolean teleportToSpawn(Player player, boolean notify) {
         Location spawn = getSpawn();
         if (!isValid(spawn)) {
-            MessageManager.send(player, "messages.spawn-not-set",
-                    "&cSpawn has not been set yet.");
-            return;
+            if (notify) {
+                MessageManager.send(player, "messages.spawn-not-set",
+                        "&cSpawn has not been set yet.");
+            }
+            return false;
         }
 
         if (!player.teleport(spawn)) {
-            MessageManager.send(player, "messages.spawn-failed",
-                    "&cCould not teleport you to spawn.");
-            return;
+            if (notify) {
+                MessageManager.send(player, "messages.spawn-failed",
+                        "&cCould not teleport you to spawn.");
+            }
+            return false;
         }
 
-        MessageManager.send(player, "messages.spawnmessage",
-                "&rYou have been &ateleported&r to the &espawn!");
+        if (notify) {
+            MessageManager.send(player, "messages.spawnmessage",
+                    "&rYou have been &ateleported&r to the &espawn!");
+        }
+        return true;
     }
 
     public static void setSpawn(Player player, Location location) {
