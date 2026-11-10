@@ -107,4 +107,6 @@ messages:
   gamemode-self: "&aGamemode changed to %mode%."
   gamemode-target: "&eAn administrator changed your gamemode to %mode%."
   gamemode-other: "&aChanged %player%'s gamemode to %mode%."
+  speed-target: "&eYour %type% speed was set to %speed%."
+  speed-other: "&aSet %player%'s %type% speed to %speed%."
   death-prefix: "&8[&c☠&8]"
