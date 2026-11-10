@@ -32,7 +32,8 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Send private messages with `/msg <player> <message>` (`/tell`, `/w`), reply with `/reply <message>` (`/r`), and toggle player ignores with `/ignore <player>`.
 - Toggle staff private-message monitoring with `/socialspy` and inspect online player details with `/whois <player>`.
 - Clear active potion effects with `/cleareffects [player]`.
-- Clear armor slots with `/cleararmor [player]` and hotbar slots with `/clearhotbar [player]`.
+- Clear armor slots with `/cleararmor [player]`, hotbar slots with `/clearhotbar [player]`, and offhand slots with `/clearoffhand [player]`.
+- Drop the held item with `/drop`, inspect it with `/iteminfo`, clear the cursor stack with `/clearcursor`, and set held-item damage with `/itemdurability <damage>`.
 - Create an online player's head with `/skull <player>`.
 - Rename held items with `/rename <name>` and manage lore with `/lore add <text>` or `/lore clear`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
@@ -86,6 +87,11 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/cleareffects [player]` | Remove active potion effects from yourself or an online player | `necromanager.cleareffects` or admin |
 | `/cleararmor [player]` | Clear armor slots | `necromanager.cleararmor` or admin |
 | `/clearhotbar [player]` | Clear hotbar slots | `necromanager.clearhotbar` or admin |
+| `/clearoffhand [player]` | Clear offhand slots | `necromanager.clearoffhand` or admin |
+| `/drop` | Drop the held item | `necromanager.drop` or admin |
+| `/iteminfo` | Inspect held item material, amount, durability, name, and lore | `necromanager.iteminfo` or admin |
+| `/clearcursor` | Clear the cursor stack | `necromanager.clearcursor` or admin |
+| `/itemdurability <damage>` | Set held item's damage value | `necromanager.itemdurability` or admin |
 | `/skull <player>` | Create an online player's head | `necromanager.skull` or admin |
 | `/rename <name>` | Rename held item with legacy color codes | `necromanager.rename` or admin |
 | `/lore add <text>` / `/lore clear` | Add or clear held item lore | `necromanager.lore` or admin |
