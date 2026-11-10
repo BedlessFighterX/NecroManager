@@ -16,7 +16,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Show players a configurable notice when fall damage is disabled.
 - Reload the plugin configuration.
 
-Most settings are in `src/main/resources/config.yml`.
+Most settings are in `src/main/resources/config.yml`. Runtime configuration reads and writes are centralized through `ConfigManager`, including fallback values for missing settings.
 
 ## Requirements
 
