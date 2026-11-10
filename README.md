@@ -10,6 +10,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Optionally send players to spawn when they join.
 - Configure join and quit messages, including silent staff.
 - Toggle block breaking, block placing, player damage, and fall damage restrictions.
+- Prevent direct player attacks and player-fired projectile damage when player damage is disabled.
 - Apply speed, regeneration, and slow-falling effects when players join.
 - Reload the plugin configuration.
 
@@ -32,12 +33,24 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 
 | Command | Description | Permission |
 |---|---|---|
-| `/spawn` | Teleport to the configured spawn | `necromanager.admin` |
+| `/spawn` | Teleport to the configured spawn | `necromanager.spawn` |
 | `/setspawn` | Set the spawn at your current location | `necromanager.admin` |
 | `/tpcenter` | Move to the center of the current block | `necromanager.admin` |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
-The command declarations and permission checks are both in the source. Review them before changing permission assignments.
+The command declarations and permission checks are both in the source. The `necromanager.admin` permission defaults to operators; `necromanager.spawn` is available to everyone by default.
+
+## Permission nodes
+
+| Permission | Purpose | Default |
+|---|---|---|
+| `necromanager.admin` | Administrative commands and restriction bypass | Operators |
+| `necromanager.spawn` | Use `/spawn` | Everyone |
+| `necromanager.blockbreak` | Bypass block-break restriction | Operators |
+| `necromanager.blockplace` | Bypass block-place restriction | Operators |
+| `necromanager.damage-others` | Bypass player-damage restriction | Operators |
+| `necromanager.silent-join` | Hide from NecroManager join messages | Operators |
+| `necromanager.silent-leave` | Hide from NecroManager quit messages | Operators |
 
 ## Configuration
 
@@ -73,4 +86,4 @@ The JAR is created in `build/libs/`.
 
 ## Notes
 
-There are currently no automated tests or license file in the repository. Permission behavior also needs further review. Add a license before allowing others to reuse or redistribute the project.
+There are currently no automated tests or license file in the repository. Test permission behavior and gameplay restrictions on a staging server before deploying. Add a license before allowing others to reuse or redistribute the project.
