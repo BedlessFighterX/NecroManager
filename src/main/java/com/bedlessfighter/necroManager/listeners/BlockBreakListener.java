@@ -10,7 +10,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 public final class BlockBreakListener implements Listener {
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         if (!RestrictionManager.isEnabled(player.getWorld(), "disabler.blockbreak", true)) return;
