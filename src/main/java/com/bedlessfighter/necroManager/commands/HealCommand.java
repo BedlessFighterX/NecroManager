@@ -51,7 +51,7 @@ public final class HealCommand implements CommandExecutor, TabCompleter {
                     "&cCould not determine the target's maximum health.");
             return true;
         }
-        target.setHealth(Math.min(maxHealth.getValue(), target.getHealth() + maxHealth.getValue()));
+        target.setHealth(maxHealth.getValue());
         if (target.equals(sender)) {
             MessageManager.send(target, "messages.heal-self", "&aYou have been healed.");
         } else {
