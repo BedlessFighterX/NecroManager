@@ -36,6 +36,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Drop the held item with `/drop`, inspect it with `/iteminfo`, clear the cursor stack with `/clearcursor`, and set held-item damage with `/itemdurability <damage>`.
 - Open smithing, stonecutter, grindstone, cartography, loom, enchanting, and crafting interfaces with their dedicated commands.
 - View nearby players with `/near`, coordinates with `/coords`, world details with `/worldinfo`, and health/hunger with `/health`; set compass target, clear chat, remove helmet, and open your ender chest.
+- Teleport to vanilla world spawn with `/worldspawn`, set it with `/setworldspawn`, teleport players using `/tphere` and `/teleportto`, and customize personal time with `/ptime`.
 - Moderate players with `/kill [player]`, heal or feed everyone with `/healall` and `/feedall`, grant XP with `/experience <amount> [player]`, and set health with `/sethealth <value> [player]`.
 - Create an online player's head with `/skull <player>`.
 - Rename held items with `/rename <name>` and manage lore with `/lore add <text>` or `/lore clear`.
@@ -126,6 +127,11 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/feedall` | Feed all online players | necromanager.feedall |
 | `/experience <amount> [player]` | Grant experience points | necromanager.experience; `.others` for other players |
 | `/sethealth <value> [player]` | Set health for yourself or a player | necromanager.sethealth; `.others` for other players |
+| `/worldspawn` | Teleport to vanilla world spawn | `necromanager.worldspawn` or admin |
+| `/setworldspawn` | Set vanilla world spawn | `necromanager.setworldspawn` or admin |
+| `/tphere` | Teleport a player to you | `necromanager.tphere` or admin |
+| `/teleportto` | Teleport to an online player | `necromanager.teleportto` or admin |
+| `/ptime` | Set your personal time | `necromanager.ptime` or admin |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
 The command declarations and permission checks are both in the source. The `necromanager.admin` permission defaults to operators; `necromanager.spawn` is available to everyone by default.
