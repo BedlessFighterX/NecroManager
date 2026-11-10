@@ -68,6 +68,14 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Documented centralized access and safe getter behavior in the README.
 - Existing listeners, commands, and managers use `ConfigManager` rather than reading the plugin configuration directly; `Main` retains lifecycle-level default-config initialization.
 
+## Step 1.3 completion — Message utility
+
+- Added `MessageManager` for ampersand color translation, the configured global prefix, configured message lookup, placeholder substitution, and consistent sender delivery.
+- Migrated commands, gameplay listeners, join/quit/death announcements, and spawn feedback to the shared utility.
+- Preserved existing message configuration paths and default text.
+- Added consistent teleport-failure feedback to `/tpcenter` while migrating it.
+- Updated README documentation.
+
 ## Verification status
 
 - Source files and primary resource/build files inspected.
