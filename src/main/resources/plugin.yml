@@ -28,6 +28,9 @@ commands:
   repair:
     description: Repairs damageable items in your hand or inventory
     usage: /<command> [hand|all]
+  speed:
+    description: Sets walking or flying speed for yourself or a player
+    usage: /<command> <1-10> [walk|fly] [player]
   enderchest:
     aliases: [ec]
     description: Opens your ender chest or an online player's ender chest
@@ -80,6 +83,12 @@ permissions:
     default: op
   necromanager.repair:
     description: Allows use of the repair command
+    default: op
+  necromanager.speed:
+    description: Allows changing your own walk or fly speed
+    default: op
+  necromanager.speed.others:
+    description: Allows changing another player's walk or fly speed
     default: op
   necromanager.enderchest:
     description: Allows use of the enderchest command
