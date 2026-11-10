@@ -10,7 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import java.util.Map;
 
 public final class PlayerJoinListener implements Listener {
 
@@ -31,11 +30,11 @@ public final class PlayerJoinListener implements Listener {
                 event.setJoinMessage(MessageManager.format(
                         ConfigManager.getString("joins.first-join-message",
                                 "&aWelcome %player% to the server!"),
-                        Map.of("player", player.getName())));
+                        MessageManager.playerPlaceholders(player)));
             } else {
                 event.setJoinMessage(MessageManager.format(
                         ConfigManager.getString("joins.message", "&7%player% joined the server."),
-                        Map.of("player", player.getName())));
+                        MessageManager.playerPlaceholders(player)));
             }
         }
 
