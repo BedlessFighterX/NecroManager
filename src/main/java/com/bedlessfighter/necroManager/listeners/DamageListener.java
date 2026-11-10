@@ -46,7 +46,7 @@ public final class DamageListener implements Listener {
 
         event.setCancelled(true);
         if (event.getEntity() instanceof Player player) {
-            String prefix = color(config.getString("messages.prefix", "&7[NecroManager]&r"));
+            String prefix = color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"));
             String message = color(config.getString("messages.fall-damage",
                     "&cFall damage is disabled in this area."));
             player.sendMessage(prefix + " " + message);
