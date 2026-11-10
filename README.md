@@ -8,7 +8,8 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 
 - Set a spawn location and teleport players to it.
 - Optionally send players to spawn quietly when they join; missing spawn configuration does not generate a warning for every joining player.
-- Configure join and quit messages, including silent staff and an optional first-join announcement.\n- Optionally respawn players at the safe configured plugin spawn.
+- Configure join and quit messages, including silent staff and an optional first-join announcement.
+- Optionally respawn players at the safe configured plugin spawn.
 - Toggle block breaking, block placing, player damage, and fall damage restrictions.
 - Prevent direct player attacks and player-fired projectile damage when player damage is disabled.
 - Apply configurable-duration speed, regeneration, and slow-falling effects when players join.
@@ -68,7 +69,8 @@ The default configuration is in `src/main/resources/config.yml`. Global gameplay
 | `disabler` | Global block and damage restriction defaults |
 | `world-overrides` | Optional per-world restriction overrides keyed by world UUID |
 | `effects` | Controls join effects |
-| `joins` | Join messages, silent staff, first-join announcements, and spawn-on-join |\n| `respawn` | Optional respawn at the configured safe plugin spawn |
+| `joins` | Join messages, silent staff, first-join announcements, and spawn-on-join |
+| `respawn` | Optional respawn at the configured safe plugin spawn |
 | `quit` | Quit messages and silent staff |
 | `deaths` | Enables or disables decorated death messages |
 | `spawn` | Controls persistent plugin spawn storage and optional vanilla world-spawn updates |
