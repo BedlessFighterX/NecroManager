@@ -27,7 +27,7 @@ public class TeleportCenterCommand implements CommandExecutor {
         }
 
         player.teleport(player.getLocation().toCenterLocation());
-        player.sendMessage(prefix + " " + color(config.getString("messages.tpcenter",
+        player.sendMessage(prefix + " " + color(ConfigManager.getString("messages.tpcenter",
                 "&rYou have been centered &asuccessfully!")));
         return true;
     }
