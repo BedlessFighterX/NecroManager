@@ -56,6 +56,9 @@ public final class Main extends JavaPlugin {
                     "Required command '" + name + "' is missing from plugin.yml");
         }
         command.setExecutor(executor);
+        if (executor instanceof org.bukkit.command.TabCompleter tabCompleter) {
+            command.setTabCompleter(tabCompleter);
+        }
     }
 
     private void registerListeners() {
