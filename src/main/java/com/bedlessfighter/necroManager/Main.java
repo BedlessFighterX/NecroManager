@@ -4,44 +4,84 @@ import com.bedlessfighter.necroManager.commands.ReloadCommand;
 import com.bedlessfighter.necroManager.commands.SetSpawnCommand;
 import com.bedlessfighter.necroManager.commands.SpawnCommand;
 import com.bedlessfighter.necroManager.commands.TeleportCenterCommand;
-import com.bedlessfighter.necroManager.listeners.*;
+import com.bedlessfighter.necroManager.listeners.BlockBreakListener;
+import com.bedlessfighter.necroManager.listeners.BlockPlaceListener;
+import com.bedlessfighter.necroManager.listeners.DamageListener;
+import com.bedlessfighter.necroManager.listeners.DeathListener;
+import com.bedlessfighter.necroManager.listeners.PlayerJoinListener;
+import com.bedlessfighter.necroManager.listeners.PlayerLeaveListener;
+import com.bedlessfighter.necroManager.listeners.PlayerRespawnListener;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
+
+/**
+ * Main lifecycle and dependency-registration entry point for NecroManager.
+ */
 public final class Main extends JavaPlugin {
 
     private static Main plugin;
 
     @Override
     public void onEnable() {
-        // Handling inner main file configs
-        saveDefaultConfig();
         plugin = this;
 
+        try {
+            saveDefaultConfig();
+            registerCommands();
+            registerListeners();
 
-        // Handling commands
-        getCommand("reloadmanager").setExecutor(new ReloadCommand());
-        getCommand("setspawn").setExecutor(new SetSpawnCommand());
-        getCommand("spawn").setExecutor(new SpawnCommand());
-        getCommand("tpcenter").setExecutor(new TeleportCenterCommand());
+            getLogger().info("NecroManager v" + getPluginMeta().getVersion() + " enabled.");
+        } catch (RuntimeException exception) {
+            getLogger().severe("NecroManager could not finish startup: " + exception.getMessage());
+            exception.printStackTrace();
+            getServer().getPluginManager().disablePlugin(this);
+        }
+    }
 
-        // Handling events
-        getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
-        getServer().getPluginManager().registerEvents(new BlockPlaceListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerLeaveListener(), this);
-        getServer().getPluginManager().registerEvents(new DamageListener(), this);
-        getServer().getPluginManager().registerEvents(new DeathListener(), this);
+    private void registerCommands() {
+        registerCommand("reloadmanager", new ReloadCommand());
+        registerCommand("setspawn", new SetSpawnCommand());
+        registerCommand("spawn", new SpawnCommand());
+        registerCommand("tpcenter", new TeleportCenterCommand());
+    }
 
-        getLogger().info("Plugin has been enabled");
+    private void registerCommand(String name, CommandExecutor executor) {
+        PluginCommand command = getCommand(name);
+        if (command == null) {
+            throw new IllegalStateException(
+                    "Required command '" + name + "' is missing from plugin.yml");
+        }
+        command.setExecutor(executor);
+        if (executor instanceof org.bukkit.command.TabCompleter tabCompleter) {
+            command.setTabCompleter(tabCompleter);
+        }
+    }
+
+    private void registerListeners() {
+        PluginManager manager = getServer().getPluginManager();
+        manager.registerEvents(new BlockBreakListener(), this);
+        manager.registerEvents(new BlockPlaceListener(), this);
+        manager.registerEvents(new PlayerJoinListener(), this);
+        manager.registerEvents(new PlayerLeaveListener(), this);
+        manager.registerEvents(new PlayerRespawnListener(), this);
+        manager.registerEvents(new DamageListener(), this);
+        manager.registerEvents(new DeathListener(), this);
     }
 
     @Override
     public void onDisable() {
         getServer().getScheduler().cancelTasks(this);
-        getLogger().info("Plugin has been disabled");
+        if (plugin == this) {
+            plugin = null;
+        }
+        getLogger().info("NecroManager disabled.");
     }
 
     public static Main getPlugin() {
-        return plugin;
+        return Objects.requireNonNull(plugin, "NecroManager is not enabled");
     }
 }

@@ -1,32 +1,23 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
-import org.bukkit.ChatColor;
+import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
+import com.bedlessfighter.necroManager.managers.RestrictionManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-public class BlockBreakListener implements Listener {
+public final class BlockBreakListener implements Listener {
 
-    @EventHandler
-    public void onBlockBreak(BlockBreakEvent e) {
-        Player player = e.getPlayer();
-        var cfg = Main.getPlugin().getConfig();
+    @EventHandler(ignoreCancelled = true)
+    public void onBlockBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+        if (!RestrictionManager.isEnabled(player.getWorld(), "disabler.blockbreak", true)) return;
+        if (PermissionManager.has(player, "necromanager.blockbreak")) return;
 
-        boolean blockBreakStatus = cfg.getBoolean("disabler.blockbreak");
-
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[NecroManager]&r"));
-        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockbreak", "&cYou can't break blocks here."));
-
-        if (!blockBreakStatus) return;
-
-        if (!player.hasPermission("necromanager.blockbreak")
-                || !player.hasPermission("necromanager.admin")) {
-            e.setCancelled(true);
-            player.sendMessage("%prefix% %message%"
-                    .replace("%prefix%", prefix)
-                    .replace("%message%", message));
-        }
+        event.setCancelled(true);
+        MessageManager.send(player, "messages.blockbreak",
+                "&cYou may not break blocks in this territory.");
     }
 }

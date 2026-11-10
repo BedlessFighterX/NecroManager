@@ -1,34 +1,42 @@
 package com.bedlessfighter.necroManager.commands;
 
-import com.bedlessfighter.necroManager.Main;
-import org.bukkit.ChatColor;
+import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class TeleportCenterCommand implements CommandExecutor {
+public final class TeleportCenterCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
-        var cfg = Main.getPlugin().getConfig();
-        String noperm = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.no-perm"));
-
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix"));
-        String message = ChatColor.translateAlternateColorCodes('&', "%prefix% &rYou have been centered &asuccessfully!".replace("%prefix%", prefix));
-
-        if (sender instanceof Player player) {
-            boolean staff = player.hasPermission("necromanager.admin") || player.isOp();
-
-            if (staff) {
-                player.teleport(player.getLocation().toCenterLocation());
-                player.sendMessage(message);
-            } else {
-                player.sendMessage("%prefix% %messsage%".replace("%prefix%", prefix).replace("%message%", message));
-            }
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+                             @NotNull String label, @NotNull String @NotNull [] args) {
+        if (args.length != 0) {
+            MessageManager.sendRaw(sender, MessageManager.prefix()
+                    + " &cUsage: /" + label);
+            return true;
+        }
+        if (!(sender instanceof Player player)) {
+            MessageManager.sendRaw(sender, MessageManager.prefix()
+                    + " &cThis command can only be used by a player.");
+            return true;
         }
 
+        if (!PermissionManager.isAdmin(player)) {
+            MessageManager.send(sender, "messages.no-perm",
+                    "&cYou don't have enough permissions to issue this command!");
+            return true;
+        }
+
+        if (!player.teleport(player.getLocation().toCenterLocation())) {
+            MessageManager.sendRaw(player, MessageManager.prefix()
+                    + " &cTeleportation could not be completed.");
+            return true;
+        }
+        MessageManager.send(player, "messages.tpcenter",
+                "&rYou have been centered &asuccessfully!");
         return true;
     }
 }

@@ -1,42 +1,61 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
-import org.bukkit.ChatColor;
+import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
+import com.bedlessfighter.necroManager.managers.RestrictionManager;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-public class DamageListener implements Listener {
+public final class DamageListener implements Listener {
 
-    @EventHandler
-    public void onDamageByEntity(EntityDamageByEntityEvent e) {
-        var cfg = Main.getPlugin().getConfig();
-
-        boolean isDamageByOthersEnabled = cfg.getBoolean("disabler.damage-others");
-
-        if (e.getDamager() instanceof Player player && player.isOnline()) {
-            boolean isStaff = player.hasPermission("necromanager.admin");
-            if (!isStaff && isDamageByOthersEnabled) {
-
-                String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[NecroManager]&r"));
-                String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.damage-others", "&cYou can't damage others here."));
-                e.setCancelled(true);
-                player.sendMessage("%prefix% %message%"
-                        .replace("%prefix%", prefix)
-                        .replace("%message%", message));
-            }
+    @EventHandler(ignoreCancelled = true)
+    public void onDamageByEntity(EntityDamageByEntityEvent event) {
+        if (!(event.getEntity() instanceof Player)) {
+            return;
         }
+        if (!RestrictionManager.isEnabled(event.getEntity().getWorld(), "disabler.damage-others", true)) {
+            return;
+        }
+
+        Player attacker = resolvePlayerAttacker(event.getDamager());
+        if (attacker == null || PermissionManager.has(attacker, "necromanager.damage-others")) {
+            return;
+        }
+
+        event.setCancelled(true);
+        MessageManager.send(attacker, "messages.damage-others",
+                "&cYou may not damage other players.");
     }
 
-    @EventHandler
-    public void onFallDamage(EntityDamageEvent e) {
-        var cfg = Main.getPlugin().getConfig();
-        boolean isDamageByFallEnabled = cfg.getBoolean("disabler.fall-damage");
-
-        if (isDamageByFallEnabled && e.getCause() == EntityDamageEvent.DamageCause.FALL) {
-            e.setCancelled(true);
+    private Player resolvePlayerAttacker(Entity damager) {
+        if (damager instanceof Player player) {
+            return player;
         }
+        if (damager instanceof Projectile projectile
+                && projectile.getShooter() instanceof Player player) {
+            return player;
+        }
+        return null;
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onFallDamage(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof Player player)) {
+            return;
+        }
+        if (!RestrictionManager.isEnabled(player.getWorld(), "disabler.fall-damage", true)
+                || event.getCause() != EntityDamageEvent.DamageCause.FALL
+                || PermissionManager.has(player, "necromanager.falldamage")) {
+            return;
+        }
+
+        event.setCancelled(true);
+        MessageManager.send(player, "messages.fall-damage",
+                "&cFall damage is disabled in this area.");
     }
 }

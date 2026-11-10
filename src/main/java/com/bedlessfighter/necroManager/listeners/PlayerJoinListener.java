@@ -1,50 +1,48 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
+import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.EffectManager;
+import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import com.bedlessfighter.necroManager.managers.SpawnManager;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.potion.PotionEffectType;
 
-public class PlayerJoinListener implements Listener {
+
+public final class PlayerJoinListener implements Listener {
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-        var cfg = Main.getPlugin().getConfig();
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
 
-        boolean joinEnabled = cfg.getBoolean("joins.enabled");
-        boolean silentStaff = cfg.getBoolean("joins.silent-staffs");
-        boolean staff = p.hasPermission("necromanager.admin")
-                || p.hasPermission("necromanager.silent-join")
-                || p.isOp();
-
-
-        if (joinEnabled) {
-            String msgRaw = cfg.getString("joins.message", "&7%player% joined the server.");
-            String msg = ChatColor.translateAlternateColorCodes('&', msgRaw.replace("%player%", p.getName()));
-
-            if (staff && silentStaff) e.setJoinMessage(null);
-            else e.setJoinMessage(msg);
+        if (!ConfigManager.getBoolean("joins.enabled", true)) {
+            event.setJoinMessage(null);
         } else {
-            e.setJoinMessage(null);
+            boolean silentStaff = ConfigManager.getBoolean("joins.silent-staffs", true);
+            boolean staff = PermissionManager.isAdmin(player)
+                    || PermissionManager.hasDirect(player, "necromanager.silent-join");
+            if (staff && silentStaff) {
+                event.setJoinMessage(null);
+            } else if (!player.hasPlayedBefore()
+                    && ConfigManager.getBoolean("joins.first-join-message-enabled", false)) {
+                event.setJoinMessage(MessageManager.format(
+                        ConfigManager.getString("joins.first-join-message",
+                                "&aWelcome %player% to the server!"),
+                        MessageManager.playerPlaceholders(player)));
+            } else {
+                event.setJoinMessage(MessageManager.format(
+                        ConfigManager.getString("joins.message", "&7%player% joined the server."),
+                        MessageManager.playerPlaceholders(player)));
+            }
         }
 
-        if (cfg.getBoolean("effects.enabled")) {
-            if (cfg.getBoolean("effects.speed"))
-                EffectManager.giveEffect(p, PotionEffectType.SPEED, Integer.MAX_VALUE, 2);
-            if (cfg.getBoolean("effects.regeneration"))
-                EffectManager.giveEffect(p, PotionEffectType.REGENERATION, Integer.MAX_VALUE, 10);
-            if (cfg.getBoolean("effects.feather-falling"))
-                EffectManager.giveEffect(p, PotionEffectType.SLOW_FALLING, Integer.MAX_VALUE, 10);
-        }
+        EffectManager.applyJoinEffects(player);
 
-        if (cfg.getBoolean("joins.spawn-on-join")) {
-            SpawnManager.sendToSpawn(p);
+        if (ConfigManager.getBoolean("joins.spawn-on-join", true)) {
+            // Join handling is intentionally quiet; an unset spawn should not spam joiners.
+            SpawnManager.teleportToSpawn(player, false);
         }
     }
 }

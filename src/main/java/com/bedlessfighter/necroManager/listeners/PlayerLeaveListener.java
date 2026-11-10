@@ -1,35 +1,34 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
-import org.bukkit.ChatColor;
+import com.bedlessfighter.necroManager.managers.ConfigManager;
+import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class PlayerLeaveListener implements Listener {
+
+public final class PlayerLeaveListener implements Listener {
 
     @EventHandler
-    public void onPlayerLeave(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
-        var cfg = Main.getPlugin().getConfig();
-
-        boolean quitEnabled = cfg.getBoolean("quit.enabled");
-        if (!quitEnabled) {
-            e.setQuitMessage(null);
+    public void onPlayerLeave(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        if (!ConfigManager.getBoolean("quit.enabled", true)) {
+            event.setQuitMessage(null);
             return;
         }
 
+        boolean silentStaff = ConfigManager.getBoolean("quit.silent-staffs", true);
+        boolean staff = PermissionManager.isAdmin(player)
+                || PermissionManager.hasDirect(player, "necromanager.silent-leave");
+        if (staff && silentStaff) {
+            event.setQuitMessage(null);
+            return;
+        }
 
-        boolean silentStaff = cfg.getBoolean("quit.silent-staffs");
-        boolean staff = p.hasPermission("necromanager.admin")
-                || p.hasPermission("necromanager.silent-leave")
-                || p.isOp();
-
-        String msgRaw = cfg.getString("quit.message", "&7%player% left the server.");
-        String msg = ChatColor.translateAlternateColorCodes('&', msgRaw.replace("%player%", p.getName()));
-
-        if (staff && silentStaff) e.setQuitMessage(null);
-        else e.setQuitMessage(msg);
+        event.setQuitMessage(MessageManager.format(
+                ConfigManager.getString("quit.message", "&7%player% left the server."),
+                MessageManager.playerPlaceholders(player)));
     }
 }

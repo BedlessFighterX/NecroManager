@@ -1,6 +1,12 @@
 # Configuration for NecroManager
-# Developed by @bacheyerasht on Discord
-# Open a ticket for furthur support of this plugin!
+
+# Plugin spawn is independent from Minecraft's world spawn by default.
+# Set true only if /setspawn should also move the world's vanilla spawn point.
+spawn:
+  update-world-spawn: false
+  safe-teleport: true
+  safe-search-radius: 4
+  safe-search-height: 3
 
 disabler:
   blockplace: true
@@ -8,9 +14,25 @@ disabler:
   damage-others: true
   fall-damage: true
 
+# Optional per-world restriction overrides keyed by world UUID.
+# Example:
+# world-overrides:
+#   00000000-0000-0000-0000-000000000000:
+#     disabler:
+#       blockbreak: false
+#       blockplace: false
+#       damage-others: false
+#       fall-damage: false
+#     deaths:
+#       enabled: false
+world-overrides: {}
 
 effects:
   enabled: true
+  duration-seconds: 86400
+  speed-amplifier: 2
+  regeneration-amplifier: 10
+  slow-falling-amplifier: 10
   speed: true
   feather-falling: true
   regeneration: true
@@ -20,6 +42,14 @@ joins:
   spawn-on-join: true
   message: "&8[&a+&8] &f%player%"
   silent-staffs: true
+  first-join-message-enabled: false
+  first-join-message: "&aWelcome %player% to the server!"
+
+respawn:
+  use-plugin-spawn: false
+
+deaths:
+  enabled: true
 
 quit:
   enabled: true
@@ -31,5 +61,16 @@ messages:
   blockbreak: "&cYou may not break blocks in this territory."
   blockplace: "&cYou may not place blocks in this territory."
   damage-others: "&cYou may not damage other players."
+  fall-damage: "&cFall damage is disabled in this area."
   spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
+  spawn-not-set: "&cSpawn has not been set yet."
+  spawn-failed: "&cCould not complete the spawn operation."
+  spawn-unsafe: "&cNo safe location could be found near the configured spawn."
+  player-not-found: "&cThat player is not online."
+  spawn-other-success: "&aTeleported %player% to spawn."
+  setspawn: "&aSpawn location has been updated."
   no-perm: "&cYou don't have enough permissions to issue this command!"
+  reload: "&aConfiguration reloaded successfully."
+  reload-failed: "&cConfiguration reload failed. Check the server console."
+  tpcenter: "&rYou have been centered &asuccessfully!"
+  death-prefix: "&8[&c☠&8]"

@@ -1,32 +1,23 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
-import org.bukkit.ChatColor;
+import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
+import com.bedlessfighter.necroManager.managers.RestrictionManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class BlockPlaceListener implements Listener {
+public final class BlockPlaceListener implements Listener {
 
-    @EventHandler
-    public void onBlockPlace(BlockPlaceEvent e) {
-        Player player = e.getPlayer();
-        var cfg = Main.getPlugin().getConfig();
+    @EventHandler(ignoreCancelled = true)
+    public void onBlockPlace(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
+        if (!RestrictionManager.isEnabled(player.getWorld(), "disabler.blockplace", true)) return;
+        if (PermissionManager.has(player, "necromanager.blockplace")) return;
 
-        boolean blockPlaceStatus = cfg.getBoolean("disabler.blockplace");
-
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[NecroManager]&r"));
-        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockplace", "&cYou can't place blocks here."));
-
-        if (!blockPlaceStatus) return;
-
-        if (!player.hasPermission("necromanager.blockplace")
-                || !player.hasPermission("necromanager.admin")) {
-            e.setCancelled(true);
-            player.sendMessage("%prefix% %message%"
-                    .replace("%prefix%", prefix)
-                    .replace("%message%", message));
-        }
+        event.setCancelled(true);
+        MessageManager.send(player, "messages.blockplace",
+                "&cYou may not place blocks in this territory.");
     }
 }

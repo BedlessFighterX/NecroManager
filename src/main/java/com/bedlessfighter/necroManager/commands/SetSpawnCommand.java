@@ -1,31 +1,35 @@
 package com.bedlessfighter.necroManager.commands;
 
+import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import com.bedlessfighter.necroManager.managers.SpawnManager;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
-public class SetSpawnCommand implements CommandExecutor {
+public final class SetSpawnCommand implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+                             @NotNull String label, @NotNull String @NotNull [] args) {
+        if (args.length != 0) {
+            MessageManager.sendRaw(sender, MessageManager.prefix()
+                    + " &cUsage: /" + label);
+            return true;
+        }
         if (!(sender instanceof Player player)) {
-            sender.sendMessage(ChatColor.RED + "Only players can use this shit command.");
+            MessageManager.sendRaw(sender, MessageManager.prefix()
+                    + " &cOnly players can set the spawn location.");
             return true;
         }
-
-        if (!player.hasPermission("necromanager.setspawn")
-                && !player.hasPermission("necromanager.admin")
-                && !player.isOp()) {
-            player.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+        if (!PermissionManager.isAdmin(player)) {
+            MessageManager.send(sender, "messages.no-perm",
+                    "&cYou don't have enough permissions to issue this command!");
             return true;
         }
-
-        Location location = player.getLocation().toCenterLocation();
-        SpawnManager.setSpawn(player, location);
+        SpawnManager.setSpawn(player, player.getLocation());
         return true;
     }
 }
