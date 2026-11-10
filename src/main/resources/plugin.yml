@@ -185,6 +185,26 @@ commands:
     description: Set your personal time
     permission: necromanager.ptime
     usage: /<command>
+  extinguishall:
+    description: Extinguish all online players
+    permission: necromanager.extinguishall
+    usage: /<command>
+  cleareffectsall:
+    description: Clear potion effects from all online players
+    permission: necromanager.cleareffectsall
+    usage: /<command>
+  flyall:
+    description: Toggle flight for all online players
+    permission: necromanager.flyall
+    usage: /<command>
+  clearinvall:
+    description: Clear inventories for all online players
+    permission: necromanager.clearinvall
+    usage: /<command>
+  repairall:
+    description: Repair inventory items for all online players
+    permission: necromanager.repairall
+    usage: /<command>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -426,6 +446,21 @@ permissions:
     default: op
   necromanager.ptime:
     description: Set your personal time
+    default: op
+  necromanager.extinguishall:
+    description: Extinguish all online players
+    default: op
+  necromanager.cleareffectsall:
+    description: Clear potion effects from all online players
+    default: op
+  necromanager.flyall:
+    description: Toggle flight for all online players
+    default: op
+  necromanager.clearinvall:
+    description: Clear inventories for all online players
+    default: op
+  necromanager.repairall:
+    description: Repair inventory items for all online players
     default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
