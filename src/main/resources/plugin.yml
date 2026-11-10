@@ -193,14 +193,6 @@ commands:
     description: Clear potion effects from all online players
     permission: necromanager.cleareffectsall
     usage: /<command>
-  flyall:
-    description: Toggle flight for all online players
-    permission: necromanager.flyall
-    usage: /<command>
-  clearinvall:
-    description: Clear inventories for all online players
-    permission: necromanager.clearinvall
-    usage: /<command>
   repairall:
     description: Repair inventory items for all online players
     permission: necromanager.repairall
@@ -452,12 +444,6 @@ permissions:
     default: op
   necromanager.cleareffectsall:
     description: Clear potion effects from all online players
-    default: op
-  necromanager.flyall:
-    description: Toggle flight for all online players
-    default: op
-  necromanager.clearinvall:
-    description: Clear inventories for all online players
     default: op
   necromanager.repairall:
     description: Repair inventory items for all online players
