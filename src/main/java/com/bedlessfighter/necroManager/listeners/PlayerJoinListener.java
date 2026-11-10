@@ -1,6 +1,6 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
+import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.EffectManager;
 import com.bedlessfighter.necroManager.managers.SpawnManager;
 import org.bukkit.ChatColor;
@@ -14,9 +14,8 @@ public final class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        var config = Main.getPlugin().getConfig();
 
-        if (!config.getBoolean("joins.enabled", true)) {
+        if (!ConfigManager.getBoolean("joins.enabled", true)) {
             event.setJoinMessage(null);
         } else {
             boolean silentStaff = config.getBoolean("joins.silent-staffs", true);
@@ -26,7 +25,7 @@ public final class PlayerJoinListener implements Listener {
             if (staff && silentStaff) {
                 event.setJoinMessage(null);
             } else {
-                String raw = config.getString("joins.message", "&7%player% joined the server.");
+                String raw = ConfigManager.getString("joins.message", "&7%player% joined the server.");
                 String message = raw == null ? "" : raw.replace("%player%", player.getName());
                 event.setJoinMessage(color(message));
             }
