@@ -7,26 +7,22 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-public class BlockBreakListener implements Listener {
+public final class BlockBreakListener implements Listener {
 
     @EventHandler
-    public void onBlockBreak(BlockBreakEvent e) {
-        Player player = e.getPlayer();
+    public void onBlockBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
         var cfg = Main.getPlugin().getConfig();
 
-        boolean blockBreakStatus = cfg.getBoolean("disabler.blockbreak");
+        if (!cfg.getBoolean("disabler.blockbreak")) return;
+        if (player.hasPermission("necromanager.admin")
+                || player.hasPermission("necromanager.blockbreak")) return;
 
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix", "&7[NecroManager]&r"));
-        String message = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.blockbreak", "&cYou can't break blocks here."));
-
-        if (!blockBreakStatus) return;
-
-        if (!player.hasPermission("necromanager.blockbreak")
-                || !player.hasPermission("necromanager.admin")) {
-            e.setCancelled(true);
-            player.sendMessage("%prefix% %message%"
-                    .replace("%prefix%", prefix)
-                    .replace("%message%", message));
-        }
+        event.setCancelled(true);
+        String prefix = ChatColor.translateAlternateColorCodes('&',
+                cfg.getString("messages.prefix", "&7[NecroManager]&r"));
+        String message = ChatColor.translateAlternateColorCodes('&',
+                cfg.getString("messages.blockbreak", "&cYou may not break blocks here."));
+        player.sendMessage(prefix + " " + message);
     }
 }
