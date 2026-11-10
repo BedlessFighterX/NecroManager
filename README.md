@@ -16,7 +16,11 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Show players a configurable notice when fall damage is disabled.
 - Reload the plugin configuration.
 
-Spawn teleports are safety-checked by default: NecroManager prefers the configured point, then searches nearby for two clear blocks above a solid, non-hazardous floor within the world border. The search radius and vertical range are configurable; set `spawn.safe-teleport: false` to disable relocation checks and use the exact configured coordinates. If no safe destination is found, the teleport is refused.\n\nThe plugin spawn is stored independently from Minecraft's vanilla world spawn. Its structured configuration records the world name and UUID, coordinates, and rotation; older serialized Bukkit locations remain readable and are upgraded the next time `/setspawn` is used. `spawn.update-world-spawn` defaults to `false`; enable it only when `/setspawn` should also move the vanilla world spawn. An unavailable or invalid configured world is treated as an unset spawn rather than teleporting to an unintended location.\n\nMost settings are in `src/main/resources/config.yml`. Runtime configuration reads and writes are centralized through `ConfigManager`. It provides fallback-aware typed getters, bounded numeric getters, defensive copies for locations and string lists, and centralized save/reload operations. Message formatting, legacy color codes, configurable prefixes, and `%placeholder%` substitution are centralized through `MessageManager`. Permission decisions are centralized through `PermissionManager`, preserving the existing operator, admin, and feature-specific permission behavior. Startup now registers commands and listeners in dedicated lifecycle methods and disables the plugin with a logged error if required command metadata is missing.
+Spawn teleports are safety-checked by default: NecroManager prefers the configured point, then searches nearby for two clear blocks above a solid, non-hazardous floor within the world border. The search radius and vertical range are configurable; set `spawn.safe-teleport: false` to disable relocation checks and use the exact configured coordinates. If no safe destination is found, the teleport is refused.
+
+The plugin spawn is stored independently from Minecraft's vanilla world spawn. Its structured configuration records the world name and UUID, coordinates, and rotation; older serialized Bukkit locations remain readable and are upgraded the next time `/setspawn` is used. `spawn.update-world-spawn` defaults to `false`; enable it only when `/setspawn` should also move the vanilla world spawn. An unavailable or invalid configured world is treated as an unset spawn rather than teleporting to an unintended location.
+
+Most settings are in `src/main/resources/config.yml`. Runtime configuration reads and writes are centralized through `ConfigManager`. It provides fallback-aware typed getters, bounded numeric getters, defensive copies for locations and string lists, and centralized save/reload operations. Message formatting, legacy color codes, configurable prefixes, and `%placeholder%` substitution are centralized through `MessageManager`. Permission decisions are centralized through `PermissionManager`, preserving the existing operator, admin, and feature-specific permission behavior. Startup now registers commands and listeners in dedicated lifecycle methods and disables the plugin with a logged error if required command metadata is missing.
 
 ## Requirements
 
@@ -65,7 +69,8 @@ The default configuration is in `src/main/resources/config.yml`.
 | `effects` | Controls join effects |
 | `joins` | Join messages, silent staff, and spawn-on-join |
 | `quit` | Quit messages and silent staff |
-| `deaths` | Enables or disables decorated death messages |\n| `spawn` | Controls persistent plugin spawn storage and optional vanilla world-spawn updates |
+| `deaths` | Enables or disables decorated death messages |
+| `spawn` | Controls persistent plugin spawn storage and optional vanilla world-spawn updates |
 | `messages` | Message prefix and plugin messages |
 
 Back up `plugins/NecroManager/config.yml` before editing it.
