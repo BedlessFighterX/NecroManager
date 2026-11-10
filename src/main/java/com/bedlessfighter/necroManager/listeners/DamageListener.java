@@ -13,13 +13,19 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 public final class DamageListener implements Listener {
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onDamageByEntity(EntityDamageByEntityEvent event) {
-        if (!ConfigManager.getBoolean("disabler.damage-others", true)) return;
+        if (!(event.getEntity() instanceof Player)) {
+            return;
+        }
+        if (!ConfigManager.getBoolean("disabler.damage-others", true)) {
+            return;
+        }
 
         Player attacker = resolvePlayerAttacker(event.getDamager());
-        if (attacker == null) return;
-        if (PermissionManager.has(attacker, "necromanager.damage-others")) return;
+        if (attacker == null || PermissionManager.has(attacker, "necromanager.damage-others")) {
+            return;
+        }
 
         event.setCancelled(true);
         MessageManager.send(attacker, "messages.damage-others",
@@ -27,24 +33,29 @@ public final class DamageListener implements Listener {
     }
 
     private Player resolvePlayerAttacker(Entity damager) {
-        if (damager instanceof Player player) return player;
+        if (damager instanceof Player player) {
+            return player;
+        }
         if (damager instanceof Projectile projectile
-                && projectile.getShooter() instanceof Player player) return player;
+                && projectile.getShooter() instanceof Player player) {
+            return player;
+        }
         return null;
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onFallDamage(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof Player player)) {
+            return;
+        }
         if (!ConfigManager.getBoolean("disabler.fall-damage", true)
-                || event.getCause() != EntityDamageEvent.DamageCause.FALL) return;
-
-        if (event.getEntity() instanceof Player player
-                && (PermissionManager.has(player, "necromanager.falldamage"))) return;
+                || event.getCause() != EntityDamageEvent.DamageCause.FALL
+                || PermissionManager.has(player, "necromanager.falldamage")) {
+            return;
+        }
 
         event.setCancelled(true);
-        if (event.getEntity() instanceof Player player) {
-            MessageManager.send(player, "messages.fall-damage",
-                    "&cFall damage is disabled in this area.");
-        }
+        MessageManager.send(player, "messages.fall-damage",
+                "&cFall damage is disabled in this area.");
     }
 }
