@@ -44,7 +44,7 @@ public final class PlayerJoinListener implements Listener {
         }
 
         if (ConfigManager.getBoolean("joins.spawn-on-join", true)) {
-            SpawnManager.sendToSpawn(player);
+            // Join handling is intentionally quiet; an unset spawn should not spam joiners.\n            SpawnManager.teleportToSpawn(player, false);
         }
     }
 }
