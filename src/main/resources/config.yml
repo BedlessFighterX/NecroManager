@@ -42,6 +42,11 @@ joins:
   spawn-on-join: true
   message: "&8[&a+&8] &f%player%"
   silent-staffs: true
+  first-join-message-enabled: false
+  first-join-message: "&aWelcome %player% to the server!"
+
+respawn:
+  use-plugin-spawn: false
 
 deaths:
   enabled: true
