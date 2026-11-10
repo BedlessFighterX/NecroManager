@@ -23,10 +23,16 @@ disabler:
 #       blockplace: false
 #       damage-others: false
 #       fall-damage: false
+#     deaths:
+#       enabled: false
 world-overrides: {}
 
 effects:
   enabled: true
+  duration-seconds: 86400
+  speed-amplifier: 2
+  regeneration-amplifier: 10
+  slow-falling-amplifier: 10
   speed: true
   feather-falling: true
   regeneration: true
