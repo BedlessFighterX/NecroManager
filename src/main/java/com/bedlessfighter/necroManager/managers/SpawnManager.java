@@ -92,9 +92,12 @@ public final class SpawnManager {
 
         Location saved = location.clone();
         World world = saved.getWorld();
+        boolean updateWorldSpawn = ConfigManager.getBoolean("spawn.update-world-spawn", false);
 
         // Remove the legacy serialized Location before writing the structured section.
+        // Preserve the opt-in setting because clearing the old root also clears its children.
         ConfigManager.set("spawn", null);
+        ConfigManager.set("spawn.update-world-spawn", updateWorldSpawn);
         ConfigManager.set("spawn.world", world.getName());
         ConfigManager.set("spawn.world-uuid", world.getUID().toString());
         ConfigManager.set("spawn.x", saved.getX());
@@ -105,7 +108,7 @@ public final class SpawnManager {
         ConfigManager.save();
 
         // Plugin spawn and Minecraft's world spawn are independent by default.
-        if (ConfigManager.getBoolean("spawn.update-world-spawn", false)) {
+        if (updateWorldSpawn) {
             world.setSpawnLocation(saved.getBlockX(), saved.getBlockY(), saved.getBlockZ());
         }
         MessageManager.send(player, "messages.setspawn",
