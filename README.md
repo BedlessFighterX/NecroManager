@@ -136,6 +136,11 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/cleareffectsall` | Clear potion effects for all online players | `necromanager.cleareffectsall` or admin |
 | `/repairall` | Repair inventory items for all online players | `necromanager.repairall` or admin |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
+| `/setlevel <level> [player]` | Set experience level | `necromanager.setlevel` or admin |
+| `/setlevelall <level>` | Set levels for all online players | `necromanager.setlevelall` or admin |
+| `/clearxp [player]` | Clear a player's experience | `necromanager.clearxp` or admin |
+| `/clearxpall` | Clear experience for all online players | `necromanager.clearxpall` or admin |
+| `/setfood <0-20> [player]` | Set a player's food level | `necromanager.setfood` or admin |
 | `/gamemodeall <mode>` | Set gamemode for all online players | `necromanager.gamemodeall` or admin |
 | `/teleportall <player>` | Teleport all online players to an online player | `necromanager.teleportall` or admin |
 | `/timeall <day|night|reset>` | Set personal time for all online players | `necromanager.timeall` or admin |
