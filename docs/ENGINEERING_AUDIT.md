@@ -125,7 +125,7 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Added configurable safety toggle, horizontal search radius, and vertical search range. Safe teleportation is enabled by default; a missing safe destination is reported distinctly and no teleport is attempted.
 - All three spawn teleport entry points use the shared safe destination resolver.
 
-## Verification status
+## Phase 3.1–3.2 completion — Restriction scope and world overrides\n\n- Restricted `disabler.damage-others` to player victims, including direct attacks and player-fired projectiles. Player attacks against mobs are no longer unintentionally cancelled.\n- Restricted `disabler.fall-damage` to player entities; mob fall damage is no longer affected by a player-facing setting.\n- Added `RestrictionManager` to resolve global restriction defaults with optional per-world overrides.\n- Block break, block place, player damage, and player fall-damage restrictions now support `world-overrides.<world-uuid>.<setting-path>`. UUID keys remain stable across world renames.\n- Damage handlers now ignore already-cancelled events to avoid duplicate handling and messages.\n\n## Verification status
 
 - Source files and primary resource/build files inspected.
 - Configuration call sites migrated and reviewed for leftover local `config` references.
