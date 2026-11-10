@@ -3,6 +3,7 @@ package com.bedlessfighter.necroManager.listeners;
 import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.PermissionManager;
+import com.bedlessfighter.necroManager.managers.RestrictionManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -18,7 +19,7 @@ public final class DamageListener implements Listener {
         if (!(event.getEntity() instanceof Player)) {
             return;
         }
-        if (!ConfigManager.getBoolean("disabler.damage-others", true)) {
+        if (!RestrictionManager.isEnabled(event.getEntity().getWorld(), "disabler.damage-others", true)) {
             return;
         }
 
