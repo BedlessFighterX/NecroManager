@@ -23,7 +23,6 @@ public final class PlayerLeaveListener implements Listener {
                 || player.hasPermission("necromanager.admin")
                 || player.hasPermission("necromanager.silent-leave");
         if (staff && silentStaff) {
- {
             event.setQuitMessage(null);
             return;
         }
