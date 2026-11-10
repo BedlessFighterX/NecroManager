@@ -25,6 +25,9 @@ commands:
   getpos:
     description: Displays your or an online player's world, position, and rotation
     usage: /<command> [player]
+  repair:
+    description: Repairs damageable items in your hand or inventory
+    usage: /<command> [hand|all]
   enderchest:
     aliases: [ec]
     description: Opens your ender chest or an online player's ender chest
@@ -74,6 +77,9 @@ permissions:
     default: true
   necromanager.getpos:
     description: Allows use of the getpos command
+    default: op
+  necromanager.repair:
+    description: Allows use of the repair command
     default: op
   necromanager.enderchest:
     description: Allows use of the enderchest command
