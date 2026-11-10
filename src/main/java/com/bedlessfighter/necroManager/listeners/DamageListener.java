@@ -1,6 +1,5 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.PermissionManager;
 import com.bedlessfighter.necroManager.managers.RestrictionManager;
@@ -49,7 +48,7 @@ public final class DamageListener implements Listener {
         if (!(event.getEntity() instanceof Player player)) {
             return;
         }
-        if (!ConfigManager.getBoolean("disabler.fall-damage", true)
+        if (!RestrictionManager.isEnabled(player.getWorld(), "disabler.fall-damage", true)
                 || event.getCause() != EntityDamageEvent.DamageCause.FALL
                 || PermissionManager.has(player, "necromanager.falldamage")) {
             return;
