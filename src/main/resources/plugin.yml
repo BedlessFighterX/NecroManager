@@ -46,6 +46,21 @@ commands:
   weather:
     description: Changes current world weather
     usage: /<command> <clear|rain|thunder>
+  broadcast:
+    description: Broadcasts an announcement to all players
+    usage: /<command> <message>
+  clearchat:
+    description: Clears visible chat for online players
+    usage: /<command>
+  rules:
+    description: Displays configured server rules
+    usage: /<command>
+  motd:
+    description: Displays configured server message of the day
+    usage: /<command>
+  list:
+    description: Lists online players
+    usage: /<command>
   enderchest:
     aliases: [ec]
     description: Opens your ender chest or an online player's ender chest
@@ -113,6 +128,12 @@ permissions:
     default: true
   necromanager.world:
     description: Allows changing world time and weather
+    default: op
+  necromanager.broadcast:
+    description: Allows broadcasting server announcements
+    default: op
+  necromanager.clearchat:
+    description: Allows clearing player chat
     default: op
   necromanager.enderchest:
     description: Allows use of the enderchest command
