@@ -25,6 +25,26 @@ commands:
     description: Opens an anvil interface
     permission: necromanager.anvil
     usage: /<command>
+  cleararmor:
+    description: Clears armor slots for yourself or an online player
+    permission: necromanager.cleararmor
+    usage: /<command> [player]
+  clearhotbar:
+    description: Clears hotbar slots for yourself or an online player
+    permission: necromanager.clearhotbar
+    usage: /<command> [player]
+  skull:
+    description: Gives you a head of an online player
+    permission: necromanager.skull
+    usage: /<command> <player>
+  rename:
+    description: Renames your held item
+    permission: necromanager.rename
+    usage: /<command> <name>
+  lore:
+    description: Adds or clears held item lore
+    permission: necromanager.lore
+    usage: /<command> <add <text>|clear>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -129,6 +149,27 @@ permissions:
   necromanager.anvil:
     description: Open an anvil interface
     default: true
+  necromanager.cleararmor:
+    description: Clear your armor
+    default: op
+  necromanager.cleararmor.others:
+    description: Clear another player's armor
+    default: op
+  necromanager.clearhotbar:
+    description: Clear your hotbar
+    default: op
+  necromanager.clearhotbar.others:
+    description: Clear another player's hotbar
+    default: op
+  necromanager.skull:
+    description: Create player heads
+    default: op
+  necromanager.rename:
+    description: Rename held items
+    default: op
+  necromanager.lore:
+    description: Edit held item lore
+    default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
     default: op
