@@ -23,6 +23,10 @@ commands:
   invsee:
     description: Opens an online player's inventory for inspection
     usage: /<command> <player>
+  gamemode:
+    aliases: [gm]
+    description: Changes your gamemode or an online player's gamemode
+    usage: /<command> <mode> [player]
   reloadmanager:
     description: Reloads the NecroManager configuration
     permission: necromanager.admin
@@ -58,6 +62,12 @@ permissions:
     default: op
   necromanager.invsee:
     description: Allows inspection of online player inventories
+    default: op
+  necromanager.gamemode:
+    description: Allows changing your own gamemode
+    default: op
+  necromanager.gamemode.others:
+    description: Allows changing another player's gamemode
     default: op
   necromanager.admin:
     description: Allows administration of NecroManager commands
