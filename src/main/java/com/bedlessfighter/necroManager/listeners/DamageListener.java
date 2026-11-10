@@ -39,10 +39,14 @@ public final class DamageListener implements Listener {
     @EventHandler
     public void onFallDamage(EntityDamageEvent event) {
         var config = Main.getPlugin().getConfig();
-        if (config.getBoolean("disabler.fall-damage", true)
-                && event.getCause() == EntityDamageEvent.DamageCause.FALL) {
-            event.setCancelled(true);
-        }
+        if (!config.getBoolean("disabler.fall-damage", true)
+                || event.getCause() != EntityDamageEvent.DamageCause.FALL) return;
+
+        if (event.getEntity() instanceof Player player
+                && (player.isOp() || player.hasPermission("necromanager.admin")
+                || player.hasPermission("necromanager.falldamage"))) return;
+
+        event.setCancelled(true);
     }
 
     private String color(String message) {
