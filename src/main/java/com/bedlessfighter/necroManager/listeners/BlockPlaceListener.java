@@ -12,17 +12,19 @@ public final class BlockPlaceListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        var cfg = Main.getPlugin().getConfig();
+        var config = Main.getPlugin().getConfig();
 
-        if (!cfg.getBoolean("disabler.blockplace")) return;
-        if (player.hasPermission("necromanager.admin")
+        if (!config.getBoolean("disabler.blockplace", true)) return;
+        if (player.isOp() || player.hasPermission("necromanager.admin")
                 || player.hasPermission("necromanager.blockplace")) return;
 
         event.setCancelled(true);
-        String prefix = ChatColor.translateAlternateColorCodes('&',
-                cfg.getString("messages.prefix", "&7[NecroManager]&r"));
-        String message = ChatColor.translateAlternateColorCodes('&',
-                cfg.getString("messages.blockplace", "&cYou may not place blocks here."));
-        player.sendMessage(prefix + " " + message);
+        player.sendMessage(color(config.getString("messages.prefix", "&7[NecroManager]&r"))
+                + " " + color(config.getString("messages.blockplace",
+                "&cYou may not place blocks in this territory.")));
+    }
+
+    private String color(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
     }
 }
