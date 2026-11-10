@@ -31,6 +31,21 @@ commands:
   speed:
     description: Sets walking or flying speed for yourself or a player
     usage: /<command> <1-10> [walk|fly] [player]
+  top:
+    description: Teleports to the highest safe surface
+    usage: /<command>
+  bottom:
+    description: Teleports to the lowest safe surface
+    usage: /<command>
+  day:
+    description: Sets the current world to daytime
+    usage: /<command>
+  night:
+    description: Sets the current world to nighttime
+    usage: /<command>
+  weather:
+    description: Changes current world weather
+    usage: /<command> <clear|rain|thunder>
   enderchest:
     aliases: [ec]
     description: Opens your ender chest or an online player's ender chest
@@ -89,6 +104,15 @@ permissions:
     default: op
   necromanager.speed.others:
     description: Allows changing another player's walk or fly speed
+    default: op
+  necromanager.top:
+    description: Allows use of the top command
+    default: true
+  necromanager.bottom:
+    description: Allows use of the bottom command
+    default: true
+  necromanager.world:
+    description: Allows changing world time and weather
     default: op
   necromanager.enderchest:
     description: Allows use of the enderchest command
