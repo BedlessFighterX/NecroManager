@@ -10,6 +10,7 @@ import com.bedlessfighter.necroManager.listeners.DamageListener;
 import com.bedlessfighter.necroManager.listeners.DeathListener;
 import com.bedlessfighter.necroManager.listeners.PlayerJoinListener;
 import com.bedlessfighter.necroManager.listeners.PlayerLeaveListener;
+import com.bedlessfighter.necroManager.listeners.PlayerRespawnListener;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.PluginManager;
@@ -63,6 +64,7 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new BlockPlaceListener(), this);
         manager.registerEvents(new PlayerJoinListener(), this);
         manager.registerEvents(new PlayerLeaveListener(), this);
+        manager.registerEvents(new PlayerRespawnListener(), this);
         manager.registerEvents(new DamageListener(), this);
         manager.registerEvents(new DeathListener(), this);
     }
