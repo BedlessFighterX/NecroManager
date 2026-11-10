@@ -76,6 +76,19 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Added consistent teleport-failure feedback to `/tpcenter` while migrating it.
 - Updated README documentation.
 
+## Step 1.3 completion — Message utility
+
+- Added `MessageManager` for ampersand color translation, the configured prefix, configured message lookup, placeholder substitution, and consistent sender delivery.
+- Migrated commands, gameplay listeners, join/quit/death announcements, and spawn feedback to the shared utility.
+- Preserved existing message configuration paths and default text.
+- Added consistent teleport-failure feedback to `/tpcenter` while migrating it.
+
+## Step 1.4 completion — Permission utility
+
+- Added `PermissionManager` with shared admin, inherited feature-permission, and direct-permission checks.
+- Migrated commands, spawn management, gameplay restriction listeners, and silent join/quit checks.
+- Preserved existing permission nodes and operator/admin bypass semantics.
+
 ## Verification status
 
 - Source files and primary resource/build files inspected.
