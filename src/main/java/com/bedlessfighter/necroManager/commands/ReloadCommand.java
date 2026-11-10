@@ -21,7 +21,7 @@ public final class ReloadCommand implements CommandExecutor {
         }
 
         ConfigManager.reload();
-        sender.sendMessage(color(config.getString("messages.prefix", "&7[NecroManager]&r")) + " "
+        sender.sendMessage(color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r")) + " "
                 + color(config.getString("messages.reload", "&aConfiguration reloaded successfully.")));
         return true;
     }
