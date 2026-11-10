@@ -2,6 +2,7 @@ package com.bedlessfighter.necroManager.commands;
 
 import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.SpawnManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,8 +20,7 @@ public final class SpawnCommand implements CommandExecutor {
             return true;
         }
 
-        if (!player.hasPermission("necromanager.spawn")
-                && !player.hasPermission("necromanager.admin") && !player.isOp()) {
+        if (!PermissionManager.has(player, "necromanager.spawn")) {
             MessageManager.send(sender, "messages.no-perm",
                     "&cYou don't have enough permissions to issue this command!");
             return true;
