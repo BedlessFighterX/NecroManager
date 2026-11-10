@@ -4,7 +4,9 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 public final class SpawnManager {
@@ -60,6 +62,85 @@ public final class SpawnManager {
         return new Location(world, x, y, z, (float) yaw, (float) pitch);
     }
 
+    /**
+     * Finds a safe standing position for a spawn teleport. The configured point is
+     * preferred; nearby positions are considered only when it is obstructed or hazardous.
+     */
+    public static Location getSafeSpawn() {
+        Location configured = getSpawn();
+        if (!isValid(configured)) {
+            return null;
+        }
+        if (!ConfigManager.getBoolean("spawn.safe-teleport", true)) {
+            return configured;
+        }
+
+        World world = configured.getWorld();
+        int radius = ConfigManager.getInt("spawn.safe-search-radius", 4, 0, 16);
+        int verticalRange = ConfigManager.getInt("spawn.safe-search-height", 3, 0, 16);
+        int baseX = configured.getBlockX();
+        int baseY = configured.getBlockY();
+        int baseZ = configured.getBlockZ();
+        Location best = null;
+        double bestDistance = Double.MAX_VALUE;
+
+        for (int dx = -radius; dx <= radius; dx++) {
+            for (int dz = -radius; dz <= radius; dz++) {
+                for (int dy = -verticalRange; dy <= verticalRange; dy++) {
+                    int x = baseX + dx;
+                    int y = baseY + dy;
+                    int z = baseZ + dz;
+                    if (y <= world.getMinHeight() || y + 1 >= world.getMaxHeight()) {
+                        continue;
+                    }
+
+                    Location candidate = new Location(world, x + 0.5D, y, z + 0.5D,
+                            configured.getYaw(), configured.getPitch());
+                    if (!world.getWorldBorder().isInside(candidate)) {
+                        continue;
+                    }
+
+                    Block feet = world.getBlockAt(x, y, z);
+                    Block head = world.getBlockAt(x, y + 1, z);
+                    Block floor = world.getBlockAt(x, y - 1, z);
+                    if (!isSafeStandingBlock(feet) || !isSafeStandingBlock(head)
+                            || !isSafeFloor(floor)) {
+                        continue;
+                    }
+
+                    double distance = dx * dx + dz * dz + dy * dy;
+                    if (distance < bestDistance) {
+                        best = candidate;
+                        bestDistance = distance;
+                        if (distance == 0.0D) {
+                            return best;
+                        }
+                    }
+                }
+            }
+        }
+        return best;
+    }
+
+    private static boolean isSafeStandingBlock(Block block) {
+        Material type = block.getType();
+        return block.isPassable() && !block.isLiquid() && !isHazardous(type);
+    }
+
+    private static boolean isSafeFloor(Block block) {
+        Material type = block.getType();
+        return type.isSolid() && !block.isLiquid() && !isHazardous(type);
+    }
+
+    private static boolean isHazardous(Material type) {
+        return switch (type) {
+            case LAVA, FIRE, SOUL_FIRE, CACTUS, MAGMA_BLOCK, CAMPFIRE, SOUL_CAMPFIRE,
+                    POWDER_SNOW, SWEET_BERRY_BUSH, WITHER_ROSE, POINTED_DRIPSTONE,
+                    BIG_DRIPLEAF_STEM -> true;
+            default -> false;
+        };
+    }
+
     public static void sendToSpawn(Player player) {
         teleportToSpawn(player, true);
     }
@@ -72,7 +153,7 @@ public final class SpawnManager {
      * @return true when the teleport succeeds
      */
     public static boolean teleportToSpawn(Player player, boolean notify) {
-        Location spawn = getSpawn();
+        Location spawn = getSafeSpawn();
         if (!isValid(spawn)) {
             if (notify) {
                 MessageManager.send(player, "messages.spawn-not-set",
