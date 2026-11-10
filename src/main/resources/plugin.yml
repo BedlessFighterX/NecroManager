@@ -4,6 +4,27 @@ main: com.bedlessfighter.necroManager.Main
 api-version: '1.21'
 description: Lobby, spawn, and gameplay management for Paper servers.
 commands:
+  clearinventory:
+    aliases: [ci, clearinv]
+    description: Clears your inventory or an online player's inventory
+    permission: necromanager.clearinventory
+    usage: /<command> [player]
+  more:
+    description: Fills the held item stack
+    permission: necromanager.more
+    usage: /<command>
+  hat:
+    description: Equips your held item as a helmet
+    permission: necromanager.hat
+    usage: /<command>
+  craft:
+    description: Opens a crafting table interface
+    permission: necromanager.craft
+    usage: /<command>
+  anvil:
+    description: Opens an anvil interface
+    permission: necromanager.anvil
+    usage: /<command>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -90,6 +111,24 @@ commands:
     permission: necromanager.admin
     usage: /<command>
 permissions:
+  necromanager.clearinventory:
+    description: Clear your own inventory
+    default: op
+  necromanager.clearinventory.others:
+    description: Clear another player's inventory
+    default: op
+  necromanager.more:
+    description: Fill the held item stack
+    default: op
+  necromanager.hat:
+    description: Equip an item as a helmet
+    default: op
+  necromanager.craft:
+    description: Open a crafting interface
+    default: true
+  necromanager.anvil:
+    description: Open an anvil interface
+    default: true
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
     default: op
