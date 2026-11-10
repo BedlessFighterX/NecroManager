@@ -7,29 +7,33 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class PlayerLeaveListener implements Listener {
-
+public final class PlayerLeaveListener implements Listener {
     @EventHandler
-    public void onPlayerLeave(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
-        var cfg = Main.getPlugin().getConfig();
+    public void onPlayerLeave(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        var config = Main.getPlugin().getConfig();
 
-        boolean quitEnabled = cfg.getBoolean("quit.enabled");
-        if (!quitEnabled) {
-            e.setQuitMessage(null);
+        if (!config.getBoolean("quit.enabled", true)) {
+            event.setQuitMessage(null);
             return;
         }
 
+        boolean silentStaff = config.getBoolean("quit.silent-staffs", true);
+        boolean staff = player.isOp()
+                || player.hasPermission("necromanager.admin")
+                || player.hasPermission("necromanager.silent-leave");
+        if (staff && silentStaff) {
+ {
+            event.setQuitMessage(null);
+            return;
+        }
 
-        boolean silentStaff = cfg.getBoolean("quit.silent-staffs");
-        boolean staff = p.hasPermission("necromanager.admin")
-                || p.hasPermission("necromanager.silent-leave")
-                || p.isOp();
+        String raw = config.getString("quit.message", "&7%player% left the server.");
+        String message = raw == null ? "" : raw.replace("%player%", player.getName());
+        event.setQuitMessage(color(message));
+    }
 
-        String msgRaw = cfg.getString("quit.message", "&7%player% left the server.");
-        String msg = ChatColor.translateAlternateColorCodes('&', msgRaw.replace("%player%", p.getName()));
-
-        if (staff && silentStaff) e.setQuitMessage(null);
-        else e.setQuitMessage(msg);
+    private String color(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
     }
 }
