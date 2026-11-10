@@ -23,7 +23,7 @@ public final class DamageListener implements Listener {
 
         event.setCancelled(true);
         String prefix = color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"));
-        String message = color(config.getString("messages.damage-others",
+        String message = color(ConfigManager.getString("messages.damage-others",
                 "&cYou may not damage other players."));
         attacker.sendMessage(prefix + " " + message);
     }
@@ -37,8 +37,7 @@ public final class DamageListener implements Listener {
 
     @EventHandler
     public void onFallDamage(EntityDamageEvent event) {
-        var config = Main.getPlugin().getConfig();
-        if (!config.getBoolean("disabler.fall-damage", true)
+        if (!ConfigManager.getBoolean("disabler.fall-damage", true)
                 || event.getCause() != EntityDamageEvent.DamageCause.FALL) return;
 
         if (event.getEntity() instanceof Player player
