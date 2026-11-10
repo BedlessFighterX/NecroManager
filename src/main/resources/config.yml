@@ -56,6 +56,13 @@ quit:
   message: "&8[&c-&8] &f%player%"
   silent-staffs: true
 
+motd:
+  - "&aWelcome to the server!"
+rules:
+  - "&71. Be respectful."
+  - "&72. No cheating."
+  - "&73. Follow staff instructions."
+
 messages:
   prefix: "&a&lNECRO&f&lMC &8|&r"
   blockbreak: "&cYou may not break blocks in this territory."
@@ -114,4 +121,8 @@ messages:
   day: "&aSet this world to day."
   night: "&aSet this world to night."
   weather: "&aWeather set to %weather%."
+  broadcast: "&6[Announcement] &f%message%"
+  chat-cleared: "&cChat was cleared by staff."
+  rules-header: "&6&lServer Rules"
+  list: "&aOnline (&f%count%&a): &f%players%"
   death-prefix: "&8[&c☠&8]"
