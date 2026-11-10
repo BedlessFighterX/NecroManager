@@ -2,6 +2,7 @@ package com.bedlessfighter.necroManager.commands;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,7 +13,7 @@ public final class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
                              @NotNull String label, @NotNull String @NotNull [] args) {
-        if (!sender.hasPermission("necromanager.admin") && !sender.isOp()) {
+        if (!PermissionManager.isAdmin(sender)) {
             MessageManager.send(sender, "messages.no-perm",
                     "&cYou don't have enough permissions to issue this command!");
             return true;
