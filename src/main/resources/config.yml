@@ -90,4 +90,7 @@ messages:
   fly-disabled-target: "&cAn administrator disabled flight for you."
   fly-enabled-other: "&aEnabled flight for %player%."
   fly-disabled-other: "&cDisabled flight for %player%."
+  enderchest-self: "&aOpened your ender chest."
+  enderchest-target: "&eAn administrator opened your ender chest."
+  enderchest-other: "&aOpened the ender chest of %player%."
   death-prefix: "&8[&c☠&8]"
