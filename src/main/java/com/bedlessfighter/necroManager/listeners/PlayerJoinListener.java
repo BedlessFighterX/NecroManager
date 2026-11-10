@@ -3,6 +3,7 @@ package com.bedlessfighter.necroManager.listeners;
 import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.EffectManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import com.bedlessfighter.necroManager.managers.SpawnManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,9 +23,8 @@ public final class PlayerJoinListener implements Listener {
             event.setJoinMessage(null);
         } else {
             boolean silentStaff = ConfigManager.getBoolean("joins.silent-staffs", true);
-            boolean staff = player.isOp()
-                    || player.hasPermission("necromanager.admin")
-                    || player.hasPermission("necromanager.silent-join");
+            boolean staff = PermissionManager.isAdmin(player)
+                    || PermissionManager.hasDirect(player, "necromanager.silent-join");
             if (staff && silentStaff) {
                 event.setJoinMessage(null);
             } else {
