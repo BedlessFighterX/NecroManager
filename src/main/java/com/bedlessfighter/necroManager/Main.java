@@ -5,7 +5,10 @@ import com.bedlessfighter.necroManager.commands.SetSpawnCommand;
 import com.bedlessfighter.necroManager.commands.SpawnCommand;
 import com.bedlessfighter.necroManager.commands.TeleportCenterCommand;
 import com.bedlessfighter.necroManager.listeners.*;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public final class Main extends JavaPlugin {
 
@@ -13,18 +16,14 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Handling inner main file configs
-        saveDefaultConfig();
         plugin = this;
+        saveDefaultConfig();
 
+        registerCommand("reloadmanager", new ReloadCommand());
+        registerCommand("setspawn", new SetSpawnCommand());
+        registerCommand("spawn", new SpawnCommand());
+        registerCommand("tpcenter", new TeleportCenterCommand());
 
-        // Handling commands
-        getCommand("reloadmanager").setExecutor(new ReloadCommand());
-        getCommand("setspawn").setExecutor(new SetSpawnCommand());
-        getCommand("spawn").setExecutor(new SpawnCommand());
-        getCommand("tpcenter").setExecutor(new TeleportCenterCommand());
-
-        // Handling events
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new BlockPlaceListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
@@ -32,16 +31,25 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DamageListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
 
-        getLogger().info("Plugin has been enabled");
+        getLogger().info("NecroManager enabled");
+    }
+
+    private void registerCommand(String name, org.bukkit.command.CommandExecutor executor) {
+        PluginCommand command = getCommand(name);
+        if (command == null) {
+            throw new IllegalStateException("Command '" + name + "' is missing from plugin.yml");
+        }
+        command.setExecutor(executor);
     }
 
     @Override
     public void onDisable() {
         getServer().getScheduler().cancelTasks(this);
-        getLogger().info("Plugin has been disabled");
+        plugin = null;
+        getLogger().info("NecroManager disabled");
     }
 
     public static Main getPlugin() {
-        return plugin;
+        return Objects.requireNonNull(plugin, "NecroManager is not enabled");
     }
 }
