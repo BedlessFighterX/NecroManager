@@ -134,8 +134,6 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/ptime` | Set your personal time | `necromanager.ptime` or admin |
 | `/extinguishall` | Extinguish all online players | `necromanager.extinguishall` or admin |
 | `/cleareffectsall` | Clear potion effects for all online players | `necromanager.cleareffectsall` or admin |
-| `/flyall` | Toggle flight for all online players | `necromanager.flyall` or admin |
-| `/clearinvall` | Clear inventories for all online players | `necromanager.clearinvall` or admin |
 | `/repairall` | Repair inventory items for all online players | `necromanager.repairall` or admin |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
@@ -216,6 +214,4 @@ There are currently no automated tests or license file in the repository. Test p
 
 | `/extinguishall` | Extinguish all online players | `necromanager.extinguishall` or admin |
 | `/cleareffectsall` | Clear potion effects for all online players | `necromanager.cleareffectsall` or admin |
-| `/flyall` | Toggle flight for all online players | `necromanager.flyall` or admin |
-| `/clearinvall` | Clear inventories for all online players | `necromanager.clearinvall` or admin |
 | `/repairall` | Repair inventory items for all online players | `necromanager.repairall` or admin |
