@@ -84,6 +84,7 @@ messages:
   extinguish-self: "&aYou have been extinguished."
   extinguish-target: "&eAn administrator extinguished you."
   extinguish-other: "&aExtinguished %player%."
+  ping: "&a%player% &7has &e%ping% ms&7 ping."
   cleareffects-self: "&aRemoved %count% active potion effects."
   cleareffects-target: "&eAn administrator cleared your active potion effects."
   cleareffects-other: "&aRemoved %count% potion effects from %player%."
