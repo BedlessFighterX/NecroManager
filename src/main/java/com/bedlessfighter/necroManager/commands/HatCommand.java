@@ -1,0 +1,5 @@
+package com.bedlessfighter.necroManager.commands;
+import com.bedlessfighter.necroManager.managers.*;import org.bukkit.command.*;import org.bukkit.entity.Player;import org.bukkit.inventory.ItemStack;import org.jetbrains.annotations.NotNull;
+public final class HatCommand implements CommandExecutor {
+ @Override public boolean onCommand(@NotNull CommandSender s,@NotNull Command c,@NotNull String[] a){if(!(s instanceof Player p)){MessageManager.send(s,"messages.player-required","&cOnly players can use this command.");return true;}if(!PermissionManager.has(s,"necromanager.hat")){MessageManager.send(s,"messages.no-perm","&cNo permission.");return true;}if(a.length!=0){MessageManager.sendRaw(s,"&cUsage: /hat");return true;}ItemStack hand=p.getInventory().getItemInMainHand();ItemStack helmet=p.getInventory().getHelmet();p.getInventory().setHelmet(hand.getType().isAir()?null:hand.clone());p.getInventory().setItemInMainHand(helmet==null?new ItemStack(org.bukkit.Material.AIR):helmet);MessageManager.sendRaw(s,"&aEquipped held item as your hat.");return true;}
+}
