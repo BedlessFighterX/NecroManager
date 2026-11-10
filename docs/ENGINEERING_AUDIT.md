@@ -96,7 +96,7 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Made the static plugin reference clear only when the owning plugin instance shuts down.
 - Added version-aware startup logging and retained scheduler task cleanup on disable.
 
-## Verification status
+## Phase 2.1 completion — Persistent spawn storage\n\n- Replaced new spawn writes with an explicit structured format containing world name, world UUID, coordinates, yaw, and pitch.\n- Kept compatibility with existing serialized Bukkit `Location` values; they remain readable and are converted to the structured format when an administrator next runs `/setspawn`.\n- Validate world resolution, finite coordinates, world height bounds, and Minecraft horizontal coordinate limits before returning or saving a spawn. An unloaded or missing world is treated as an unset spawn.\n- Decoupled the plugin spawn from the vanilla world spawn. `spawn.update-world-spawn` defaults to `false` and must be explicitly enabled to change Bukkit's world spawn.\n- Updated the README and default configuration with the new behavior.\n\n## Verification status
 
 - Source files and primary resource/build files inspected.
 - Configuration call sites migrated and reviewed for leftover local `config` references.
