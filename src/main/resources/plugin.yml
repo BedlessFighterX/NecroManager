@@ -65,6 +65,86 @@ commands:
     description: Sets damage on the held damageable item
     permission: necromanager.itemdurability
     usage: /<command> <damage>
+  smithingtable:
+    description: Open smithing table
+    permission: necromanager.smithingtable
+    usage: /<command>
+  stonecutter:
+    description: Open stonecutter
+    permission: necromanager.stonecutter
+    usage: /<command>
+  grindstone:
+    description: Open grindstone
+    permission: necromanager.grindstone
+    usage: /<command>
+  cartography:
+    description: Open cartography table
+    permission: necromanager.cartography
+    usage: /<command>
+  loom:
+    description: Open loom
+    permission: necromanager.loom
+    usage: /<command>
+  enchanting:
+    description: Open enchanting table
+    permission: necromanager.enchanting
+    usage: /<command>
+  smithing:
+    description: Open smithing interface
+    permission: necromanager.smithing
+    usage: /<command>
+  stone:
+    description: Open stonecutter interface
+    permission: necromanager.stone
+    usage: /<command>
+  grind:
+    description: Open grindstone interface
+    permission: necromanager.grind
+    usage: /<command>
+  maptable:
+    description: Open cartography interface
+    permission: necromanager.maptable
+    usage: /<command>
+  near:
+    description: List players within 100 blocks
+    permission: necromanager.near
+    usage: /<command>
+  coords:
+    description: Show your coordinates
+    permission: necromanager.coords
+    usage: /<command>
+  compass:
+    description: Point compass at world spawn
+    permission: necromanager.compass
+    usage: /<command>
+  clearmychat:
+    description: Clear your chat
+    permission: necromanager.clearmychat
+    usage: /<command>
+  removehat:
+    description: Remove your helmet
+    permission: necromanager.removehat
+    usage: /<command>
+  workbench:
+    description: Open crafting table
+    permission: necromanager.workbench
+    usage: /<command>
+  endersee:
+    description: Open your ender chest
+    permission: necromanager.endersee
+    usage: /<command>
+  sortinv:
+    description: Sort your inventory
+    permission: necromanager.sortinv
+    usage: /<command>
+  worldinfo:
+    description: Show world information
+    permission: necromanager.worldinfo
+    usage: /<command>
+  health:
+    description: Show health and hunger
+    permission: necromanager.health
+    usage: /<command>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -207,6 +287,66 @@ permissions:
     default: op
   necromanager.itemdurability:
     description: Set held item durability
+    default: op
+  necromanager.smithingtable:
+    description: Open smithing table
+    default: op
+  necromanager.stonecutter:
+    description: Open stonecutter
+    default: op
+  necromanager.grindstone:
+    description: Open grindstone
+    default: op
+  necromanager.cartography:
+    description: Open cartography table
+    default: op
+  necromanager.loom:
+    description: Open loom
+    default: op
+  necromanager.enchanting:
+    description: Open enchanting table
+    default: op
+  necromanager.smithing:
+    description: Open smithing interface
+    default: op
+  necromanager.stone:
+    description: Open stonecutter interface
+    default: op
+  necromanager.grind:
+    description: Open grindstone interface
+    default: op
+  necromanager.maptable:
+    description: Open cartography interface
+    default: op
+  necromanager.near:
+    description: List players within 100 blocks
+    default: op
+  necromanager.coords:
+    description: Show your coordinates
+    default: op
+  necromanager.compass:
+    description: Point compass at world spawn
+    default: op
+  necromanager.clearmychat:
+    description: Clear your chat
+    default: op
+  necromanager.removehat:
+    description: Remove your helmet
+    default: op
+  necromanager.workbench:
+    description: Open crafting table
+    default: op
+  necromanager.endersee:
+    description: Open your ender chest
+    default: op
+  necromanager.sortinv:
+    description: Sort your inventory
+    default: op
+  necromanager.worldinfo:
+    description: Show world information
+    default: op
+  necromanager.health:
+    description: Show health and hunger
     default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
