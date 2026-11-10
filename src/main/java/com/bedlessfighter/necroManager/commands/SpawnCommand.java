@@ -36,10 +36,17 @@ public final class SpawnCommand implements CommandExecutor {
                 return true;
             }
 
-            Location spawn = SpawnManager.getSafeSpawn();
-            if (spawn == null || spawn.getWorld() == null) {
+            Location configuredSpawn = SpawnManager.getSpawn();
+            if (configuredSpawn == null || configuredSpawn.getWorld() == null) {
                 MessageManager.send(sender, "messages.spawn-not-set",
                         "&cSpawn has not been set yet.");
+                return true;
+            }
+
+            Location spawn = SpawnManager.getSafeSpawn();
+            if (spawn == null || spawn.getWorld() == null) {
+                MessageManager.send(sender, "messages.spawn-unsafe",
+                        "&cNo safe location could be found near the configured spawn.");
                 return true;
             }
             if (!target.teleport(spawn)) {
