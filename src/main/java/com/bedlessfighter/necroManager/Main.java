@@ -2,6 +2,7 @@ package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
 import com.bedlessfighter.necroManager.commands.FeedCommand;
+import com.bedlessfighter.necroManager.commands.ExtinguishCommand;
 import com.bedlessfighter.necroManager.commands.EnderChestCommand;
 import com.bedlessfighter.necroManager.commands.FlyCommand;
 import com.bedlessfighter.necroManager.commands.HealCommand;
@@ -54,6 +55,7 @@ public final class Main extends JavaPlugin {
         registerCommand("heal", new HealCommand());
         registerCommand("gamemode", new GamemodeCommand());
         registerCommand("feed", new FeedCommand());
+        registerCommand("extinguish", new ExtinguishCommand());
         registerCommand("enderchest", new EnderChestCommand());
         registerCommand("invsee", new InventorySeeCommand());
         registerCommand("fly", new FlyCommand());
