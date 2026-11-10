@@ -7,7 +7,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 ## Current features
 
 - Set a spawn location and teleport players to it.
-- Optionally send players to spawn when they join.
+- Optionally send players to spawn quietly when they join; missing spawn configuration does not generate a warning for every joining player.
 - Configure join and quit messages, including silent staff.
 - Toggle block breaking, block placing, player damage, and fall damage restrictions.
 - Prevent direct player attacks and player-fired projectile damage when player damage is disabled.
