@@ -22,6 +22,9 @@ commands:
   ping:
     description: Displays your ping or an online player's ping
     usage: /<command> [player]
+  getpos:
+    description: Displays your or an online player's world, position, and rotation
+    usage: /<command> [player]
   enderchest:
     aliases: [ec]
     description: Opens your ender chest or an online player's ender chest
@@ -69,6 +72,9 @@ permissions:
   necromanager.ping:
     description: Allows use of the ping command
     default: true
+  necromanager.getpos:
+    description: Allows use of the getpos command
+    default: op
   necromanager.enderchest:
     description: Allows use of the enderchest command
     default: op
