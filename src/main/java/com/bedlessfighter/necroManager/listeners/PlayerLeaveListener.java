@@ -8,7 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import java.util.Map;
 
 public final class PlayerLeaveListener implements Listener {
 
@@ -30,6 +29,6 @@ public final class PlayerLeaveListener implements Listener {
 
         event.setQuitMessage(MessageManager.format(
                 ConfigManager.getString("quit.message", "&7%player% left the server."),
-                Map.of("player", player.getName())));
+                MessageManager.playerPlaceholders(player)));
     }
 }
