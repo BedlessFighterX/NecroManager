@@ -36,6 +36,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Drop the held item with `/drop`, inspect it with `/iteminfo`, clear the cursor stack with `/clearcursor`, and set held-item damage with `/itemdurability <damage>`.
 - Open smithing, stonecutter, grindstone, cartography, loom, enchanting, and crafting interfaces with their dedicated commands.
 - View nearby players with `/near`, coordinates with `/coords`, world details with `/worldinfo`, and health/hunger with `/health`; set compass target, clear chat, remove helmet, and open your ender chest.
+- Moderate players with `/kill [player]`, heal or feed everyone with `/healall` and `/feedall`, grant XP with `/experience <amount> [player]`, and set health with `/sethealth <value> [player]`.
 - Create an online player's head with `/skull <player>`.
 - Rename held items with `/rename <name>` and manage lore with `/lore add <text>` or `/lore clear`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
@@ -120,6 +121,11 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/sortinv` | Sort your inventory | `necromanager.sortinv` or admin |
 | `/worldinfo` | Show world information | `necromanager.worldinfo` or admin |
 | `/health` | Show health and hunger | `necromanager.health` or admin |
+| `/kill [player]` | Kill yourself or an online player | necromanager.kill; `necromanager.kill.others` for other players |
+| `/healall` | Heal all online players | necromanager.healall |
+| `/feedall` | Feed all online players | necromanager.feedall |
+| `/experience <amount> [player]` | Grant experience points | necromanager.experience; `.others` for other players |
+| `/sethealth <value> [player]` | Set health for yourself or a player | necromanager.sethealth; `.others` for other players |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
 The command declarations and permission checks are both in the source. The `necromanager.admin` permission defaults to operators; `necromanager.spawn` is available to everyone by default.
