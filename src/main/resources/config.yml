@@ -97,4 +97,7 @@ messages:
   invsee-self: "&cYou cannot inspect your own inventory with this command."
   invsee-opened: "&aOpened the inventory of %player%."
   invsee-target: "&eAn administrator is viewing your inventory."
+  gamemode-self: "&aGamemode changed to %mode%."
+  gamemode-target: "&eAn administrator changed your gamemode to %mode%."
+  gamemode-other: "&aChanged %player%'s gamemode to %mode%."
   death-prefix: "&8[&c☠&8]"
