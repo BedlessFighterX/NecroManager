@@ -21,7 +21,7 @@ public class TeleportCenterCommand implements CommandExecutor {
         }
 
         if (!player.hasPermission("necromanager.admin") && !player.isOp()) {
-            player.sendMessage(prefix + " " + color(config.getString("messages.no-perm",
+            player.sendMessage(prefix + " " + color(ConfigManager.getString("messages.no-perm",
                     "&cYou don't have enough permissions to issue this command!")));
             return true;
         }
