@@ -2,19 +2,24 @@ package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.Main;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-public class DeathListener implements Listener {
+public final class DeathListener implements Listener {
+
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent e) {
-        Player player = e.getPlayer();
-        var cfg = Main.getPlugin().getConfig();
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        var config = Main.getPlugin().getConfig();
+        String prefix = color(config.getString("messages.prefix", "&7[NecroManager]&r"));
+        String deathMessage = event.getDeathMessage();
 
-        String prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("messages.prefix"));
+        if (deathMessage != null && !deathMessage.isBlank()) {
+            event.setDeathMessage(prefix + " " + deathMessage);
+        }
+    }
 
-        e.setDeathMessage("%prefix% %message%".replace("%prefix%", prefix).replace("%message%", e.getDeathMessage()));
+    private String color(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
     }
 }
