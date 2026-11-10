@@ -25,6 +25,10 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Teleport to the highest safe surface with `/top` or the lowest safe surface with `/bottom`.
 - Set the current world's time with `/day` and `/night`.
 - Change current-world weather with `/weather <clear|rain|thunder>`.
+- Broadcast server-wide announcements with `/broadcast <message>`.
+- Clear visible chat for online players with `/clearchat`.
+- Display configured server rules with `/rules` and MOTD lines with `/motd`.
+- List online players with `/list`.
 - Clear active potion effects with `/cleareffects [player]`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
 - Open your ender chest or inspect an online player's ender chest with `/enderchest [player]` (`/ec` alias).
@@ -69,6 +73,11 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/day` | Set the current world to daytime | `necromanager.world` |
 | `/night` | Set the current world to nighttime | `necromanager.world` |
 | `/weather <clear|rain|thunder>` | Change current-world weather | `necromanager.world` |
+| `/broadcast <message>` | Broadcast an announcement | `necromanager.broadcast` |
+| `/clearchat` | Clear visible chat | `necromanager.clearchat` |
+| `/rules` | Display configured rules | Everyone |
+| `/motd` | Display configured MOTD | Everyone |
+| `/list` | List online players | Everyone |
 | `/cleareffects [player]` | Remove active potion effects from yourself or an online player | `necromanager.cleareffects` or admin |
 | `/fly [player]` | Toggle flight for yourself or an online player | `necromanager.fly` or admin |
 | `/enderchest [player]`, `/ec` | Open your ender chest or an online player's ender chest | `necromanager.enderchest` or admin |
@@ -93,6 +102,8 @@ The command declarations and permission checks are both in the source. The `necr
 | `necromanager.top` | Use `/top` | Everyone |
 | `necromanager.bottom` | Use `/bottom` | Everyone |
 | `necromanager.world` | Change world time and weather | Operators |
+| `necromanager.broadcast` | Broadcast announcements | Operators |
+| `necromanager.clearchat` | Clear chat | Operators |
 | `necromanager.cleareffects` | Use `/cleareffects` | Operators |
 | `necromanager.fly` | Use `/fly` | Operators |
 | `necromanager.enderchest` | Use `/enderchest` | Operators |
@@ -119,7 +130,7 @@ The default configuration is in `src/main/resources/config.yml`. Global gameplay
 | `quit` | Quit messages and silent staff |
 | `deaths` | Enables or disables decorated death messages |
 | `spawn` | Controls persistent plugin spawn storage and optional vanilla world-spawn updates |
-| `messages` | Message prefix and plugin messages |
+| `motd` | Lines displayed by `/motd` |\n| `rules` | Lines displayed by `/rules` |\n| `messages` | Message prefix and plugin messages |
 
 Back up `plugins/NecroManager/config.yml` before editing it.
 
