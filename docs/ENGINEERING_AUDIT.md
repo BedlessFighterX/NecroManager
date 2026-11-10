@@ -9,7 +9,7 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Event listeners cover block breaking/placing, player joins/leaves, entity damage, and player deaths.
 - `SpawnManager` persists a Bukkit `Location` in the plugin configuration.
 - `EffectManager` wraps potion-effect add/remove operations.
-- Configuration is read directly from `Main.getPlugin().getConfig()` across commands, listeners, and managers.
+- Configuration reads and writes are routed through `ConfigManager`; the facade owns typed defaults, location cloning, reload, and save operations.
 - Paper API dependency targets 1.21.10 snapshots; the run-paper task is configured to launch Minecraft 1.21.
 
 ## Findings
@@ -53,7 +53,15 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Keep current configuration keys unless a migration path is added.
 - Do not silently change whether restrictions apply to mobs or whether setting the plugin spawn changes the Bukkit world spawn; make those behaviors explicit in the relevant implementation step.
 
+## Phase 1.2 implementation notes
+
+- Added `managers/ConfigManager.java` as the single configuration access facade.
+- Migrated commands, gameplay listeners, join/quit/death listeners, and spawn persistence to the facade.
+- Location reads return a clone so callers cannot accidentally mutate the configuration's stored location object.
+- Missing string values use the caller-supplied fallback; typed getters accept explicit fallback values.
+
 ## Verification status
 
 - Source files and primary resource/build files inspected.
+- Configuration call sites migrated and reviewed for leftover local `config` references.
 - No build, compilation, tests, or live-server validation performed, per project instruction.
