@@ -9,10 +9,12 @@ commands:
     permission: necromanager.admin
     usage: /<command>
   setspawn:
+    aliases: [setlobby]
     description: Sets the server spawn at your current location
     permission: necromanager.admin
     usage: /<command>
   spawn:
+    aliases: [lobby]
     description: Teleports you to the configured spawn
     permission: necromanager.spawn
     usage: /<command>
