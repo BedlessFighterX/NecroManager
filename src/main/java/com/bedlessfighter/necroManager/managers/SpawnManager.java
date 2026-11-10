@@ -24,7 +24,7 @@ public final class SpawnManager {
             return;
         }
 
-        player.sendMessage(prefix + " " + color(config.getString("messages.spawnmessage",
+        player.sendMessage(prefix + " " + color(ConfigManager.getString("messages.spawnmessage",
                 "&rYou have been &ateleported&r to the &espawn!")));
     }
 
