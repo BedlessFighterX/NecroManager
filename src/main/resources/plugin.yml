@@ -4,6 +4,9 @@ main: com.bedlessfighter.necroManager.Main
 api-version: '1.21'
 description: Lobby, spawn, and gameplay management for Paper servers.
 commands:
+  cleareffects:
+    description: Removes active potion effects from yourself or an online player
+    usage: /<command> [player]
   heal:
     description: Restores health to yourself or an online player
     usage: /<command> [player]
@@ -28,6 +31,9 @@ commands:
     permission: necromanager.admin
     usage: /<command>
 permissions:
+  necromanager.cleareffects:
+    description: Allows use of the cleareffects command
+    default: op
   necromanager.heal:
     description: Allows use of the heal command
     default: op
