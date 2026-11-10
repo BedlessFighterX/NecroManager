@@ -10,7 +10,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public final class BlockPlaceListener implements Listener {
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
         if (!RestrictionManager.isEnabled(player.getWorld(), "disabler.blockplace", true)) return;
