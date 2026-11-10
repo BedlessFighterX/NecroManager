@@ -17,7 +17,7 @@ public final class PlayerLeaveListener implements Listener {
             return;
         }
 
-        boolean silentStaff = config.getBoolean("quit.silent-staffs", true);
+        boolean silentStaff = ConfigManager.getBoolean("quit.silent-staffs", true);
         boolean staff = player.isOp()
                 || player.hasPermission("necromanager.admin")
                 || player.hasPermission("necromanager.silent-leave");
