@@ -23,7 +23,7 @@ public final class SpawnCommand implements CommandExecutor {
         if (!player.hasPermission("necromanager.spawn")
                 && !player.hasPermission("necromanager.admin") && !player.isOp()) {
                 player.sendMessage(color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r")) + " "
-                    + color(config.getString("messages.no-perm",
+                    + color(ConfigManager.getString("messages.no-perm",
                     "&cYou don't have enough permissions to issue this command!")));
             return true;
         }
