@@ -13,7 +13,7 @@ public final class SpawnManager {
         String prefix = color(ConfigManager.getString("messages.prefix", "&a&lNECRO&f&lMC &8|&r"));
 
         if (spawn == null || spawn.getWorld() == null) {
-            player.sendMessage(prefix + " " + color(config.getString("messages.spawn-not-set",
+            player.sendMessage(prefix + " " + color(ConfigManager.getString("messages.spawn-not-set",
                     "&cSpawn has not been set yet.")));
             return;
         }
