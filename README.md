@@ -20,7 +20,7 @@ Spawn teleports are safety-checked by default: NecroManager prefers the configur
 
 The plugin spawn is stored independently from Minecraft's vanilla world spawn. Its structured configuration records the world name and UUID, coordinates, and rotation; older serialized Bukkit locations remain readable and are upgraded the next time `/setspawn` is used. `spawn.update-world-spawn` defaults to `false`; enable it only when `/setspawn` should also move the vanilla world spawn. An unavailable or invalid configured world is treated as an unset spawn rather than teleporting to an unintended location.
 
-Most settings are in `src/main/resources/config.yml`. Runtime configuration reads and writes are centralized through `ConfigManager`. It provides fallback-aware typed getters, bounded numeric getters, defensive copies for locations and string lists, and centralized save/reload operations. Message formatting, legacy color codes, configurable prefixes, and `%placeholder%` substitution are centralized through `MessageManager`. Permission decisions are centralized through `PermissionManager`, preserving the existing operator, admin, and feature-specific permission behavior. Startup now registers commands and listeners in dedicated lifecycle methods and disables the plugin with a logged error if required command metadata is missing.
+Most settings are in `src/main/resources/config.yml`. Runtime configuration reads and writes are centralized through `ConfigManager`. It provides fallback-aware typed getters, bounded numeric getters, defensive copies for locations and string lists, and centralized save/reload operations. Message formatting, legacy color codes, configurable prefixes, and `%placeholder%` substitution are centralized through `MessageManager`. Player lifecycle messages support `%player%`, `%displayname%`, `%world%`, and `%online%`. Permission decisions are centralized through `PermissionManager`, preserving the existing operator, admin, and feature-specific permission behavior. Startup now registers commands and listeners in dedicated lifecycle methods and disables the plugin with a logged error if required command metadata is missing.
 
 ## Requirements
 
@@ -39,7 +39,7 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 
 | Command | Description | Permission |
 |---|---|---|
-| `/spawn`, `/lobby` | Teleport to the configured spawn; admins may use `/spawn <player>` | `necromanager.spawn` (self), `necromanager.admin` (other players) |
+| `/spawn`, `/lobby` | Teleport to the configured spawn; admins may use `/spawn <player>` with online-player tab completion | `necromanager.spawn` (self), `necromanager.admin` (other players) |
 | `/setspawn`, `/setlobby` | Set the spawn at your current location | `necromanager.admin` |
 | `/tpcenter` | Move to the center of the current block | `necromanager.admin` |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
