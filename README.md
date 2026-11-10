@@ -22,6 +22,9 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Inspect a player's world, coordinates, and rotation with `/getpos [player]`.
 - Repair damageable items in your hand or inventory with `/repair [hand|all]`.
 - Set walk or flight speed from 1–10 for yourself or another online player with `/speed <1-10> [walk|fly] [player]`.
+- Teleport to the highest safe surface with `/top` or the lowest safe surface with `/bottom`.
+- Set the current world's time with `/day` and `/night`.
+- Change current-world weather with `/weather <clear|rain|thunder>`.
 - Clear active potion effects with `/cleareffects [player]`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
 - Open your ender chest or inspect an online player's ender chest with `/enderchest [player]` (`/ec` alias).
@@ -61,6 +64,11 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/getpos [player]` | Show a player's world, coordinates, and rotation | `necromanager.getpos` or admin |
 | `/repair [hand|all]` | Repair your held item or damageable inventory items | `necromanager.repair` or admin |
 | `/speed <1-10> [walk|fly] [player]` | Set walking or flying speed (1–10) | `necromanager.speed`; `necromanager.speed.others` for other players |
+| `/top` | Teleport to the highest safe surface | `necromanager.top` |
+| `/bottom` | Teleport to the lowest safe surface | `necromanager.bottom` |
+| `/day` | Set the current world to daytime | `necromanager.world` |
+| `/night` | Set the current world to nighttime | `necromanager.world` |
+| `/weather <clear|rain|thunder>` | Change current-world weather | `necromanager.world` |
 | `/cleareffects [player]` | Remove active potion effects from yourself or an online player | `necromanager.cleareffects` or admin |
 | `/fly [player]` | Toggle flight for yourself or an online player | `necromanager.fly` or admin |
 | `/enderchest [player]`, `/ec` | Open your ender chest or an online player's ender chest | `necromanager.enderchest` or admin |
@@ -82,6 +90,9 @@ The command declarations and permission checks are both in the source. The `necr
 | `necromanager.repair` | Use `/repair` | Operators |
 | `necromanager.speed` | Set your walk or fly speed | Operators |
 | `necromanager.speed.others` | Set another player's walk or fly speed | Operators |
+| `necromanager.top` | Use `/top` | Everyone |
+| `necromanager.bottom` | Use `/bottom` | Everyone |
+| `necromanager.world` | Change world time and weather | Operators |
 | `necromanager.cleareffects` | Use `/cleareffects` | Operators |
 | `necromanager.fly` | Use `/fly` | Operators |
 | `necromanager.enderchest` | Use `/enderchest` | Operators |
