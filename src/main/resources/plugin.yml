@@ -217,6 +217,26 @@ commands:
     description: Grant experience points to all online players
     permission: necromanager.experienceall
     usage: /<command> <amount>
+  setlevel:
+    description: Set a player's experience level
+    permission: necromanager.setlevel
+    usage: /<command> <level> [player]
+  setlevelall:
+    description: Set the experience level for all online players
+    permission: necromanager.setlevelall
+    usage: /<command> <level>
+  clearxp:
+    description: Clear a player's experience
+    permission: necromanager.clearxp
+    usage: /<command> [player]
+  clearxpall:
+    description: Clear experience for all online players
+    permission: necromanager.clearxpall
+    usage: /<command>
+  setfood:
+    description: Set a player's food level
+    permission: necromanager.setfood
+    usage: /<command> <0-20> [player]
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -482,6 +502,21 @@ permissions:
     default: op
   necromanager.experienceall:
     description: Grant experience to all online players
+    default: op
+  necromanager.setlevel:
+    description: Set a player's experience level
+    default: op
+  necromanager.setlevelall:
+    description: Set all online players' experience levels
+    default: op
+  necromanager.clearxp:
+    description: Clear a player's experience
+    default: op
+  necromanager.clearxpall:
+    description: Clear experience for all online players
+    default: op
+  necromanager.setfood:
+    description: Set a player's food level
     default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
