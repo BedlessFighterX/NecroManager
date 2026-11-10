@@ -34,6 +34,8 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Clear active potion effects with `/cleareffects [player]`.
 - Clear armor slots with `/cleararmor [player]`, hotbar slots with `/clearhotbar [player]`, and offhand slots with `/clearoffhand [player]`.
 - Drop the held item with `/drop`, inspect it with `/iteminfo`, clear the cursor stack with `/clearcursor`, and set held-item damage with `/itemdurability <damage>`.
+- Open smithing, stonecutter, grindstone, cartography, loom, enchanting, and crafting interfaces with their dedicated commands.
+- View nearby players with `/near`, coordinates with `/coords`, world details with `/worldinfo`, and health/hunger with `/health`; set compass target, clear chat, remove helmet, and open your ender chest.
 - Create an online player's head with `/skull <player>`.
 - Rename held items with `/rename <name>` and manage lore with `/lore add <text>` or `/lore clear`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
@@ -98,6 +100,26 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/fly [player]` | Toggle flight for yourself or an online player | `necromanager.fly` or admin |
 | `/enderchest [player]`, `/ec` | Open your ender chest or an online player's ender chest | `necromanager.enderchest` or admin |
 | `/invsee <player>` | Open an online player's inventory for inspection | `necromanager.invsee` or admin |
+| `/smithingtable` | Open smithing table | `necromanager.smithingtable` or admin |
+| `/stonecutter` | Open stonecutter | `necromanager.stonecutter` or admin |
+| `/grindstone` | Open grindstone | `necromanager.grindstone` or admin |
+| `/cartography` | Open cartography table | `necromanager.cartography` or admin |
+| `/loom` | Open loom | `necromanager.loom` or admin |
+| `/enchanting` | Open enchanting table | `necromanager.enchanting` or admin |
+| `/smithing` | Open smithing interface | `necromanager.smithing` or admin |
+| `/stone` | Open stonecutter interface | `necromanager.stone` or admin |
+| `/grind` | Open grindstone interface | `necromanager.grind` or admin |
+| `/maptable` | Open cartography interface | `necromanager.maptable` or admin |
+| `/near` | List players within 100 blocks | `necromanager.near` or admin |
+| `/coords` | Show your coordinates | `necromanager.coords` or admin |
+| `/compass` | Set compass target to world spawn | `necromanager.compass` or admin |
+| `/clearmychat` | Clear your chat | `necromanager.clearmychat` or admin |
+| `/removehat` | Remove your helmet | `necromanager.removehat` or admin |
+| `/workbench` | Open crafting table | `necromanager.workbench` or admin |
+| `/endersee` | Open your ender chest | `necromanager.endersee` or admin |
+| `/sortinv` | Sort your inventory | `necromanager.sortinv` or admin |
+| `/worldinfo` | Show world information | `necromanager.worldinfo` or admin |
+| `/health` | Show health and hunger | `necromanager.health` or admin |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
 The command declarations and permission checks are both in the source. The `necromanager.admin` permission defaults to operators; `necromanager.spawn` is available to everyone by default.
