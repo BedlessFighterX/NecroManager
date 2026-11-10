@@ -21,6 +21,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - View your own or an online player's server-reported latency with `/ping [player]`.
 - Inspect a player's world, coordinates, and rotation with `/getpos [player]`.
 - Repair damageable items in your hand or inventory with `/repair [hand|all]`.
+- Set walk or flight speed from 1–10 for yourself or another online player with `/speed <1-10> [walk|fly] [player]`.
 - Clear active potion effects with `/cleareffects [player]`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
 - Open your ender chest or inspect an online player's ender chest with `/enderchest [player]` (`/ec` alias).
@@ -59,6 +60,7 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/ping [player]` | Show your ping or an online player's ping | `necromanager.ping` or admin |
 | `/getpos [player]` | Show a player's world, coordinates, and rotation | `necromanager.getpos` or admin |
 | `/repair [hand|all]` | Repair your held item or damageable inventory items | `necromanager.repair` or admin |
+| `/speed <1-10> [walk|fly] [player]` | Set walking or flying speed (1–10) | `necromanager.speed`; `necromanager.speed.others` for other players |
 | `/cleareffects [player]` | Remove active potion effects from yourself or an online player | `necromanager.cleareffects` or admin |
 | `/fly [player]` | Toggle flight for yourself or an online player | `necromanager.fly` or admin |
 | `/enderchest [player]`, `/ec` | Open your ender chest or an online player's ender chest | `necromanager.enderchest` or admin |
@@ -78,6 +80,8 @@ The command declarations and permission checks are both in the source. The `necr
 | `necromanager.ping` | Use `/ping` | Everyone |
 | `necromanager.getpos` | Use `/getpos` | Operators |
 | `necromanager.repair` | Use `/repair` | Operators |
+| `necromanager.speed` | Set your walk or fly speed | Operators |
+| `necromanager.speed.others` | Set another player's walk or fly speed | Operators |
 | `necromanager.cleareffects` | Use `/cleareffects` | Operators |
 | `necromanager.fly` | Use `/fly` | Operators |
 | `necromanager.enderchest` | Use `/enderchest` | Operators |
