@@ -60,6 +60,14 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Location reads return a clone so callers cannot accidentally mutate the configuration's stored location object.
 - Missing string values use the caller-supplied fallback; typed getters accept explicit fallback values.
 
+## Step 1.2 completion — Configuration access
+
+- Extended `ConfigManager` with bounded integer and finite bounded decimal getters.
+- Added a long getter and defensive-copy string-list getter.
+- Kept existing configuration paths and existing call sites compatible.
+- Documented centralized access and safe getter behavior in the README.
+- Existing listeners, commands, and managers use `ConfigManager` rather than reading the plugin configuration directly; `Main` retains lifecycle-level default-config initialization.
+
 ## Verification status
 
 - Source files and primary resource/build files inspected.
