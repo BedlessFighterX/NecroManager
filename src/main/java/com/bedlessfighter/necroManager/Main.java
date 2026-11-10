@@ -12,6 +12,7 @@ import com.bedlessfighter.necroManager.commands.SetLevelAllCommand;
 import com.bedlessfighter.necroManager.commands.ClearXPCommand;
 import com.bedlessfighter.necroManager.commands.ClearXPAllCommand;
 import com.bedlessfighter.necroManager.commands.SetFoodCommand;
+import com.bedlessfighter.necroManager.commands.SetFoodAllCommand;
 import com.bedlessfighter.necroManager.commands.ClearEffectsAllCommand;
 import com.bedlessfighter.necroManager.commands.ExtinguishAllCommand;
 import com.bedlessfighter.necroManager.commands.PlayerTimeCommand;
@@ -171,6 +172,7 @@ public final class Main extends JavaPlugin {
         registerCommand("clearxp", new ClearXPCommand());
         registerCommand("clearxpall", new ClearXPAllCommand());
         registerCommand("setfood", new SetFoodCommand());
+        registerCommand("setfoodall", new SetFoodAllCommand());
         registerCommand("reloadmanager", new ReloadCommand());
         registerCommand("heal", new HealCommand());
         registerCommand("gamemode", new GamemodeCommand());
