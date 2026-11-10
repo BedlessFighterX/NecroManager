@@ -17,6 +17,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Show players a configurable notice when fall damage is disabled.
 - Heal yourself or an online player with `/heal [player]`.
 - Restore hunger and saturation with `/feed [player]`.
+- Extinguish yourself or an online player with `/extinguish [player]`.
 - Clear active potion effects with `/cleareffects [player]`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
 - Open your ender chest or inspect an online player's ender chest with `/enderchest [player]` (`/ec` alias).
@@ -51,6 +52,7 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/tpcenter` | Move to the center of the current block | `necromanager.admin` |
 | `/heal [player]` | Restore your health or heal an online player | `necromanager.heal` or admin |
 | `/feed [player]` | Restore your hunger or feed an online player | `necromanager.feed` or admin |
+| `/extinguish [player]` | Extinguish yourself or an online player | `necromanager.extinguish` or admin |
 | `/cleareffects [player]` | Remove active potion effects from yourself or an online player | `necromanager.cleareffects` or admin |
 | `/fly [player]` | Toggle flight for yourself or an online player | `necromanager.fly` or admin |
 | `/enderchest [player]`, `/ec` | Open your ender chest or an online player's ender chest | `necromanager.enderchest` or admin |
@@ -66,6 +68,7 @@ The command declarations and permission checks are both in the source. The `necr
 | `necromanager.admin` | Administrative commands and restriction bypass | Operators |
 | `necromanager.heal` | Use `/heal` | Operators |
 | `necromanager.feed` | Use `/feed` | Operators |
+| `necromanager.extinguish` | Use `/extinguish` | Operators |
 | `necromanager.cleareffects` | Use `/cleareffects` | Operators |
 | `necromanager.fly` | Use `/fly` | Operators |
 | `necromanager.enderchest` | Use `/enderchest` | Operators |
