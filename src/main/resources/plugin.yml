@@ -145,6 +145,26 @@ commands:
     description: Show health and hunger
     permission: necromanager.health
     usage: /<command>
+  kill:
+    description: Kill yourself or an online player
+    permission: necromanager.kill
+    usage: /<command>
+  healall:
+    description: Heal all online players
+    permission: necromanager.healall
+    usage: /<command>
+  feedall:
+    description: Feed all online players
+    permission: necromanager.feedall
+    usage: /<command>
+  experience:
+    description: Grant experience points
+    permission: necromanager.experience
+    usage: /<command>
+  sethealth:
+    description: Set health for yourself or a player
+    permission: necromanager.sethealth
+    usage: /<command>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -347,6 +367,30 @@ permissions:
     default: op
   necromanager.health:
     description: Show health and hunger
+    default: op
+  necromanager.kill:
+    description: Kill another player
+    default: op
+  necromanager.kill:
+    description: Kill yourself or an online player
+    default: op
+  necromanager.healall:
+    description: Heal all online players
+    default: op
+  necromanager.feedall:
+    description: Feed all online players
+    default: op
+  necromanager.experience.others:
+    description: Grant experience to another player
+    default: op
+  necromanager.experience:
+    description: Grant experience points
+    default: op
+  necromanager.sethealth.others:
+    description: Set another player's health
+    default: op
+  necromanager.sethealth:
+    description: Set health for yourself or a player
     default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
