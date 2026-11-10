@@ -2,6 +2,7 @@ package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.RestrictionManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -12,7 +13,7 @@ public final class DeathListener implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        if (!ConfigManager.getBoolean("deaths.enabled", true)) {
+        if (!RestrictionManager.isEnabled(event.getEntity().getWorld(), "deaths.enabled", true)) {
             event.setDeathMessage(null);
             return;
         }
