@@ -18,7 +18,7 @@ public final class PlayerJoinListener implements Listener {
         if (!ConfigManager.getBoolean("joins.enabled", true)) {
             event.setJoinMessage(null);
         } else {
-            boolean silentStaff = config.getBoolean("joins.silent-staffs", true);
+            boolean silentStaff = ConfigManager.getBoolean("joins.silent-staffs", true);
             boolean staff = player.isOp()
                     || player.hasPermission("necromanager.admin")
                     || player.hasPermission("necromanager.silent-join");
