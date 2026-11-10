@@ -29,6 +29,8 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Clear visible chat for online players with `/clearchat`.
 - Display configured server rules with `/rules` and MOTD lines with `/motd`.
 - List online players with `/list`.
+- Send private messages with `/msg <player> <message>` (`/tell`, `/w`), reply with `/reply <message>` (`/r`), and toggle player ignores with `/ignore <player>`.
+- Toggle staff private-message monitoring with `/socialspy` and inspect online player details with `/whois <player>`.
 - Clear active potion effects with `/cleareffects [player]`.
 - Toggle flight for yourself or an online player with `/fly [player]`.
 - Open your ender chest or inspect an online player's ender chest with `/enderchest [player]` (`/ec` alias).
