@@ -2,15 +2,18 @@ package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.EffectManager;
+import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.SpawnManager;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.Map;
+
 public final class PlayerJoinListener implements Listener {
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -25,9 +28,9 @@ public final class PlayerJoinListener implements Listener {
             if (staff && silentStaff) {
                 event.setJoinMessage(null);
             } else {
-                String raw = ConfigManager.getString("joins.message", "&7%player% joined the server.");
-                String message = raw == null ? "" : raw.replace("%player%", player.getName());
-                event.setJoinMessage(color(message));
+                event.setJoinMessage(MessageManager.format(
+                        ConfigManager.getString("joins.message", "&7%player% joined the server."),
+                        Map.of("player", player.getName())));
             }
         }
 
@@ -43,9 +46,5 @@ public final class PlayerJoinListener implements Listener {
         if (ConfigManager.getBoolean("joins.spawn-on-join", true)) {
             SpawnManager.sendToSpawn(player);
         }
-    }
-
-    private String color(String message) {
-        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
     }
 }
