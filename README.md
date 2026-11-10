@@ -132,6 +132,11 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 | `/tphere` | Teleport a player to you | `necromanager.tphere` or admin |
 | `/teleportto` | Teleport to an online player | `necromanager.teleportto` or admin |
 | `/ptime` | Set your personal time | `necromanager.ptime` or admin |
+| `/extinguishall` | Extinguish all online players | `necromanager.extinguishall` or admin |
+| `/cleareffectsall` | Clear potion effects for all online players | `necromanager.cleareffectsall` or admin |
+| `/flyall` | Toggle flight for all online players | `necromanager.flyall` or admin |
+| `/clearinvall` | Clear inventories for all online players | `necromanager.clearinvall` or admin |
+| `/repairall` | Repair inventory items for all online players | `necromanager.repairall` or admin |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
 The command declarations and permission checks are both in the source. The `necromanager.admin` permission defaults to operators; `necromanager.spawn` is available to everyone by default.
@@ -205,3 +210,12 @@ The JAR is created in `build/libs/`.
 ## Notes
 
 There are currently no automated tests or license file in the repository. Test permission behavior and gameplay restrictions on a staging server before deploying. Add a license before allowing others to reuse or redistribute the project.
+
+
+### Mass player utilities
+
+| `/extinguishall` | Extinguish all online players | `necromanager.extinguishall` or admin |
+| `/cleareffectsall` | Clear potion effects for all online players | `necromanager.cleareffectsall` or admin |
+| `/flyall` | Toggle flight for all online players | `necromanager.flyall` or admin |
+| `/clearinvall` | Clear inventories for all online players | `necromanager.clearinvall` or admin |
+| `/repairall` | Repair inventory items for all online players | `necromanager.repairall` or admin |
