@@ -11,7 +11,12 @@ public final class DeathListener implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         var config = Main.getPlugin().getConfig();
-        String prefix = color(config.getString("messages.prefix", "&7[NecroManager]&r"));
+        if (!config.getBoolean("deaths.enabled", true)) {
+            event.setDeathMessage(null);
+            return;
+        }
+
+        String prefix = color(config.getString("messages.death-prefix", "&8[&c☠&8]"));
         String deathMessage = event.getDeathMessage();
 
         if (deathMessage != null && !deathMessage.isBlank()) {
