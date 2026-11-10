@@ -33,8 +33,8 @@ The project has not been checked against older Minecraft versions or Spigot. Use
 
 | Command | Description | Permission |
 |---|---|---|
-| `/spawn` | Teleport to the configured spawn | `necromanager.spawn` |
-| `/setspawn` | Set the spawn at your current location | `necromanager.admin` |
+| `/spawn`, `/lobby` | Teleport to the configured spawn | `necromanager.spawn` |
+| `/setspawn`, `/setlobby` | Set the spawn at your current location | `necromanager.admin` |
 | `/tpcenter` | Move to the center of the current block | `necromanager.admin` |
 | `/reloadmanager` | Reload the configuration | `necromanager.admin` |
 
