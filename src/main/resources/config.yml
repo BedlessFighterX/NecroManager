@@ -18,6 +18,9 @@ joins:
   message: "&8[&a+&8] &f%player%"
   silent-staffs: true
 
+deaths:
+  enabled: true
+
 quit:
   enabled: true
   message: "&8[&c-&8] &f%player%"
@@ -28,6 +31,7 @@ messages:
   blockbreak: "&cYou may not break blocks in this territory."
   blockplace: "&cYou may not place blocks in this territory."
   damage-others: "&cYou may not damage other players."
+  fall-damage: "&cFall damage is disabled in this area."
   spawnmessage: "&rYou have been &ateleported&r to the &espawn!"
   spawn-not-set: "&cSpawn has not been set yet."
   spawn-failed: "&cCould not complete the spawn operation."
@@ -35,3 +39,4 @@ messages:
   no-perm: "&cYou don't have enough permissions to issue this command!"
   reload: "&aConfiguration reloaded successfully."
   tpcenter: "&rYou have been centered &asuccessfully!"
+  death-prefix: "&8[&c☠&8]"
