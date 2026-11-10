@@ -1,6 +1,26 @@
 package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
+import com.bedlessfighter.necroManager.commands.HealthCommand;
+import com.bedlessfighter.necroManager.commands.WorldInfoCommand;
+import com.bedlessfighter.necroManager.commands.InvSortCommand;
+import com.bedlessfighter.necroManager.commands.EnderSeeCommand;
+import com.bedlessfighter.necroManager.commands.WorkBenchCommand;
+import com.bedlessfighter.necroManager.commands.HatRemoveCommand;
+import com.bedlessfighter.necroManager.commands.ClearChatSelfCommand;
+import com.bedlessfighter.necroManager.commands.CompassCommand;
+import com.bedlessfighter.necroManager.commands.CoordsCommand;
+import com.bedlessfighter.necroManager.commands.NearCommand;
+import com.bedlessfighter.necroManager.commands.MaptableCommand;
+import com.bedlessfighter.necroManager.commands.GrindCommand;
+import com.bedlessfighter.necroManager.commands.StoneCommand;
+import com.bedlessfighter.necroManager.commands.SmithingCommand;
+import com.bedlessfighter.necroManager.commands.EnchantingCommand;
+import com.bedlessfighter.necroManager.commands.LoomCommand;
+import com.bedlessfighter.necroManager.commands.CartographyCommand;
+import com.bedlessfighter.necroManager.commands.GrindstoneCommand;
+import com.bedlessfighter.necroManager.commands.StonecutterCommand;
+import com.bedlessfighter.necroManager.commands.SmithingTableCommand;
 import com.bedlessfighter.necroManager.commands.ClearOffhandCommand;
 import com.bedlessfighter.necroManager.commands.DropCommand;
 import com.bedlessfighter.necroManager.commands.ItemInfoCommand;
@@ -85,6 +105,26 @@ public final class Main extends JavaPlugin {
     }
 
     private void registerCommands() {
+        registerCommand("smithingtable", new SmithingTableCommand());
+        registerCommand("stonecutter", new StonecutterCommand());
+        registerCommand("grindstone", new GrindstoneCommand());
+        registerCommand("cartography", new CartographyCommand());
+        registerCommand("loom", new LoomCommand());
+        registerCommand("enchanting", new EnchantingCommand());
+        registerCommand("smithing", new SmithingCommand());
+        registerCommand("stone", new StoneCommand());
+        registerCommand("grind", new GrindCommand());
+        registerCommand("maptable", new MaptableCommand());
+        registerCommand("near", new NearCommand());
+        registerCommand("coords", new CoordsCommand());
+        registerCommand("compass", new CompassCommand());
+        registerCommand("clearmychat", new ClearChatSelfCommand());
+        registerCommand("removehat", new HatRemoveCommand());
+        registerCommand("workbench", new WorkBenchCommand());
+        registerCommand("endersee", new EnderSeeCommand());
+        registerCommand("sortinv", new InvSortCommand());
+        registerCommand("worldinfo", new WorldInfoCommand());
+        registerCommand("health", new HealthCommand());
         registerCommand("reloadmanager", new ReloadCommand());
         registerCommand("heal", new HealCommand());
         registerCommand("gamemode", new GamemodeCommand());
