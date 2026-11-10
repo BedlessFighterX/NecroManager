@@ -12,6 +12,8 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Toggle block breaking, block placing, player damage, and fall damage restrictions.
 - Prevent direct player attacks and player-fired projectile damage when player damage is disabled.
 - Apply speed, regeneration, and slow-falling effects when players join.
+- Customize or disable the decorated player-death message.
+- Show players a configurable notice when fall damage is disabled.
 - Reload the plugin configuration.
 
 Most settings are in `src/main/resources/config.yml`.
@@ -63,6 +65,7 @@ The default configuration is in `src/main/resources/config.yml`.
 | `effects` | Controls join effects |
 | `joins` | Join messages, silent staff, and spawn-on-join |
 | `quit` | Quit messages and silent staff |
+| `deaths` | Enables or disables decorated death messages |
 | `messages` | Message prefix and plugin messages |
 
 Back up `plugins/NecroManager/config.yml` before editing it.
