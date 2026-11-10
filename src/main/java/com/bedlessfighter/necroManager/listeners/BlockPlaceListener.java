@@ -1,6 +1,5 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.PermissionManager;
 import com.bedlessfighter.necroManager.managers.RestrictionManager;
