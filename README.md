@@ -11,7 +11,7 @@ A Paper plugin for basic lobby and spawn management. The current code includes j
 - Configure join and quit messages, including silent staff.
 - Toggle block breaking, block placing, player damage, and fall damage restrictions.
 - Prevent direct player attacks and player-fired projectile damage when player damage is disabled.
-- Apply speed, regeneration, and slow-falling effects when players join.
+- Apply configurable-duration speed, regeneration, and slow-falling effects when players join.
 - Customize or disable the decorated player-death message.
 - Show players a configurable notice when fall damage is disabled.
 - Reload the plugin configuration.
@@ -61,7 +61,7 @@ The command declarations and permission checks are both in the source. The `necr
 
 ## Configuration
 
-The default configuration is in `src/main/resources/config.yml`. Global gameplay restrictions can be overridden per world under `world-overrides`, using the world's UUID as the key. For example, setting `world-overrides.<world-uuid>.disabler.blockbreak: false` allows block breaking in that world while retaining the global setting elsewhere. World UUIDs keep overrides stable when world folders are renamed. Damage and fall restrictions now apply only to player victims; mob-versus-mob and player-versus-mob combat are not blocked by the player-damage setting.
+The default configuration is in `src/main/resources/config.yml`. Global gameplay restrictions can be overridden per world under `world-overrides`, using the world's UUID as the key. For example, setting `world-overrides.<world-uuid>.disabler.blockbreak: false` allows block breaking in that world while retaining the global setting elsewhere. World UUIDs keep overrides stable when world folders are renamed. Damage and fall restrictions now apply only to players; mob-versus-mob and player-versus-mob combat are not blocked by the player-damage setting. The same UUID override structure can control `deaths.enabled` per world. Join-effect duration and amplifier values are configurable under `effects`.
 
 | Section | Description |
 |---|---|
