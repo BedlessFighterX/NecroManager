@@ -2,6 +2,7 @@ package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
+import com.bedlessfighter.necroManager.managers.PermissionManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,9 +21,8 @@ public final class PlayerLeaveListener implements Listener {
         }
 
         boolean silentStaff = ConfigManager.getBoolean("quit.silent-staffs", true);
-        boolean staff = player.isOp()
-                || player.hasPermission("necromanager.admin")
-                || player.hasPermission("necromanager.silent-leave");
+        boolean staff = PermissionManager.isAdmin(player)
+                || PermissionManager.hasDirect(player, "necromanager.silent-leave");
         if (staff && silentStaff) {
             event.setQuitMessage(null);
             return;
