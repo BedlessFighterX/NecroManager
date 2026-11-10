@@ -165,6 +165,26 @@ commands:
     description: Set health for yourself or a player
     permission: necromanager.sethealth
     usage: /<command>
+  worldspawn:
+    description: Teleport to vanilla world spawn
+    permission: necromanager.worldspawn
+    usage: /<command>
+  setworldspawn:
+    description: Set vanilla world spawn
+    permission: necromanager.setworldspawn
+    usage: /<command>
+  tphere:
+    description: Teleport a player to you
+    permission: necromanager.tphere
+    usage: /<command>
+  teleportto:
+    description: Teleport to an online player
+    permission: necromanager.teleportto
+    usage: /<command>
+  ptime:
+    description: Set your personal time
+    permission: necromanager.ptime
+    usage: /<command>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -391,6 +411,21 @@ permissions:
     default: op
   necromanager.sethealth:
     description: Set health for yourself or a player
+    default: op
+  necromanager.worldspawn:
+    description: Teleport to vanilla world spawn
+    default: op
+  necromanager.setworldspawn:
+    description: Set vanilla world spawn
+    default: op
+  necromanager.tphere:
+    description: Teleport a player to you
+    default: op
+  necromanager.teleportto:
+    description: Teleport to an online player
+    default: op
+  necromanager.ptime:
+    description: Set your personal time
     default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
