@@ -1,6 +1,6 @@
 package com.bedlessfighter.necroManager.listeners;
 
-import com.bedlessfighter.necroManager.Main;
+import com.bedlessfighter.necroManager.managers.ConfigManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,14 +12,13 @@ public final class BlockPlaceListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        var config = Main.getPlugin().getConfig();
 
-        if (!config.getBoolean("disabler.blockplace", true)) return;
+        if (!ConfigManager.getBoolean("disabler.blockplace", true)) return;
         if (player.isOp() || player.hasPermission("necromanager.admin")
                 || player.hasPermission("necromanager.blockplace")) return;
 
         event.setCancelled(true);
-        player.sendMessage(color(config.getString("messages.prefix", "&7[NecroManager]&r"))
+        player.sendMessage(color(ConfigManager.getString("messages.prefix", "&7[NecroManager]&r"))
                 + " " + color(config.getString("messages.blockplace",
                 "&cYou may not place blocks in this territory.")));
     }
