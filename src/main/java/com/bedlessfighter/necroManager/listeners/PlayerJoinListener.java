@@ -32,15 +32,15 @@ public final class PlayerJoinListener implements Listener {
         }
 
         if (ConfigManager.getBoolean("effects.enabled", true)) {
-            if (config.getBoolean("effects.speed", true))
+            if (ConfigManager.getBoolean("effects.speed", true))
                 EffectManager.giveEffect(player, PotionEffectType.SPEED, Integer.MAX_VALUE, 2);
-            if (config.getBoolean("effects.regeneration", true))
+            if (ConfigManager.getBoolean("effects.regeneration", true))
                 EffectManager.giveEffect(player, PotionEffectType.REGENERATION, Integer.MAX_VALUE, 10);
-            if (config.getBoolean("effects.feather-falling", true))
+            if (ConfigManager.getBoolean("effects.feather-falling", true))
                 EffectManager.giveEffect(player, PotionEffectType.SLOW_FALLING, Integer.MAX_VALUE, 10);
         }
 
-        if (config.getBoolean("joins.spawn-on-join", true)) {
+        if (ConfigManager.getBoolean("joins.spawn-on-join", true)) {
             SpawnManager.sendToSpawn(player);
         }
     }
