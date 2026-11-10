@@ -7,29 +7,29 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-public class ReloadCommand implements CommandExecutor {
+public final class ReloadCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender,
-                             @NotNull Command command,
-                             @NotNull String label,
-                             @NotNull String @NotNull [] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+                            @NotNull String label, @NotNull String @NotNull [] args) {
+        var plugin = Main.getPlugin();
+        var config = plugin.getConfig();
+        String prefix = color(config.getString("messages.prefix", "&7[NecroManager]&r"));
 
-        var cfg = Main.getPlugin().getConfig();
-        String prefixRaw = cfg.getString("messages.prefix", "&b[NecroManager]&r");
-        String prefix = ChatColor.translateAlternateColorCodes('&', prefixRaw);
-
-        if (!sender.hasPermission("necromanager.admin")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                            "%prefix% &cYou don't have permission to use this command!")
-                    .replace("%prefix%", prefix));
+        if (!sender.hasPermission("necromanager.admin") && !sender.isOp()) {
+            sender.sendMessage(prefix + " " + color(config.getString("messages.no-perm",
+                    "&cYou don't have enough permissions to issue this command!")));
             return true;
         }
 
-        Main.getPlugin().reloadConfig();
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "%prefix% &aConfigs reloaded successfully!")
-                .replace("%prefix%", prefix));
+        plugin.reloadConfig();
+        config = plugin.getConfig();
+        sender.sendMessage(color(config.getString("messages.prefix", "&7[NecroManager]&r")) + " "
+                + color(config.getString("messages.reload", "&aConfiguration reloaded successfully.")));
         return true;
+    }
+
+    private String color(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message == null ? "" : message);
     }
 }
