@@ -31,7 +31,7 @@ public final class PlayerJoinListener implements Listener {
             }
         }
 
-        if (config.getBoolean("effects.enabled", true)) {
+        if (ConfigManager.getBoolean("effects.enabled", true)) {
             if (config.getBoolean("effects.speed", true))
                 EffectManager.giveEffect(player, PotionEffectType.SPEED, Integer.MAX_VALUE, 2);
             if (config.getBoolean("effects.regeneration", true))
