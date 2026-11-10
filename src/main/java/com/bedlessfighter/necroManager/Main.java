@@ -1,5 +1,6 @@
 package com.bedlessfighter.necroManager;
 
+import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
 import com.bedlessfighter.necroManager.commands.FeedCommand;
 import com.bedlessfighter.necroManager.commands.HealCommand;
 import com.bedlessfighter.necroManager.commands.ReloadCommand;
@@ -48,6 +49,7 @@ public final class Main extends JavaPlugin {
         registerCommand("reloadmanager", new ReloadCommand());
         registerCommand("heal", new HealCommand());
         registerCommand("feed", new FeedCommand());
+        registerCommand("cleareffects", new ClearEffectsCommand());
         registerCommand("setspawn", new SetSpawnCommand());
         registerCommand("spawn", new SpawnCommand());
         registerCommand("tpcenter", new TeleportCenterCommand());
