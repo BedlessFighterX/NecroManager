@@ -45,6 +45,26 @@ commands:
     description: Adds or clears held item lore
     permission: necromanager.lore
     usage: /<command> <add <text>|clear>
+  clearoffhand:
+    description: Clears your offhand or an online player's offhand
+    permission: necromanager.clearoffhand
+    usage: /<command> [player]
+  drop:
+    description: Drops the item held in your main hand
+    permission: necromanager.drop
+    usage: /<command>
+  iteminfo:
+    description: Displays information about the held item
+    permission: necromanager.iteminfo
+    usage: /<command>
+  clearcursor:
+    description: Clears the item on your inventory cursor
+    permission: necromanager.clearcursor
+    usage: /<command>
+  itemdurability:
+    description: Sets damage on the held damageable item
+    permission: necromanager.itemdurability
+    usage: /<command> <damage>
   cleareffects:
     description: Removes active potion effects from yourself or an online player
     usage: /<command> [player]
@@ -169,6 +189,24 @@ permissions:
     default: op
   necromanager.lore:
     description: Edit held item lore
+    default: op
+  necromanager.clearoffhand:
+    description: Clear your offhand
+    default: op
+  necromanager.clearoffhand.others:
+    description: Clear another player's offhand
+    default: op
+  necromanager.drop:
+    description: Drop your held item
+    default: op
+  necromanager.iteminfo:
+    description: Inspect held item information
+    default: op
+  necromanager.clearcursor:
+    description: Clear your cursor item
+    default: op
+  necromanager.itemdurability:
+    description: Set held item durability
     default: op
   necromanager.cleareffects:
     description: Allows use of the cleareffects command
