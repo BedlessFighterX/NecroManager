@@ -146,7 +146,7 @@ Audit scope: current `codex/initial-implementation` source and resource files. T
 - Added `RestrictionManager` and UUID-keyed per-world overrides for block breaking, block placing, player damage, and player fall damage.
 - Block and damage handlers ignore events already cancelled by another plugin.
 
-## Verification status
+## Phase 4.1–4.2 completion — Player lifecycle configuration\n\n- Replaced effectively permanent join potion effects with a configurable duration (default 24 hours, bounded to 1 second–7 days) and per-effect amplifier settings.\n- Centralized join effect application in `EffectManager`; the join listener no longer duplicates potion-effect configuration logic.\n- Made decorated death-message enablement world-overridable through the existing UUID-keyed override resolver.\n\n## Verification status
 
 - Source files and primary resource/build files inspected.
 - Configuration call sites migrated and reviewed for leftover local `config` references.
