@@ -9,6 +9,7 @@ import com.bedlessfighter.necroManager.commands.HealCommand;
 import com.bedlessfighter.necroManager.commands.GamemodeCommand;
 import com.bedlessfighter.necroManager.commands.PingCommand;
 import com.bedlessfighter.necroManager.commands.GetPosCommand;
+import com.bedlessfighter.necroManager.commands.RepairCommand;
 import com.bedlessfighter.necroManager.commands.InventorySeeCommand;
 import com.bedlessfighter.necroManager.commands.ReloadCommand;
 import com.bedlessfighter.necroManager.commands.SetSpawnCommand;
@@ -58,6 +59,7 @@ public final class Main extends JavaPlugin {
         registerCommand("gamemode", new GamemodeCommand());
         registerCommand("ping", new PingCommand());
         registerCommand("getpos", new GetPosCommand());
+        registerCommand("repair", new RepairCommand());
         registerCommand("feed", new FeedCommand());
         registerCommand("extinguish", new ExtinguishCommand());
         registerCommand("enderchest", new EnderChestCommand());
