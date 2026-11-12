@@ -69,6 +69,34 @@ joins:
     power: 1
     type: BALL
     instant: true
+  items:
+    enabled: false
+    entries:
+      - material: COMPASS
+        slot: 0
+        amount: 1
+        name: "&aServer Selector"
+        lore:
+          - "&7Right-click to choose a server."
+        action: SERVER_SELECTOR
+      - material: PLAYER_HEAD
+        slot: 8
+        amount: 1
+        name: "&ePlayer Visibility"
+        lore:
+          - "&7Right-click to hide or show players."
+        action: PLAYER_HIDER
+
+menus:
+  server-selector:
+    title: "&8Select a server"
+    entries:
+      # Configure entries with a slot, material, name, lore, and proxy server name.
+      # - slot: 11
+      #   material: GRASS_BLOCK
+      #   name: "&aSurvival"
+      #   lore: ["&7Join the survival server."]
+      #   server: survival
 
 respawn:
   use-plugin-spawn: false
