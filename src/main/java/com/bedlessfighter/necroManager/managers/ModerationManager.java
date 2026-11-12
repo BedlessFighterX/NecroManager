@@ -55,6 +55,18 @@ public final class ModerationManager implements Listener {
         save();
     }
 
+    public static synchronized UUID findPlayerId(String name) {
+        ready();
+        ConfigurationSection section = data.getConfigurationSection("players");
+        if (section == null) return null;
+        for (String key : section.getKeys(false)) {
+            if (data.getString("players." + key, "").equalsIgnoreCase(name)) {
+                try { return UUID.fromString(key); } catch (IllegalArgumentException ignored) { return null; }
+            }
+        }
+        return null;
+    }
+
     public static synchronized List<Map<?, ?>> warnings(UUID id) {
         ready();
         return new ArrayList<>(data.getMapList("warnings." + id));
