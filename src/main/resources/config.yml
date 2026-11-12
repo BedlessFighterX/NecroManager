@@ -304,3 +304,12 @@ world-exclusions:
     disabled-worlds: []
   join-actions:
     disabled-worlds: []
+
+# Phase B economy. Balances are stored by UUID in economy.yml.
+economy:
+  starting-balance: 100.0
+  minimum-balance: 0.0
+  maximum-balance: 1000000000.0
+  format: "$#,##0.00"
+  top-size: 10
+  transaction-log-limit: 1000
