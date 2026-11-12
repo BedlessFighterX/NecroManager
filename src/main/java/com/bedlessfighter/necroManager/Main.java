@@ -11,6 +11,8 @@ import com.bedlessfighter.necroManager.managers.KitManager;
 import com.bedlessfighter.necroManager.managers.TeleportRequestManager;
 import com.bedlessfighter.necroManager.managers.HomeManager;
 import com.bedlessfighter.necroManager.managers.WarpManager;
+import com.bedlessfighter.necroManager.managers.JailManager;
+import com.bedlessfighter.necroManager.commands.JailCommand;
 import com.bedlessfighter.necroManager.commands.SetWarpCommand;
 import com.bedlessfighter.necroManager.commands.WarpCommand;
 import com.bedlessfighter.necroManager.commands.WarpsCommand;
@@ -171,6 +173,7 @@ public final class Main extends JavaPlugin {
             EconomyManager.load();
         HomeManager.load();
             WarpManager.load();
+            JailManager.load();
             KitManager.load();
             registerListeners();
             HubDisplayManager.start();
@@ -310,6 +313,13 @@ public final class Main extends JavaPlugin {
         registerCommand("warps", new WarpsCommand());
         registerCommand("delwarp", new DelWarpCommand());
         registerCommand("warpinfo", new WarpInfoCommand());
+        JailCommand jail = new JailCommand();
+        registerCommand("jail", jail);
+        registerCommand("unjail", jail);
+        registerCommand("setjail", jail);
+        registerCommand("deljail", jail);
+        registerCommand("jails", jail);
+        registerCommand("jailinfo", jail);
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
