@@ -353,6 +353,11 @@ commands:
     description: Toggles global chat locking
     permission: necromanager.chatlock
     usage: /<command>
+  commandblocklist:
+    aliases: [cmdblock]
+    description: Manage blocked player commands
+    permission: necromanager.commandblocklist.manage
+    usage: /<command> <add|remove|list> [command]
   hologram:
     aliases: [holo]
     description: Create and manage persistent text holograms
