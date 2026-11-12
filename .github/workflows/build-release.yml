@@ -3,7 +3,6 @@ name: Build and release
 on:
   push:
     branches: [main]
-    tags: ['v*']
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -42,30 +41,23 @@ jobs:
 
   release:
     name: Publish GitHub release
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Java 21
-        uses: actions/setup-java@v4
+      - name: Download successful build artifact
+        uses: actions/download-artifact@v4
         with:
-          distribution: temurin
-          java-version: '21'
-          cache: gradle
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
-      - name: Build release artifact
-        run: bash ./gradlew --no-daemon clean check build
+          name: NecroManager-${{ github.sha }}
+          path: release-assets
       - name: Generate SHA-256
         shell: bash
         run: |
           set -euo pipefail
           shopt -s nullglob
-          jars=(build/libs/*.jar)
+          jars=(release-assets/*.jar)
           if (( ${#jars[@]} != 1 )); then
             echo "Expected exactly one plugin JAR, found ${#jars[@]}" >&2
             exit 1
@@ -74,8 +66,10 @@ jobs:
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          name: NecroManager ${{ github.ref_name }}
+          tag_name: v1.0.${{ github.run_number }}
+          name: NecroManager v1.0.${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
           generate_release_notes: true
           files: |
-            build/libs/*.jar
-            build/libs/*.jar.sha256
+            release-assets/*.jar
+            release-assets/*.jar.sha256
