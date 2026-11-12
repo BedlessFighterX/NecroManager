@@ -7,6 +7,7 @@ import com.bedlessfighter.necroManager.managers.EffectManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.PermissionManager;
 import com.bedlessfighter.necroManager.managers.SpawnManager;
+import com.bedlessfighter.necroManager.managers.JoinActionManager;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -65,6 +66,7 @@ public final class PlayerJoinListener implements Listener {
             sendJoinActionbar(player);
             playJoinSound(player);
             launchJoinFirework(player);
+            JoinActionManager.execute(player);
         });
     }
 
