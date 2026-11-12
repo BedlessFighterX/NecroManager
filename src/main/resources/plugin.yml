@@ -741,3 +741,45 @@ permissions:
   necromanager.doublejump:
     description: Use the configured double jump ability
     default: true
+
+  balance:
+    aliases: [bal, money]
+    description: View your balance or another online player's balance
+    permission: necromanager.economy.balance
+    usage: /<command> [player]
+  pay:
+    description: Send money to another online player
+    permission: necromanager.economy.pay
+    usage: /<command> <player> <amount>
+  eco:
+    description: Administer player economy balances
+    permission: necromanager.economy.admin
+    usage: /<command> <give|take|set> <player> <amount>
+  baltop:
+    description: Show the richest economy accounts
+    permission: necromanager.economy.baltop
+    usage: /<command>
+  paytoggle:
+    description: Toggle whether you accept player payments
+    permission: necromanager.economy.paytoggle
+    usage: /<command>
+
+permissions:
+  necromanager.economy.balance:
+    description: View your own economy balance
+    default: true
+  necromanager.economy.balance.others:
+    description: View another player's economy balance
+    default: op
+  necromanager.economy.pay:
+    description: Send money to other players
+    default: true
+  necromanager.economy.admin:
+    description: Administer player economy balances
+    default: op
+  necromanager.economy.baltop:
+    description: View the balance leaderboard
+    default: true
+  necromanager.economy.paytoggle:
+    description: Toggle payment acceptance
+    default: true
