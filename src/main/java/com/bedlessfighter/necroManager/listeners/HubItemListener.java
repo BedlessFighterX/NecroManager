@@ -13,6 +13,8 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.ItemStack;
 
 public final class HubItemListener implements Listener {
@@ -45,21 +47,45 @@ public final class HubItemListener implements Listener {
                 boolean hidden = PlayerHiderManager.toggle(player);
                 MessageManager.sendRaw(player, hidden ? "&aPlayers hidden." : "&ePlayers visible.");
             }
+            case "COMMAND" -> {
+                String command = HubItemManager.command(item);
+                if (command != null) player.performCommand(command.replace("%player%", player.getName()));
+            }
             default -> { }
         }
     }
 
     @EventHandler
     public void onSelectorClick(InventoryClickEvent event) {
-        if (!HubItemManager.isSelector(event.getView().getTopInventory().getHolder())) return;
-        event.setCancelled(true);
-        if (event.getClickedInventory() != event.getView().getTopInventory()
-                || !(event.getWhoClicked() instanceof Player player)) return;
-        HubItemManager.connectFromItem(player, event.getCurrentItem());
+        if (HubItemManager.isSelector(event.getView().getTopInventory().getHolder())) {
+            event.setCancelled(true);
+            if (event.getClickedInventory() == event.getView().getTopInventory()
+                    && event.getWhoClicked() instanceof Player player) {
+                HubItemManager.connectFromItem(player, event.getCurrentItem());
+            }
+            return;
+        }
+        if (HubItemManager.isJoinItem(event.getCurrentItem())
+                || HubItemManager.isJoinItem(event.getCursor())) event.setCancelled(true);
     }
 
     @EventHandler
     public void onSelectorDrag(InventoryDragEvent event) {
-        if (HubItemManager.isSelector(event.getView().getTopInventory().getHolder())) event.setCancelled(true);
+        if (HubItemManager.isSelector(event.getView().getTopInventory().getHolder())
+                || HubItemManager.isJoinItem(event.getOldCursor())
+                || event.getNewItems().values().stream().anyMatch(HubItemManager::isJoinItem)) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onJoinItemDrop(PlayerDropItemEvent event) {
+        if (HubItemManager.isJoinItem(event.getItemDrop().getItemStack())) event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onJoinItemSwap(PlayerSwapHandItemsEvent event) {
+        if (HubItemManager.isJoinItem(event.getMainHandItem())
+                || HubItemManager.isJoinItem(event.getOffHandItem())) event.setCancelled(true);
     }
 }
