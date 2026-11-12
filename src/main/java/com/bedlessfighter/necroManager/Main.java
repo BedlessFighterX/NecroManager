@@ -1,6 +1,11 @@
 package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
+import com.bedlessfighter.necroManager.commands.ChatLockCommand;
+import com.bedlessfighter.necroManager.managers.HubDisplayManager;
+import com.bedlessfighter.necroManager.managers.AnnouncementManager;
+import com.bedlessfighter.necroManager.listeners.ChatControlListener;
+import com.bedlessfighter.necroManager.listeners.CommandBlocklistListener;
 import com.bedlessfighter.necroManager.commands.RepairAllCommand;
 import com.bedlessfighter.necroManager.commands.GamemodeAllCommand;
 import com.bedlessfighter.necroManager.commands.TeleportAllCommand;
@@ -119,6 +124,8 @@ public final class Main extends JavaPlugin {
             saveDefaultConfig();
             registerCommands();
             registerListeners();
+            HubDisplayManager.start();
+            AnnouncementManager.start();
 
             getLogger().info("NecroManager v" + getPluginMeta().getVersion() + " enabled.");
         } catch (RuntimeException exception) {
@@ -219,6 +226,7 @@ public final class Main extends JavaPlugin {
         registerCommand("setspawn", new SetSpawnCommand());
         registerCommand("spawn", new SpawnCommand());
         registerCommand("tpcenter", new TeleportCenterCommand());
+        registerCommand("chatlock", new ChatLockCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
@@ -242,6 +250,8 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new PlayerRespawnListener(), this);
         manager.registerEvents(new DamageListener(), this);
         manager.registerEvents(new DeathListener(), this);
+        manager.registerEvents(new ChatControlListener(), this);
+        manager.registerEvents(new CommandBlocklistListener(), this);
     }
 
     @Override
