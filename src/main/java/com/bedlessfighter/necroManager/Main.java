@@ -4,6 +4,8 @@ import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
 import com.bedlessfighter.necroManager.commands.ChatLockCommand;
 import com.bedlessfighter.necroManager.managers.HubDisplayManager;
 import com.bedlessfighter.necroManager.managers.AnnouncementManager;
+import com.bedlessfighter.necroManager.managers.HologramManager;
+import com.bedlessfighter.necroManager.commands.HologramCommand;
 import com.bedlessfighter.necroManager.listeners.ChatControlListener;
 import com.bedlessfighter.necroManager.listeners.CommandBlocklistListener;
 import com.bedlessfighter.necroManager.listeners.ProtectionListener;
@@ -127,6 +129,7 @@ public final class Main extends JavaPlugin {
             registerListeners();
             HubDisplayManager.start();
             AnnouncementManager.start();
+            HologramManager.load();
 
             getLogger().info("NecroManager v" + getPluginMeta().getVersion() + " enabled.");
         } catch (RuntimeException exception) {
@@ -228,6 +231,7 @@ public final class Main extends JavaPlugin {
         registerCommand("spawn", new SpawnCommand());
         registerCommand("tpcenter", new TeleportCenterCommand());
         registerCommand("chatlock", new ChatLockCommand());
+        registerCommand("hologram", new HologramCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
@@ -261,6 +265,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         getServer().getScheduler().cancelTasks(this);
+        HologramManager.unload();
         if (plugin == this) {
             plugin = null;
         }
