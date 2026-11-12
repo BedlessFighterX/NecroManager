@@ -95,6 +95,14 @@ public final class EconomyManager {
         return true;
     }
 
+    public static synchronized List<String> history(UUID uuid, int limit) {
+        ensureLoaded();
+        String needle = "|" + uuid + "|";
+        List<String> matches = data.getStringList("transactions").stream()
+                .filter(entry -> entry.contains(needle)).toList();
+        return matches.stream().skip(Math.max(0, matches.size() - Math.max(1, limit))).toList();
+    }
+
     public static synchronized List<Account> top(int limit) {
         ensureLoaded();
         List<Account> accounts = new ArrayList<>();
