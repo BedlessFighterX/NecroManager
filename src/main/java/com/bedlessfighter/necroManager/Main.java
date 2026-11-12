@@ -1,6 +1,12 @@
 package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
+import com.bedlessfighter.necroManager.commands.BalanceCommand;
+import com.bedlessfighter.necroManager.commands.PayCommand;
+import com.bedlessfighter.necroManager.commands.EcoCommand;
+import com.bedlessfighter.necroManager.commands.BaltopCommand;
+import com.bedlessfighter.necroManager.commands.PayToggleCommand;
+import com.bedlessfighter.necroManager.managers.EconomyManager;
 import com.bedlessfighter.necroManager.commands.ChatLockCommand;
 import com.bedlessfighter.necroManager.commands.CommandBlocklistCommand;
 import com.bedlessfighter.necroManager.managers.HubDisplayManager;
@@ -136,6 +142,7 @@ public final class Main extends JavaPlugin {
         try {
             saveDefaultConfig();
             registerCommands();
+            EconomyManager.load();
             registerListeners();
             HubDisplayManager.start();
             AnnouncementManager.start();
@@ -247,6 +254,11 @@ public final class Main extends JavaPlugin {
         registerCommand("servers", new ServersCommand());
         registerCommand("hide", new HideCommand());
         registerCommand("vanish", new VanishCommand());
+        registerCommand("balance", new BalanceCommand());
+        registerCommand("pay", new PayCommand());
+        registerCommand("eco", new EcoCommand());
+        registerCommand("baltop", new BaltopCommand());
+        registerCommand("paytoggle", new PayToggleCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
