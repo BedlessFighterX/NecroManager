@@ -8,6 +8,12 @@ import com.bedlessfighter.necroManager.commands.KitListCommand;
 import com.bedlessfighter.necroManager.commands.KitPreviewCommand;
 import com.bedlessfighter.necroManager.commands.KitResetCommand;
 import com.bedlessfighter.necroManager.managers.KitManager;
+import com.bedlessfighter.necroManager.managers.TeleportRequestManager;
+import com.bedlessfighter.necroManager.commands.TeleportRequestCommand;
+import com.bedlessfighter.necroManager.commands.TeleportAcceptCommand;
+import com.bedlessfighter.necroManager.commands.TeleportDenyCommand;
+import com.bedlessfighter.necroManager.commands.TeleportCancelCommand;
+import com.bedlessfighter.necroManager.commands.TeleportToggleCommand;
 
 import com.bedlessfighter.necroManager.commands.BalanceCommand;
 import com.bedlessfighter.necroManager.commands.PayCommand;
@@ -274,6 +280,12 @@ public final class Main extends JavaPlugin {
         registerCommand("kitlist", new KitListCommand());
         registerCommand("kitpreview", new KitPreviewCommand());
         registerCommand("kitreset", new KitResetCommand());
+        registerCommand("tpa", new TeleportRequestCommand(TeleportRequestManager.Direction.TO_TARGET));
+        registerCommand("tpahere", new TeleportRequestCommand(TeleportRequestManager.Direction.HERE));
+        registerCommand("tpaccept", new TeleportAcceptCommand());
+        registerCommand("tpdeny", new TeleportDenyCommand());
+        registerCommand("tpcancel", new TeleportCancelCommand());
+        registerCommand("tptoggle", new TeleportToggleCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
@@ -308,6 +320,7 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new HubItemListener(), this);
         manager.registerEvents(new VanishListener(), this);
         manager.registerEvents(new MovementAbilityListener(), this);
+        manager.registerEvents(new TeleportRequestManager(), this);
     }
 
     @Override
@@ -315,6 +328,7 @@ public final class Main extends JavaPlugin {
         getServer().getScheduler().cancelTasks(this);
         HologramManager.unload();
         MovementAbilityManager.clearAll();
+        TeleportRequestManager.clearAll();
         PlayerHiderManager.clear();
         com.bedlessfighter.necroManager.managers.VanishManager.clear();
         getServer().getMessenger().unregisterOutgoingPluginChannel(this, "BungeeCord");
