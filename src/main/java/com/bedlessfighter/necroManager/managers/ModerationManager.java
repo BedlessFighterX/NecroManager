@@ -19,7 +19,7 @@ public final class ModerationManager implements Listener {
     private static File file;
     private static YamlConfiguration data;
 
-    private ModerationManager() { }
+    public ModerationManager() { }
 
     public static synchronized void load() {
         file = new File(Main.getPlugin().getDataFolder(), "moderation.yml");
