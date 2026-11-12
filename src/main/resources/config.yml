@@ -313,3 +313,7 @@ economy:
   format: "$#,##0.00"
   top-size: 10
   transaction-log-limit: 1000
+
+# Phase B kits. Kit contents and per-player cooldowns are stored in kits.yml.
+kits:
+  maximum-cooldown-seconds: 31536000
