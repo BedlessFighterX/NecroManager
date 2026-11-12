@@ -170,6 +170,7 @@ public final class Main extends JavaPlugin {
             registerCommands();
             EconomyManager.load();
         HomeManager.load();
+            WarpManager.load();
             KitManager.load();
             registerListeners();
             HubDisplayManager.start();
