@@ -26,7 +26,7 @@ public final class CommandTabCompleter implements TabCompleter {
             "clearinventory", "cleararmor", "clearhotbar", "skull", "clearoffhand",
             "teleportto", "tphere", "teleportall", "kill", "heal", "feed", "fly",
             "extinguish", "ping", "getpos", "cleareffects", "enderchest", "invsee",
-            "spawn", "whois", "ignore", "msg"
+            "spawn", "whois", "ignore", "msg", "enderchest"
     );
     private static final Set<String> PLAYER_OPTIONAL = Set.of(
             "setlevel", "clearxp", "setfood", "gamemode", "speed"
@@ -69,6 +69,8 @@ public final class CommandTabCompleter implements TabCompleter {
 
         return switch (name) {
             case "gamemodeall" -> position == 0 ? filter(GAME_MODES, input) : List.of();
+            case "lore" -> position == 0 ? filter(List.of("add", "clear"), input) : List.of();
+            case "socialspy" -> position == 0 ? filter(List.of("on", "off", "toggle"), input) : List.of();
             case "weather", "weatherall" -> position == 0 ? filter(WEATHER, input) : List.of();
             case "timeall" -> position == 0 ? filter(TIME, input) : List.of();
             case "repair" -> position == 0 ? filter(List.of("hand", "all"), input) : List.of();
