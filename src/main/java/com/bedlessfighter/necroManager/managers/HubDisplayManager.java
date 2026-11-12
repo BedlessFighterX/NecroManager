@@ -11,10 +11,14 @@ import org.bukkit.scoreboard.ScoreboardManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 /** Maintains configurable sidebar and tab-list presentation for online players. */
 public final class HubDisplayManager {
     private static final String OBJECTIVE = "nmhub";
+    private static final Map<UUID, Scoreboard> BOARDS = new ConcurrentHashMap<>();
 
     private HubDisplayManager() { throw new UnsupportedOperationException("Utility class"); }
 
@@ -36,9 +40,12 @@ public final class HubDisplayManager {
         if (!ConfigManager.getBoolean("hub.scoreboard.enabled", true)) return;
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         if (manager == null) return;
-        Scoreboard board = manager.getNewScoreboard();
-        Objective objective = board.registerNewObjective(OBJECTIVE, "dummy",
+        Scoreboard board = BOARDS.computeIfAbsent(player.getUniqueId(), ignored -> manager.getNewScoreboard());
+        Objective objective = board.getObjective(OBJECTIVE);
+        if (objective == null) objective = board.registerNewObjective(OBJECTIVE, "dummy",
                 color(apply(ConfigManager.getString("hub.scoreboard.title", "&a&lNecroManager"), player)));
+        else objective.setDisplayName(color(apply(ConfigManager.getString("hub.scoreboard.title", "&a&lNecroManager"), player)));
+        for (String entry : new ArrayList<>(board.getEntries())) board.resetScores(entry);
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         List<String> lines = ConfigManager.getStringList("hub.scoreboard.lines");
         int score = Math.min(lines.size(), 15);
@@ -51,6 +58,10 @@ public final class HubDisplayManager {
             objective.getScore(entry).setScore(score--);
         }
         player.setScoreboard(board);
+    }
+
+    public static void remove(Player player) {
+        if (player != null) BOARDS.remove(player.getUniqueId());
     }
 
     private static void updateTabList(Player player) {
