@@ -27,7 +27,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [ ] Staff vanish, gamemode management.
 - [x] Configurable block-interaction, hunger, item-drop, item-pickup and mob-spawning protections with staff bypass permissions for player-specific restrictions.
 - [x] Void, fire and drowning damage prevention; offhand swap restriction; weather lock; fire spread/burn and leaf-decay protections.
-- [ ] Anti-swear filtering, staff alerts and bypass.
+- [x] Configurable anti-swear word filtering with replacement text, staff alerts and bypass permission.
 - [ ] Command blocklist, bypass and command configuration/custom actions.
 - [ ] Chat lock, bypass, global/player chat clearing.
 - [ ] Anti-world-downloader detection/alerts/bypass, using only reliable signals and avoiding false-positive punishment.
