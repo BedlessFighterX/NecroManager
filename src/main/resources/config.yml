@@ -164,6 +164,13 @@ announcements:
 chat:
   locked: false
 
+anti-swear:
+  enabled: false
+  words: []
+  replacement: "[filtered]"
+  staff-alerts: true
+  alert-message: "&c[ChatFilter] &f%player% used a filtered word: &7%message%"
+
 command-blocklist:
   commands: []
 
