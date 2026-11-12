@@ -114,7 +114,7 @@ public final class JailManager implements Listener {
     }
     private static void cancelExpiry(UUID id) { BukkitTask t=expiryTasks.remove(id); if(t!=null)t.cancel(); }
     @EventHandler public void onMove(PlayerMoveEvent e) {
-        if(!isJailed(e.getPlayer().getUniqueId()) || e.getTo()==null) return;
+        if(!isJailed(e.getPlayer().getUniqueId()) || internalTeleports.contains(e.getPlayer().getUniqueId()) || e.getTo()==null) return;
         Location from=e.getFrom(),to=e.getTo();
         if(from.getBlockX()!=to.getBlockX() || from.getBlockY()!=to.getBlockY() || from.getBlockZ()!=to.getBlockZ()) e.setTo(from);
     }
