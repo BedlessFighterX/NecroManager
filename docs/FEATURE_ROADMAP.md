@@ -21,7 +21,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Global chat lock with staff/admin bypass.
 - [x] Configurable player command blocklist with permission bypass.
 - [x] Scheduled announcements with sound, title/actionbar delivery, minimum-online threshold, per-player opt-out permission, and disabled-world exclusions.
-- [ ] Persistent hologram CRUD and line editing.
+- [x] Persistent hologram create/delete/list commands and add/set/remove line editing with YAML storage and restart-safe TextDisplay rendering.
 - [ ] Inventory menus, custom join items, server-selector menu, player-hider item.
 - [ ] Launchpads, double jump and cooldowns.
 - [ ] Staff vanish, gamemode management.
