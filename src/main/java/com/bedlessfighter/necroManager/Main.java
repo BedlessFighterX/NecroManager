@@ -8,7 +8,9 @@ import com.bedlessfighter.necroManager.managers.HologramManager;
 import com.bedlessfighter.necroManager.commands.HologramCommand;
 import com.bedlessfighter.necroManager.commands.ServersCommand;
 import com.bedlessfighter.necroManager.commands.HideCommand;
+import com.bedlessfighter.necroManager.commands.VanishCommand;
 import com.bedlessfighter.necroManager.listeners.HubItemListener;
+import com.bedlessfighter.necroManager.listeners.VanishListener;
 import com.bedlessfighter.necroManager.managers.PlayerHiderManager;
 import com.bedlessfighter.necroManager.listeners.ChatControlListener;
 import com.bedlessfighter.necroManager.listeners.CommandBlocklistListener;
@@ -239,6 +241,7 @@ public final class Main extends JavaPlugin {
         registerCommand("hologram", new HologramCommand());
         registerCommand("servers", new ServersCommand());
         registerCommand("hide", new HideCommand());
+        registerCommand("vanish", new VanishCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
@@ -268,6 +271,7 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new CommandBlocklistListener(), this);
         manager.registerEvents(new ProtectionListener(), this);
         manager.registerEvents(new HubItemListener(), this);
+        manager.registerEvents(new VanishListener(), this);
     }
 
     @Override
@@ -275,6 +279,7 @@ public final class Main extends JavaPlugin {
         getServer().getScheduler().cancelTasks(this);
         HologramManager.unload();
         PlayerHiderManager.clear();
+        com.bedlessfighter.necroManager.managers.VanishManager.clear();
         getServer().getMessenger().unregisterOutgoingPluginChannel(this, "BungeeCord");
         if (plugin == this) {
             plugin = null;
