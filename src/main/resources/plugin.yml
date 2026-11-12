@@ -494,6 +494,31 @@ commands:
     permission: necromanager.warp.info
     usage: /<command> <name>
 
+  jail:
+    description: Jail an online player
+    permission: necromanager.jail
+    usage: /<command> <player> <jail> [duration] [reason]
+  unjail:
+    description: Release a jailed player
+    permission: necromanager.jail.release
+    usage: /<command> <player>
+  setjail:
+    description: Save a jail location
+    permission: necromanager.jail.set
+    usage: /<command> <name>
+  deljail:
+    description: Delete a jail location
+    permission: necromanager.jail.admin
+    usage: /<command> <name>
+  jails:
+    description: List configured jail locations
+    permission: necromanager.jail
+    usage: /<command>
+  jailinfo:
+    description: Inspect an online player's jail sentence
+    permission: necromanager.jail.admin
+    usage: /<command> <player>
+
 permissions:
   necromanager.msg:
     description: Send and reply to private messages
@@ -941,6 +966,18 @@ permissions:
     description: Allow up to ten homes
     default: false
 
+  necromanager.jail:
+    description: Jail online players and list jail locations
+    default: op
+  necromanager.jail.set:
+    description: Set jail locations
+    default: op
+  necromanager.jail.release:
+    description: Release jailed players
+    default: op
+  necromanager.jail.admin:
+    description: Delete jail locations and inspect sentences
+    default: op
   necromanager.warp:
     description: Use server warps
     default: true
