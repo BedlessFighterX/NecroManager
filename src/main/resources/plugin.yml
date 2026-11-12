@@ -326,6 +326,10 @@ commands:
     description: Teleports you to the center of your current block
     permission: necromanager.admin
     usage: /<command>
+  chatlock:
+    description: Toggles global chat locking
+    permission: necromanager.chatlock
+    usage: /<command>
 permissions:
   necromanager.clearinventory:
     description: Clear your own inventory
@@ -605,4 +609,14 @@ permissions:
     default: op
   necromanager.silent-leave:
     description: Hides the player from NecroManager quit messages
+    default: op
+
+  necromanager.chatlock:
+    description: Allows toggling global chat lock
+    default: op
+  necromanager.chat.bypass:
+    description: Allows chatting while global chat is locked
+    default: op
+  necromanager.commandblocklist.bypass:
+    description: Allows use of commands on the configured blocklist
     default: op
