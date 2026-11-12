@@ -452,6 +452,27 @@ commands:
     permission: necromanager.tptoggle
     usage: /<command>
 
+  sethome:
+    description: Set a named home at your current location
+    permission: necromanager.sethome
+    usage: /<command> [name]
+  home:
+    description: Teleport to one of your saved homes
+    permission: necromanager.home
+    usage: /<command> [name]
+  homes:
+    description: List your saved homes
+    permission: necromanager.home
+    usage: /<command>
+  delhome:
+    description: Delete one of your saved homes
+    permission: necromanager.delhome
+    usage: /<command> <name>
+  renamehome:
+    description: Rename one of your saved homes
+    permission: necromanager.renamehome
+    usage: /<command> <old> <new>
+
 permissions:
   necromanager.msg:
     description: Send and reply to private messages
@@ -876,3 +897,25 @@ permissions:
   necromanager.tptoggle:
     description: Toggle incoming teleport request acceptance
     default: true
+
+  necromanager.sethome:
+    description: Set player homes
+    default: true
+  necromanager.home:
+    description: List and visit player homes
+    default: true
+  necromanager.delhome:
+    description: Delete player homes
+    default: true
+  necromanager.renamehome:
+    description: Rename player homes
+    default: true
+  necromanager.homes.unlimited:
+    description: Bypass the configured player home limit
+    default: op
+  necromanager.homes.5:
+    description: Allow up to five homes
+    default: false
+  necromanager.homes.10:
+    description: Allow up to ten homes
+    default: false
