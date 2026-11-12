@@ -400,6 +400,23 @@ commands:
     description: Toggle whether you accept player payments
     permission: necromanager.economy.paytoggle
     usage: /<command>
+  worth:
+    description: Check the configured sell value of an item
+    permission: necromanager.economy.worth
+    usage: /<command> [material]
+  setworth:
+    description: Set or remove an item's sell value
+    permission: necromanager.economy.worth.admin
+    usage: /<command> <material> <price>
+  sell:
+    aliases: [sellall]
+    description: Sell the held item or all sellable inventory items
+    permission: necromanager.economy.sell
+    usage: /<command> [hand|all]
+  ecolog:
+    description: Inspect recent economy transactions for a player
+    permission: necromanager.economy.admin
+    usage: /<command> <online-player>
   kit:
     description: Claim a configured kit or list available kits
     permission: necromanager.kit.use
