@@ -331,6 +331,12 @@ commands:
     permission: necromanager.chatlock
     usage: /<command>
 permissions:
+  necromanager.protection.environment:
+    description: Bypass void, fire and drowning damage protections
+    default: op
+  necromanager.protection.offhand:
+    description: Bypass offhand swapping restrictions
+    default: op
   necromanager.protection.interact:
     description: Bypass disabled block interaction
     default: op
