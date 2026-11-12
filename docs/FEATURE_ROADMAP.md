@@ -44,7 +44,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 
 - [x] Economy foundation: UUID-backed persistent balances, starting balance, currency formatting, configurable bounds, bounded transaction history, player payments, payment opt-out, admin give/take/set and balance leaderboard. (Command costs, item worth, sell/worth/setworth remain planned.)
 - [x] Kits: inventory/armor/offhand capture, persistent YAML storage, claim/list/create/delete/preview/reset commands, per-player persistent cooldowns, permissions and tab completion.
-- [ ] Teleport request service, accept/deny/cancel/toggle, tpa/tphere/tpall, coordinate/random teleport, back history, offline teleport policy.
+- [x] Teleport request service: /tpa, /tpahere, /tpaccept, /tpdeny, /tpcancel and /tptoggle; 60-second expiry, one pending incoming/outgoing request per player, disconnect cleanup and full tab completion. (Coordinate/random teleport, back history and offline policy remain planned.)
 - [ ] Homes: set/list/visit/rename/delete, limits and persistence.
 - [ ] Warps: set/list/visit/delete/info, persistence and permissions.
 - [ ] Jail locations, jail/un-jail, duration and jailed-player tracking.
