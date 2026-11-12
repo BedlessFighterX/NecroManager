@@ -20,7 +20,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Scheduled announcements with online-player threshold and placeholder formatting.
 - [x] Global chat lock with staff/admin bypass.
 - [x] Configurable player command blocklist with permission bypass.
-- [ ] Scheduled announcements with sound and minimum-online threshold.
+- [x] Scheduled announcements with sound, title/actionbar delivery, minimum-online threshold, per-player opt-out permission, and disabled-world exclusions.
 - [ ] Persistent hologram CRUD and line editing.
 - [ ] Inventory menus, custom join items, server-selector menu, player-hider item.
 - [ ] Launchpads, double jump and cooldowns.
