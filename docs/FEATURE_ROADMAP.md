@@ -16,7 +16,10 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Global and UUID-keyed world restriction overrides.
 - [x] Join effects, first-join message, configurable spawn-on-join and respawn.
 - [x] Heal, feed, clear effects, fly, enderchest, invsee.
-- [ ] Hub scoreboard and tab header/footer with configurable refresh/placeholders.
+- [x] Hub scoreboard and tab header/footer with configurable refresh/placeholders.
+- [x] Scheduled announcements with online-player threshold and placeholder formatting.
+- [x] Global chat lock with staff/admin bypass.
+- [x] Configurable player command blocklist with permission bypass.
 - [ ] Scheduled announcements with sound and minimum-online threshold.
 - [ ] Persistent hologram CRUD and line editing.
 - [ ] Inventory menus, custom join items, server-selector menu, player-hider item.
