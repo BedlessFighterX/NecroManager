@@ -44,6 +44,31 @@ joins:
   silent-staffs: true
   first-join-message-enabled: false
   first-join-message: "&aWelcome %player% to the server!"
+  motd:
+    enabled: false
+    lines:
+      - "&aWelcome to the server, &f%player%&a!"
+      - "&7There are &f%online%&7 players online."
+  title:
+    enabled: false
+    text: "&aWelcome!"
+    subtitle: "&7Enjoy your stay, %player%."
+    fade-in: 10
+    stay: 60
+    fade-out: 20
+  actionbar:
+    enabled: false
+    text: "&aWelcome, %player%!"
+  sound:
+    enabled: false
+    name: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.0
+  firework:
+    enabled: false
+    power: 1
+    type: BALL
+    instant: true
 
 respawn:
   use-plugin-spawn: false
