@@ -326,6 +326,29 @@ commands:
     description: Teleports you to the center of your current block
     permission: necromanager.admin
     usage: /<command>
+  msg:
+    aliases: [tell, w, message]
+    description: Send a private message to an online player
+    permission: necromanager.msg
+    usage: /<command> <player> <message>
+  reply:
+    aliases: [r]
+    description: Reply to your most recent private message
+    permission: necromanager.msg
+    usage: /<command> <message>
+  ignore:
+    description: Toggle private-message ignores for an online player
+    permission: necromanager.ignore
+    usage: /<command> <player>
+  socialspy:
+    aliases: [social]
+    description: Toggle private-message staff monitoring
+    permission: necromanager.socialspy
+    usage: /<command>
+  whois:
+    description: Inspect an online player's server information
+    permission: necromanager.whois
+    usage: /<command> <player>
   chatlock:
     description: Toggles global chat locking
     permission: necromanager.chatlock
@@ -336,6 +359,18 @@ commands:
     permission: necromanager.hologram
     usage: /<command> <create|delete|list|addline|setline|removeline>
 permissions:
+  necromanager.msg:
+    description: Send and reply to private messages
+    default: true
+  necromanager.ignore:
+    description: Manage private-message ignore lists
+    default: true
+  necromanager.socialspy:
+    description: Monitor private messages using SocialSpy
+    default: op
+  necromanager.whois:
+    description: Inspect online player information
+    default: op
   necromanager.protection.environment:
     description: Bypass void, fire and drowning damage protections
     default: op
