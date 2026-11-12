@@ -19,7 +19,7 @@ import java.util.Locale;
 public final class GetPosCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
-                            @NotNull String @NotNull [] args) {
+                            @NotNull String label, @NotNull String[] args) {
         if (args.length > 1) {
             MessageManager.sendRaw(sender, MessageManager.prefix() + " &cUsage: /" + command.getName() + " [player]");
             return true;
