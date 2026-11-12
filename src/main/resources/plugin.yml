@@ -564,6 +564,26 @@ commands:
     description: Kick an online player with a reason
     permission: necromanager.moderation.kick
     usage: /<command> <player> <reason>
+  ban:
+    description: Permanently ban an online player
+    permission: necromanager.moderation.ban
+    usage: /<command> <player> <reason>
+  tempban:
+    description: Temporarily ban an online player
+    permission: necromanager.moderation.ban
+    usage: /<command> <player> <duration> <reason>
+  unban:
+    description: Remove a stored player ban
+    permission: necromanager.moderation.ban
+    usage: /<command> <player>
+  baninfo:
+    description: Inspect an active player ban
+    permission: necromanager.moderation.ban
+    usage: /<command> <player>
+  modhistory:
+    description: View a player's moderation action history
+    permission: necromanager.moderation.ban
+    usage: /<command> <player>
 
 permissions:
   necromanager.moderation.warn:
@@ -574,6 +594,9 @@ permissions:
     default: op
   necromanager.moderation.kick:
     description: Kick players from the server
+    default: op
+  necromanager.moderation.ban:
+    description: Ban, unban and inspect moderation history
     default: op
   necromanager.msg:
     description: Send and reply to private messages
