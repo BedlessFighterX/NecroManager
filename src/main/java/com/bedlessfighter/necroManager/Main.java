@@ -1,6 +1,14 @@
 package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
+import com.bedlessfighter.necroManager.commands.KitCommand;
+import com.bedlessfighter.necroManager.commands.KitCreateCommand;
+import com.bedlessfighter.necroManager.commands.KitDeleteCommand;
+import com.bedlessfighter.necroManager.commands.KitListCommand;
+import com.bedlessfighter.necroManager.commands.KitPreviewCommand;
+import com.bedlessfighter.necroManager.commands.KitResetCommand;
+import com.bedlessfighter.necroManager.managers.KitManager;
+
 import com.bedlessfighter.necroManager.commands.BalanceCommand;
 import com.bedlessfighter.necroManager.commands.PayCommand;
 import com.bedlessfighter.necroManager.commands.EcoCommand;
@@ -143,6 +151,7 @@ public final class Main extends JavaPlugin {
             saveDefaultConfig();
             registerCommands();
             EconomyManager.load();
+            KitManager.load();
             registerListeners();
             HubDisplayManager.start();
             AnnouncementManager.start();
@@ -259,6 +268,12 @@ public final class Main extends JavaPlugin {
         registerCommand("eco", new EcoCommand());
         registerCommand("baltop", new BaltopCommand());
         registerCommand("paytoggle", new PayToggleCommand());
+        registerCommand("kit", new KitCommand());
+        registerCommand("kitcreate", new KitCreateCommand());
+        registerCommand("kitdelete", new KitDeleteCommand());
+        registerCommand("kitlist", new KitListCommand());
+        registerCommand("kitpreview", new KitPreviewCommand());
+        registerCommand("kitreset", new KitResetCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
