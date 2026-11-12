@@ -330,6 +330,11 @@ commands:
     description: Toggles global chat locking
     permission: necromanager.chatlock
     usage: /<command>
+  hologram:
+    aliases: [holo]
+    description: Create and manage persistent text holograms
+    permission: necromanager.hologram
+    usage: /<command> <create|delete|list|addline|setline|removeline>
 permissions:
   necromanager.protection.environment:
     description: Bypass void, fire and drowning damage protections
@@ -648,3 +653,6 @@ permissions:
   necromanager.announcements.ignore:
     description: Opt out of scheduled announcements
     default: false
+  necromanager.hologram:
+    description: Create, edit, list, and delete persistent holograms
+    default: op
