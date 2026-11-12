@@ -32,7 +32,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Configurable block-interaction, hunger, item-drop, item-pickup and mob-spawning protections with staff bypass permissions for player-specific restrictions.
 - [x] Void, fire and drowning damage prevention; offhand swap restriction; weather lock; fire spread/burn and leaf-decay protections.
 - [x] Configurable anti-swear word filtering with replacement text, staff alerts and bypass permission.
-- [ ] Command blocklist, bypass and command configuration/custom actions.
+- [x] Configurable player command blocklist with bypass, enable/disable setting, custom denial text, persistent add/remove/list administration and argument-aware tab completion.
 - [x] Chat lock with explicit on/off/status controls, bypass permission, configurable denial text, and configurable global/self chat clearing.
 - [x] Alert-only World Downloader handshake detection on explicit WDL plugin-message channels, staff alerts, per-player bypass, session deduplication, and no-auto-punishment safeguards.
 - [x] Configurable join MOTD, title/subtitle, actionbar, sound and firework presentation; custom join/quit messages.
