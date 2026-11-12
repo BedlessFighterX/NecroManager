@@ -31,7 +31,8 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [ ] Command blocklist, bypass and command configuration/custom actions.
 - [ ] Chat lock, bypass, global/player chat clearing.
 - [ ] Anti-world-downloader detection/alerts/bypass, using only reliable signals and avoiding false-positive punishment.
-- [ ] Join MOTD/title/sound/firework/actions, custom join/quit, action engine (message, broadcast, title, actionbar, sound, command, console, gamemode, effect, menu, close, proxy bridge, delay).
+- [x] Configurable join MOTD, title/subtitle, actionbar, sound and firework presentation; custom join/quit messages.
+- [ ] General join action engine (message, broadcast, title, actionbar, sound, command, console, gamemode, effect, menu, close, proxy bridge, delay).
 - [ ] Disabled-world feature exclusions.
 
 ## Phase B — Essentials-style core services
