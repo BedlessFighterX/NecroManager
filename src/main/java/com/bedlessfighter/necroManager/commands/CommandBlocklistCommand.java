@@ -36,22 +36,23 @@ public final class CommandBlocklistCommand implements CommandExecutor, TabComple
         }
         String value = args[1].trim().toLowerCase(Locale.ROOT);
         while (value.startsWith("/")) value = value.substring(1);
-        if (!value.matches("[a-z0-9_:-]+") || value.endsWith(":")) {
+        final String commandLabel = value;
+        if (!commandLabel.matches("[a-z0-9_:-]+") || commandLabel.endsWith(":")) {
             MessageManager.sendRaw(sender, "&cEnter a valid command label without arguments.");
             return true;
         }
         List<String> blocked = new ArrayList<>(ConfigManager.getStringList(PATH));
         if (args[0].equalsIgnoreCase("add")) {
-            if (blocked.stream().anyMatch(entry -> normalize(entry).equals(value))) {
+            if (blocked.stream().anyMatch(entry -> normalize(entry).equals(commandLabel))) {
                 MessageManager.sendRaw(sender, "&eThat command is already blocked.");
                 return true;
             }
-            blocked.add(value);
+            blocked.add(commandLabel);
             ConfigManager.set(PATH, blocked);
             ConfigManager.save();
             MessageManager.sendRaw(sender, "&aAdded &f/" + value + " &ato the player command blocklist.");
         } else {
-            boolean removed = blocked.removeIf(entry -> normalize(entry).equals(value));
+            boolean removed = blocked.removeIf(entry -> normalize(entry).equals(commandLabel));
             if (!removed) {
                 MessageManager.sendRaw(sender, "&cThat command is not in the blocklist.");
                 return true;
