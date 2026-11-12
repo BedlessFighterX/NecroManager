@@ -13,6 +13,8 @@ import com.bedlessfighter.necroManager.managers.HomeManager;
 import com.bedlessfighter.necroManager.managers.WarpManager;
 import com.bedlessfighter.necroManager.managers.JailManager;
 import com.bedlessfighter.necroManager.commands.JailCommand;
+import com.bedlessfighter.necroManager.commands.ModerationCommand;
+import com.bedlessfighter.necroManager.managers.ModerationManager;
 import com.bedlessfighter.necroManager.commands.SetWarpCommand;
 import com.bedlessfighter.necroManager.commands.WarpCommand;
 import com.bedlessfighter.necroManager.commands.WarpsCommand;
@@ -178,6 +180,7 @@ public final class Main extends JavaPlugin {
         HomeManager.load();
             WarpManager.load();
             JailManager.load();
+            ModerationManager.load();
             KitManager.load();
             registerListeners();
             HubDisplayManager.start();
@@ -323,6 +326,14 @@ public final class Main extends JavaPlugin {
         registerCommand("warps", new WarpsCommand());
         registerCommand("delwarp", new DelWarpCommand());
         registerCommand("warpinfo", new WarpInfoCommand());
+        ModerationCommand moderation = new ModerationCommand();
+        registerCommand("warn", moderation);
+        registerCommand("warnings", moderation);
+        registerCommand("clearwarnings", moderation);
+        registerCommand("mute", moderation);
+        registerCommand("tempmute", moderation);
+        registerCommand("unmute", moderation);
+        registerCommand("kick", moderation);
         JailCommand jail = new JailCommand();
         registerCommand("jail", jail);
         registerCommand("unjail", jail);
@@ -366,6 +377,7 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new MovementAbilityListener(), this);
         manager.registerEvents(new TeleportRequestManager(), this);
         manager.registerEvents(new JailManager(), this);
+        manager.registerEvents(new ModerationManager(), this);
     }
 
     @Override
