@@ -42,7 +42,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 
 ## Phase B — Essentials-style core services
 
-- [ ] Economy balances, starting balance, currency formatting, bounds, logs, command costs, item worth, pay/toggles, sell/worth/setworth, top balances.
+- [x] Economy foundation: UUID-backed persistent balances, starting balance, currency formatting, configurable bounds, bounded transaction history, player payments, payment opt-out, admin give/take/set and balance leaderboard. (Command costs, item worth, sell/worth/setworth remain planned.)
 - [ ] Kits, kit creation/deletion/reset/preview/cooldowns and permission-based delivery.
 - [ ] Teleport request service, accept/deny/cancel/toggle, tpa/tphere/tpall, coordinate/random teleport, back history, offline teleport policy.
 - [ ] Homes: set/list/visit/rename/delete, limits and persistence.
