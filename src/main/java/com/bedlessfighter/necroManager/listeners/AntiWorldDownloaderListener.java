@@ -31,11 +31,6 @@ public final class AntiWorldDownloaderListener implements Listener, PluginMessag
         }
     }
 
-    public void unregisterChannels(Plugin plugin) {
-        plugin.getServer().getMessenger().unregisterIncomingPluginChannel(plugin, this);
-        alerted.clear();
-    }
-
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
         if (!ConfigManager.getBoolean("anti-world-downloader.enabled", false)
