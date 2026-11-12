@@ -204,8 +204,9 @@ public final class ModerationManager implements Listener {
 
     public static synchronized UUID findKnownPlayer(String name) {
         ready();
-        for (String raw : Objects.requireNonNullElse(data.getConfigurationSection("players"),
-                data.createSection("players")).getKeys(false)) {
+        ConfigurationSection players = data.getConfigurationSection("players");
+        if (players == null) return null;
+        for (String raw : players.getKeys(false)) {
             if (data.getString("players." + raw, "").equalsIgnoreCase(name)) {
                 try { return UUID.fromString(raw); } catch (IllegalArgumentException ignored) { }
             }
