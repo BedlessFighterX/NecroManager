@@ -353,6 +353,7 @@ public final class Main extends JavaPlugin {
         HologramManager.unload();
         MovementAbilityManager.clearAll();
         TeleportRequestManager.clearAll();
+        JailManager.shutdown();
         PlayerHiderManager.clear();
         com.bedlessfighter.necroManager.managers.VanishManager.clear();
         getServer().getMessenger().unregisterOutgoingPluginChannel(this, "BungeeCord");
