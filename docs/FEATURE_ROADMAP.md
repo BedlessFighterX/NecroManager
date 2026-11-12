@@ -26,7 +26,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [ ] Launchpads, double jump and cooldowns.
 - [ ] Staff vanish, gamemode management.
 - [x] Configurable block-interaction, hunger, item-drop, item-pickup and mob-spawning protections with staff bypass permissions for player-specific restrictions.
-- [ ] Void, fire, drowning, offhand, weather, fire-spread, burn and leaf-decay protections.
+- [x] Void, fire and drowning damage prevention; offhand swap restriction; weather lock; fire spread/burn and leaf-decay protections.
 - [ ] Anti-swear filtering, staff alerts and bypass.
 - [ ] Command blocklist, bypass and command configuration/custom actions.
 - [ ] Chat lock, bypass, global/player chat clearing.
