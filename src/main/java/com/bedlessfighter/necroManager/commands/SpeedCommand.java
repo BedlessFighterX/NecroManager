@@ -17,8 +17,7 @@ import java.util.Locale;
 /** Changes a player's walking or flying speed using safe Bukkit speed bounds. */
 public final class SpeedCommand implements CommandExecutor, TabCompleter {
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
-                            @NotNull String @NotNull [] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         if (args.length < 1 || args.length > 3) {
             MessageManager.sendRaw(sender, MessageManager.prefix() + " &cUsage: /speed <1-10> [walk|fly] [player]");
             return true;
