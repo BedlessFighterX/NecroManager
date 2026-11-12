@@ -22,7 +22,10 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Configurable player command blocklist with permission bypass.
 - [x] Scheduled announcements with sound, title/actionbar delivery, minimum-online threshold, per-player opt-out permission, and disabled-world exclusions.
 - [x] Persistent hologram create/delete/list commands and add/set/remove line editing with YAML storage and restart-safe TextDisplay rendering.
-- [ ] Inventory menus, custom join items, server-selector menu, player-hider item.
+- [x] Configurable custom join items with persistent action metadata and slot placement.
+- [x] Server-selector inventory with configurable entries and BungeeCord proxy connection requests.
+- [x] Player-hider toggle command and join-item action, including visibility synchronization for newly joining players.
+- [x] Protected selector inventory interactions (click/drag) and plugin-channel shutdown cleanup.
 - [ ] Launchpads, double jump and cooldowns.
 - [ ] Staff vanish, gamemode management.
 - [x] Configurable block-interaction, hunger, item-drop, item-pickup and mob-spawning protections with staff bypass permissions for player-specific restrictions.
