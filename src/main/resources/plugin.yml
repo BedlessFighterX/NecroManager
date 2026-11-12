@@ -473,6 +473,27 @@ commands:
     permission: necromanager.renamehome
     usage: /<command> <old> <new>
 
+  setwarp:
+    description: Save or update a named server warp
+    permission: necromanager.warp.set
+    usage: /<command> <name>
+  warp:
+    description: Teleport to a named server warp
+    permission: necromanager.warp
+    usage: /<command> <name>
+  warps:
+    description: List available server warps
+    permission: necromanager.warps
+    usage: /<command>
+  delwarp:
+    description: Delete a named server warp
+    permission: necromanager.warp.delete
+    usage: /<command> <name>
+  warpinfo:
+    description: Show the world and coordinates of a warp
+    permission: necromanager.warp.info
+    usage: /<command> <name>
+
 permissions:
   necromanager.msg:
     description: Send and reply to private messages
@@ -919,3 +940,19 @@ permissions:
   necromanager.homes.10:
     description: Allow up to ten homes
     default: false
+
+  necromanager.warp:
+    description: Use server warps
+    default: true
+  necromanager.warps:
+    description: List available server warps
+    default: true
+  necromanager.warp.set:
+    description: Create or update server warps
+    default: op
+  necromanager.warp.delete:
+    description: Delete server warps
+    default: op
+  necromanager.warp.info:
+    description: Inspect server warp locations
+    default: op
