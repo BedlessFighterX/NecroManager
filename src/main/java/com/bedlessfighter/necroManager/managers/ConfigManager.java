@@ -71,7 +71,7 @@ public final class ConfigManager {
     /**
      * Returns a defensive copy so callers cannot mutate the live config list.
      */
-    public static List<String> getStringList(String path) {
+    public static List<String> getStringList(String path, List<String> fallback) {\n        return config().contains(path) ? List.copyOf(config().getStringList(path)) : List.copyOf(fallback);\n    }\n\n    public static List<String> getStringList(String path) {
         return List.copyOf(config().getStringList(path));
     }
 
