@@ -425,6 +425,33 @@ commands:
     permission: necromanager.kit.admin
     usage: /<command> <player> <kit>
 
+  tpa:
+    aliases: [call, tpask]
+    description: Request to teleport to an online player
+    permission: necromanager.tpa
+    usage: /<command> <player>
+  tpahere:
+    aliases: [tpaskhere]
+    description: Request an online player to teleport to you
+    permission: necromanager.tpahere
+    usage: /<command> <player>
+  tpaccept:
+    description: Accept an incoming teleport request
+    permission: necromanager.tpaccept
+    usage: /<command> [player]
+  tpdeny:
+    description: Deny an incoming teleport request
+    permission: necromanager.tpdeny
+    usage: /<command> [player]
+  tpcancel:
+    description: Cancel your outgoing teleport request
+    permission: necromanager.tpcancel
+    usage: /<command>
+  tptoggle:
+    description: Toggle whether you accept teleport requests
+    permission: necromanager.tptoggle
+    usage: /<command>
+
 permissions:
   necromanager.msg:
     description: Send and reply to private messages
@@ -830,3 +857,22 @@ permissions:
   necromanager.kit.admin:
     description: Allows kit creation, deletion and cooldown resets
     default: op
+
+  necromanager.tpa:
+    description: Send teleport-to-player requests
+    default: true
+  necromanager.tpahere:
+    description: Send teleport-here requests
+    default: true
+  necromanager.tpaccept:
+    description: Accept incoming teleport requests
+    default: true
+  necromanager.tpdeny:
+    description: Deny incoming teleport requests
+    default: true
+  necromanager.tpcancel:
+    description: Cancel outgoing teleport requests
+    default: true
+  necromanager.tptoggle:
+    description: Toggle incoming teleport request acceptance
+    default: true
