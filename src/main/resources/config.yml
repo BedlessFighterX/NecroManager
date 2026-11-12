@@ -238,6 +238,10 @@ announcements:
 
 chat:
   locked: false
+  locked-message: "&cChat is currently locked."
+  clear-lines: 100
+  cleared-message: "&cChat was cleared by staff."
+  self-cleared-message: "&aYour chat has been cleared."
 
 anti-swear:
   enabled: false
@@ -279,3 +283,10 @@ movement:
     vertical: 0.85
     cooldown-seconds: 3
     sound: ENTITY_BAT_TAKEOFF
+
+# Explicit World Downloader plugin-message handshakes are alert-only evidence.
+# Channels can be spoofed and not every downloader sends them; never auto-punish.
+anti-world-downloader:
+  enabled: false
+  staff-alerts: true
+  alert-message: "&c[Anti-WDL] &f%player% sent a World Downloader handshake (&7%channel%&f)."
