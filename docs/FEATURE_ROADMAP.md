@@ -37,7 +37,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [ ] Anti-world-downloader detection/alerts/bypass, using only reliable signals and avoiding false-positive punishment.
 - [x] Configurable join MOTD, title/subtitle, actionbar, sound and firework presentation; custom join/quit messages.
 - [x] Shared, argument-aware tab completion for commands that accept player names, modes, weather/time values, or operation options; retain specialized command completers.
-- [ ] General join action engine (message, broadcast, title, actionbar, sound, command, console, gamemode, effect, menu, close, proxy bridge, delay).
+- [x] Configurable ordered join action engine with message, broadcast, title, actionbar, sound, player/console command, gamemode, potion effect, close-inventory, per-action permission and tick delay.
 - [ ] Disabled-world feature exclusions.
 
 ## Phase B — Essentials-style core services
