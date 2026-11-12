@@ -46,7 +46,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Kits: inventory/armor/offhand capture, persistent YAML storage, claim/list/create/delete/preview/reset commands, per-player persistent cooldowns, permissions and tab completion.
 - [x] Teleport request service: /tpa, /tpahere, /tpaccept, /tpdeny, /tpcancel and /tptoggle; 60-second expiry, one pending incoming/outgoing request per player, disconnect cleanup and full tab completion. (Coordinate/random teleport, back history and offline policy remain planned.)
 - [x] Homes: /sethome, /home, /homes, /delhome and /renamehome; UUID-based persistent locations, configurable default limits, permission-based limit tiers, world availability and safe-location checks.
-- [ ] Warps: set/list/visit/delete/info, persistence and permissions.
+- [x] Warps: /setwarp, /warp, /warps, /delwarp and /warpinfo; persistent YAML locations, per-warp permission gates, world availability and safe-location checks.
 - [ ] Jail locations, jail/un-jail, duration and jailed-player tracking.
 - [ ] Moderation: ban/tempban/IP ban, kick, mute, jail, unban and history.
 - [ ] Private messages/reply/toggle, ignore, social spy, mail, action messages, nickname and nearby.
