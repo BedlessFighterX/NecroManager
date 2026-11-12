@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 public final class MessageCommand implements CommandExecutor, TabCompleter {
- @Override public boolean onCommand(@NotNull CommandSender sender,@NotNull Command command,@NotNull String[] args) {
+ @Override public boolean onCommand(@NotNull CommandSender sender,@NotNull Command command,@NotNull String label, @NotNull String[] args) {
   if(args.length<2){MessageManager.sendRaw(sender,"&cUsage: /msg <player> <message>");return true;}
   if(!(sender instanceof Player from)){MessageManager.send(sender,"messages.player-required","&cOnly players can send private messages.");return true;}
   if(!PermissionManager.has(sender,"necromanager.msg")){MessageManager.send(sender,"messages.no-perm","&cNo permission.");return true;}
