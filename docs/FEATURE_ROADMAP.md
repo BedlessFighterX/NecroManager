@@ -38,7 +38,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Configurable join MOTD, title/subtitle, actionbar, sound and firework presentation; custom join/quit messages.
 - [x] Shared, argument-aware tab completion for commands that accept player names, modes, weather/time values, or operation options; retain specialized command completers.
 - [x] Configurable ordered join action engine with message, broadcast, title, actionbar, sound, player/console command, gamemode, potion effect, close-inventory, per-action permission and tick delay.
-- [ ] Disabled-world feature exclusions.
+- [x] Centralized, case-insensitive per-feature world exclusions for announcements, chat lock, anti-swear filtering and join actions.
 
 ## Phase B — Essentials-style core services
 
