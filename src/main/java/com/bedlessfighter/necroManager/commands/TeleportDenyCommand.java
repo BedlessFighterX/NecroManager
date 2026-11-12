@@ -1,0 +1,19 @@
+package com.bedlessfighter.necroManager.commands;
+
+import com.bedlessfighter.necroManager.MessageManager;
+import com.bedlessfighter.necroManager.managers.TeleportRequestManager;
+import org.bukkit.command.*;
+import org.bukkit.entity.Player;
+import java.util.List;
+
+public final class TeleportDenyCommand implements CommandExecutor, TabCompleter {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player player)) { MessageManager.sendRaw(sender, "&cPlayers only."); return true; }
+        if (!player.hasPermission("necromanager.tpdeny")) { MessageManager.sendRaw(sender, "&cYou do not have permission."); return true; }
+        if (args.length > 1) { MessageManager.sendRaw(sender, "&eUsage: /tpdeny [player]"); return true; }
+        if (!TeleportRequestManager.deny(player, args.length == 1 ? args[0] : null))
+            MessageManager.sendRaw(sender, "&cNo matching teleport request is waiting.");
+        return true;
+    }
+    public List<String> onTabComplete(CommandSender s, Command c, String a, String[] args) { return List.of(); }
+}
