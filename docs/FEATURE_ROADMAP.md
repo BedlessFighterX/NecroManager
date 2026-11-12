@@ -27,7 +27,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Player-hider toggle command and join-item action, including visibility synchronization for newly joining players.
 - [x] Protected selector inventory interactions (click/drag) and plugin-channel shutdown cleanup.
 - [ ] Launchpads, double jump and cooldowns.
-- [ ] Staff vanish, gamemode management.
+- [x] Staff vanish toggle, target management, hidden-player list, join synchronization, and silent quit.
 - [x] Configurable block-interaction, hunger, item-drop, item-pickup and mob-spawning protections with staff bypass permissions for player-specific restrictions.
 - [x] Void, fire and drowning damage prevention; offhand swap restriction; weather lock; fire spread/burn and leaf-decay protections.
 - [x] Configurable anti-swear word filtering with replacement text, staff alerts and bypass permission.
