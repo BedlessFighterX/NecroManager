@@ -685,7 +685,13 @@ permissions:
     default: op
 
   necromanager.chatlock:
-    description: Allows toggling global chat lock
+    description: Allows toggling and inspecting global chat lock
+    default: op
+  necromanager.antiworlddownloader.bypass:
+    description: Exempt a player from World Downloader handshake alerts
+    default: op
+  necromanager.antiworlddownloader.alerts:
+    description: Receive World Downloader handshake alerts
     default: op
   necromanager.chat.bypass:
     description: Allows chatting while global chat is locked
