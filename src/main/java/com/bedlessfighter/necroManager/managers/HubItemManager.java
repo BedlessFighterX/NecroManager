@@ -21,6 +21,7 @@ import java.util.Map;
 public final class HubItemManager {
     private static final NamespacedKey ACTION = new NamespacedKey(Main.getPlugin(), "hub_item_action");
     private static final NamespacedKey SERVER = new NamespacedKey(Main.getPlugin(), "hub_server");
+    private static final NamespacedKey COMMAND = new NamespacedKey(Main.getPlugin(), "hub_item_command");
     private static final NamespacedKey JOIN_ITEM = new NamespacedKey(Main.getPlugin(), "hub_join_item");
 
     private HubItemManager() { throw new UnsupportedOperationException("Utility class"); }
@@ -85,6 +86,11 @@ public final class HubItemManager {
         }
     }
 
+    public static String command(ItemStack item) {
+        if (item == null || !item.hasItemMeta()) return null;
+        return item.getItemMeta().getPersistentDataContainer().get(COMMAND, PersistentDataType.STRING);
+    }
+
     public static String action(ItemStack item) {
         if (item == null || !item.hasItemMeta()) return null;
         return item.getItemMeta().getPersistentDataContainer().get(ACTION, PersistentDataType.STRING);
@@ -112,6 +118,10 @@ public final class HubItemManager {
         Object action = entry.get("action");
         if (action != null) meta.getPersistentDataContainer().set(
                 ACTION, PersistentDataType.STRING, action.toString().toUpperCase(java.util.Locale.ROOT));
+        Object command = entry.get("command");
+        if (command != null && !command.toString().isBlank()) {
+            meta.getPersistentDataContainer().set(COMMAND, PersistentDataType.STRING, command.toString());
+        }
         if (joinItem) meta.getPersistentDataContainer().set(JOIN_ITEM, PersistentDataType.BYTE, (byte) 1);
         item.setItemMeta(meta);
         return item;
