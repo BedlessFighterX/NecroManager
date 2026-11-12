@@ -1,8 +1,6 @@
 package com.bedlessfighter.necroManager.commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -26,10 +24,9 @@ public final class CommandTabCompleter implements TabCompleter {
     private static final List<String> TIME = List.of("day", "night", "reset");
     private static final Set<String> PLAYER_FIRST = Set.of(
             "clearinventory", "cleararmor", "clearhotbar", "skull", "clearoffhand",
-            "teleportto", "tphere", "teleportall", "worldspawn", "kill", "heal",
-            "feed", "fly", "extinguish", "ping", "getpos", "cleareffects",
-            "enderchest", "invsee", "spawn", "whois", "ignore", "ptime",
-            "whois", "ignore", "msg"
+            "teleportto", "tphere", "teleportall", "kill", "heal", "feed", "fly",
+            "extinguish", "ping", "getpos", "cleareffects", "enderchest", "invsee",
+            "spawn", "whois", "ignore", "msg"
     );
     private static final Set<String> PLAYER_OPTIONAL = Set.of(
             "setlevel", "clearxp", "setfood", "gamemode", "speed"
@@ -48,15 +45,20 @@ public final class CommandTabCompleter implements TabCompleter {
         if (PLAYER_FIRST.contains(name) && position == 0) {
             return players(input);
         }
+        if ((name.equals("experience") || name.equals("sethealth")) && position == 1) {
+            return players(input);
+        }
         if (PLAYER_OPTIONAL.contains(name)) {
+            if ((name.equals("setlevel") || name.equals("setfood")) && position == 0) {
+                return filter(List.of("0", "1", "5", "10", "20", "50", "100"), input);
+            }
             if ((name.equals("gamemode") && position == 0)
                     || (name.equals("speed") && position == 1)) {
                 if (name.equals("gamemode")) return filter(GAME_MODES, input);
                 return filter(List.of("walk", "fly"), input);
             }
             if (name.equals("clearxp") && position == 0) return players(input);
-            if ((name.equals("setlevel") || name.equals("setfood")
-                    || name.equals("experience") || name.equals("sethealth")) && position == 1) {
+            if ((name.equals("setlevel") || name.equals("setfood")) && position == 1) {
                 return players(input);
             }
             if (name.equals("gamemode") && position == 1
@@ -85,15 +87,6 @@ public final class CommandTabCompleter implements TabCompleter {
             if (player.getName().toLowerCase(Locale.ROOT).startsWith(input)) {
                 names.add(player.getName());
             }
-        }
-        names.sort(String.CASE_INSENSITIVE_ORDER);
-        return names;
-    }
-
-    private static List<String> worlds(String input) {
-        List<String> names = new ArrayList<>();
-        for (World world : Bukkit.getWorlds()) {
-            if (world.getName().toLowerCase(Locale.ROOT).startsWith(input)) names.add(world.getName());
         }
         names.sort(String.CASE_INSENSITIVE_ORDER);
         return names;
