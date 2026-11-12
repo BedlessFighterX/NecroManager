@@ -721,3 +721,9 @@ permissions:
   necromanager.vanish.list:
     description: List online vanished players
     default: op
+  necromanager.launchpad:
+    description: Use configured launchpads
+    default: true
+  necromanager.doublejump:
+    description: Use the configured double jump ability
+    default: true
