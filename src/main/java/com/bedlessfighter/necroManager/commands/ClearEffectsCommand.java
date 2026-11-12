@@ -46,9 +46,8 @@ public final class ClearEffectsCommand implements CommandExecutor, TabCompleter 
 
         int removed = 0;
         for (PotionEffect effect : target.getActivePotionEffects()) {
-            if (target.removePotionEffect(effect.getType())) {
-                removed++;
-            }
+            target.removePotionEffect(effect.getType());
+            removed++;
         }
 
         if (target.equals(sender)) {
