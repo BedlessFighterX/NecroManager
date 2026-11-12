@@ -42,7 +42,8 @@ public final class AntiWorldDownloaderListener implements Listener, PluginMessag
 
         Main.getPlugin().getLogger().warning("World Downloader handshake received from "
                 + player.getName() + " on channel " + channel + ". Alert only; no punishment applied.");
-        if (!ConfigManager.getBoolean("anti-world-downloader.staff-alerts", true)) return;\n        String alert = ConfigManager.getString("anti-world-downloader.alert-message",
+        if (!ConfigManager.getBoolean("anti-world-downloader.staff-alerts", true)) return;
+        String alert = ConfigManager.getString("anti-world-downloader.alert-message",
                 "&c[Anti-WDL] &f%player% sent a World Downloader handshake (&7%channel%&f).")
                 .replace("%player%", player.getName()).replace("%channel%", channel);
         Bukkit.getScheduler().runTask(Main.getPlugin(), () -> Bukkit.getOnlinePlayers().stream()
