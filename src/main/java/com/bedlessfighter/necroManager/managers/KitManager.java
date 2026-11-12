@@ -69,9 +69,13 @@ public final class KitManager {
         String path = "kits." + name.toLowerCase();
         if (!data.isConfigurationSection(path)) return false;
         if (remaining(player.getUniqueId(), name) > 0) return false;
-        ItemStack[] contents = data.getList(path + ".contents", new ArrayList<>()).toArray(new ItemStack[0]);
+        List<ItemStack> contents = new ArrayList<>();
+        for (Object value : data.getList(path + ".contents", new ArrayList<>())) {
+            if (value instanceof ItemStack item && item.getType() != Material.AIR) contents.add(item.clone());
+        }
         ItemStack[] armor = data.getList(path + ".armor", new ArrayList<>()).toArray(new ItemStack[0]);
-        player.getInventory().addItem(contents);
+        var leftovers = player.getInventory().addItem(contents.toArray(new ItemStack[0]));
+        leftovers.values().forEach(item -> player.getWorld().dropItemNaturally(player.getLocation(), item));
         player.getInventory().setArmorContents(armor);
         Object offhand = data.get(path + ".offhand");
         if (offhand instanceof ItemStack item && item.getType() != Material.AIR) {
