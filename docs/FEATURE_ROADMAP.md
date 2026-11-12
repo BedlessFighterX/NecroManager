@@ -8,7 +8,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - Implement shared services before command families: configuration, messages/placeholders, permissions, persistence, player state, teleport safety, inventory UI, scheduler, and audit logging.
 - Keep dangerous actions permission-gated, validate targets/arguments, and make destructive operations explicit.
 - Prefer Paper APIs; isolate optional integrations behind internal interfaces and keep the core functional without them.
-- Track each feature as implemented, documented, and source-reviewed. Build/runtime verification is intentionally deferred per project instruction.
+- Track each feature as implemented, documented, source-reviewed, and verified by the automated build/release pipeline.
 
 ## Phase A — Foundation and hub
 
@@ -32,6 +32,7 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [ ] Chat lock, bypass, global/player chat clearing.
 - [ ] Anti-world-downloader detection/alerts/bypass, using only reliable signals and avoiding false-positive punishment.
 - [x] Configurable join MOTD, title/subtitle, actionbar, sound and firework presentation; custom join/quit messages.
+- [x] Shared, argument-aware tab completion for commands that accept player names, modes, weather/time values, or operation options; retain specialized command completers.
 - [ ] General join action engine (message, broadcast, title, actionbar, sound, command, console, gamemode, effect, menu, close, proxy bridge, delay).
 - [ ] Disabled-world feature exclusions.
 
