@@ -2,6 +2,7 @@ package com.bedlessfighter.necroManager;
 
 import com.bedlessfighter.necroManager.commands.ClearEffectsCommand;
 import com.bedlessfighter.necroManager.commands.ChatLockCommand;
+import com.bedlessfighter.necroManager.commands.CommandBlocklistCommand;
 import com.bedlessfighter.necroManager.managers.HubDisplayManager;
 import com.bedlessfighter.necroManager.managers.AnnouncementManager;
 import com.bedlessfighter.necroManager.managers.HologramManager;
@@ -241,6 +242,7 @@ public final class Main extends JavaPlugin {
         registerCommand("spawn", new SpawnCommand());
         registerCommand("tpcenter", new TeleportCenterCommand());
         registerCommand("chatlock", new ChatLockCommand());
+        registerCommand("commandblocklist", new CommandBlocklistCommand());
         registerCommand("hologram", new HologramCommand());
         registerCommand("servers", new ServersCommand());
         registerCommand("hide", new HideCommand());
