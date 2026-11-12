@@ -42,7 +42,8 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 
 ## Phase B — Essentials-style core services
 
-- [x] Economy foundation: UUID-backed persistent balances, starting balance, currency formatting, configurable bounds, bounded transaction history, player payments, payment opt-out, admin give/take/set and balance leaderboard. (Command costs, item worth, sell/worth/setworth remain planned.)
+- [x] Economy foundation: UUID-backed persistent balances, starting balance, currency formatting, configurable bounds, bounded transaction history, player payments, payment opt-out, admin give/take/set and balance leaderboard.
+- [x] Configurable per-material item worth, /worth and /setworth administration, /sell hand and /sellall inventory sales, balance-cap validation, and /ecolog recent transaction inspection; all new commands include tab completion.
 - [x] Kits: inventory/armor/offhand capture, persistent YAML storage, claim/list/create/delete/preview/reset commands, per-player persistent cooldowns, permissions and tab completion.
 - [x] Teleport request service: /tpa, /tpahere, /tpaccept, /tpdeny, /tpcancel and /tptoggle; 60-second expiry, one pending incoming/outgoing request per player, disconnect cleanup and full tab completion. (Coordinate/random teleport, back history and offline policy remain planned.)
 - [x] Homes: /sethome, /home, /homes, /delhome and /renamehome; UUID-based persistent locations, configurable default limits, permission-based limit tiers, world availability and safe-location checks.
