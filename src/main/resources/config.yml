@@ -123,6 +123,8 @@ messages:
   weather: "&aWeather set to %weather%."
   broadcast: "&6[Announcement] &f%message%"
   chat-cleared: "&cChat was cleared by staff."
+  interaction-disabled: "&cBlock interaction is disabled."
+  drop-disabled: "&cDropping items is disabled."
   rules-header: "&6&lServer Rules"
   list: "&aOnline (&f%count%&a): &f%players%"
   death-prefix: "&8[&c☠&8]"
@@ -163,3 +165,11 @@ chat:
 
 command-blocklist:
   commands: []
+
+# Hub protections. Staff can bypass player-specific restrictions with permissions.
+protections:
+  block-interaction: false
+  hunger: false
+  item-drop: false
+  item-pickup: false
+  mob-spawning: false
