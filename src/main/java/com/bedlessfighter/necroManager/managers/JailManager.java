@@ -24,7 +24,7 @@ public final class JailManager implements Listener {
     private static YamlConfiguration data;
     private static final Set<UUID> internalTeleports = new HashSet<>();
     private static final Map<UUID, BukkitTask> expiryTasks = new HashMap<>();
-    private JailManager() {}
+    public JailManager() {}
 
     public static synchronized void load() {
         file = new File(Main.getPlugin().getDataFolder(), "jails.yml");
