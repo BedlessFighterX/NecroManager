@@ -19,6 +19,7 @@ public final class JoinActionManager {
     private JoinActionManager() { throw new UnsupportedOperationException("Utility class"); }
 
     public static void execute(Player player) {
+        if (WorldFeatureManager.isDisabled(player, "join-actions")) return;
         if (!ConfigManager.getBoolean("joins.actions.enabled", false)) return;
         List<Map<?, ?>> actions = Main.getPlugin().getConfig().getMapList("joins.actions.entries");
         for (Map<?, ?> action : actions) {
