@@ -15,6 +15,7 @@ import com.bedlessfighter.necroManager.listeners.MovementAbilityListener;
 import com.bedlessfighter.necroManager.managers.MovementAbilityManager;
 import com.bedlessfighter.necroManager.managers.PlayerHiderManager;
 import com.bedlessfighter.necroManager.listeners.ChatControlListener;
+import com.bedlessfighter.necroManager.listeners.AntiWorldDownloaderListener;
 import com.bedlessfighter.necroManager.listeners.CommandBlocklistListener;
 import com.bedlessfighter.necroManager.listeners.ProtectionListener;
 import com.bedlessfighter.necroManager.commands.RepairAllCommand;
@@ -270,6 +271,9 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new DamageListener(), this);
         manager.registerEvents(new DeathListener(), this);
         manager.registerEvents(new ChatControlListener(), this);
+        AntiWorldDownloaderListener antiWdl = new AntiWorldDownloaderListener();
+        manager.registerEvents(antiWdl, this);
+        antiWdl.registerChannels(this);
         manager.registerEvents(new CommandBlocklistListener(), this);
         manager.registerEvents(new ProtectionListener(), this);
         manager.registerEvents(new HubItemListener(), this);
@@ -285,6 +289,7 @@ public final class Main extends JavaPlugin {
         PlayerHiderManager.clear();
         com.bedlessfighter.necroManager.managers.VanishManager.clear();
         getServer().getMessenger().unregisterOutgoingPluginChannel(this, "BungeeCord");
+        getServer().getMessenger().unregisterIncomingPluginChannel(this);
         if (plugin == this) {
             plugin = null;
         }
