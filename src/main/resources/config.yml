@@ -125,6 +125,7 @@ messages:
   chat-cleared: "&cChat was cleared by staff."
   interaction-disabled: "&cBlock interaction is disabled."
   drop-disabled: "&cDropping items is disabled."
+  offhand-disabled: "&cOffhand swapping is disabled."
   rules-header: "&6&lServer Rules"
   list: "&aOnline (&f%count%&a): &f%players%"
   death-prefix: "&8[&c☠&8]"
@@ -173,3 +174,11 @@ protections:
   item-drop: false
   item-pickup: false
   mob-spawning: false
+  void-damage: false
+  fire-damage: false
+  drowning-damage: false
+  offhand-swap: false
+  fire-spread: false
+  block-burn: false
+  leaf-decay: false
+  weather-lock: false
