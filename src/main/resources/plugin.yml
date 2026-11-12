@@ -358,6 +358,16 @@ commands:
     description: Create and manage persistent text holograms
     permission: necromanager.hologram
     usage: /<command> <create|delete|list|addline|setline|removeline>
+  servers:
+    aliases: [serverselector]
+    description: Open the configured server selector
+    permission: necromanager.servers
+    usage: /<command>
+  hide:
+    aliases: [playerhide, showplayers]
+    description: Toggle visibility of other players
+    permission: necromanager.hide
+    usage: /<command>
 permissions:
   necromanager.msg:
     description: Send and reply to private messages
@@ -691,3 +701,9 @@ permissions:
   necromanager.hologram:
     description: Create, edit, list, and delete persistent holograms
     default: op
+  necromanager.servers:
+    description: Open the configured server selector
+    default: true
+  necromanager.hide:
+    description: Toggle visibility of other players
+    default: true
