@@ -48,6 +48,13 @@ public final class TeleportRequestManager implements Listener {
         if (target != null) target.sendMessage(MessageManager.color("&7The teleport request expired."));
     }
 
+    public static synchronized String pendingRequesterName(Player target) {
+        Request request = INCOMING.get(target.getUniqueId());
+        if (request == null) return null;
+        Player requester = Bukkit.getPlayer(request.requester());
+        return requester == null ? null : requester.getName();
+    }
+
     public static synchronized boolean accept(Player target, String requesterName) {
         Request request = INCOMING.get(target.getUniqueId());
         if (request == null || request.expiresAt() < System.currentTimeMillis()) return false;
