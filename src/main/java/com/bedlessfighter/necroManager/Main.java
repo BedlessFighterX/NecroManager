@@ -9,6 +9,12 @@ import com.bedlessfighter.necroManager.commands.KitPreviewCommand;
 import com.bedlessfighter.necroManager.commands.KitResetCommand;
 import com.bedlessfighter.necroManager.managers.KitManager;
 import com.bedlessfighter.necroManager.managers.TeleportRequestManager;
+import com.bedlessfighter.necroManager.managers.HomeManager;
+import com.bedlessfighter.necroManager.commands.SetHomeCommand;
+import com.bedlessfighter.necroManager.commands.HomeCommand;
+import com.bedlessfighter.necroManager.commands.HomesCommand;
+import com.bedlessfighter.necroManager.commands.DelHomeCommand;
+import com.bedlessfighter.necroManager.commands.RenameHomeCommand;
 import com.bedlessfighter.necroManager.commands.TeleportRequestCommand;
 import com.bedlessfighter.necroManager.commands.TeleportAcceptCommand;
 import com.bedlessfighter.necroManager.commands.TeleportDenyCommand;
@@ -157,6 +163,7 @@ public final class Main extends JavaPlugin {
             saveDefaultConfig();
             registerCommands();
             EconomyManager.load();
+        HomeManager.load();
             KitManager.load();
             registerListeners();
             HubDisplayManager.start();
@@ -286,6 +293,11 @@ public final class Main extends JavaPlugin {
         registerCommand("tpdeny", new TeleportDenyCommand());
         registerCommand("tpcancel", new TeleportCancelCommand());
         registerCommand("tptoggle", new TeleportToggleCommand());
+        registerCommand("sethome", new SetHomeCommand());
+        registerCommand("home", new HomeCommand());
+        registerCommand("homes", new HomesCommand());
+        registerCommand("delhome", new DelHomeCommand());
+        registerCommand("renamehome", new RenameHomeCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
