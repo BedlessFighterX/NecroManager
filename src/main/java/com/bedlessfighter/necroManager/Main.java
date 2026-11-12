@@ -30,6 +30,10 @@ import com.bedlessfighter.necroManager.commands.TeleportCancelCommand;
 import com.bedlessfighter.necroManager.commands.TeleportToggleCommand;
 
 import com.bedlessfighter.necroManager.commands.BalanceCommand;
+import com.bedlessfighter.necroManager.commands.WorthCommand;
+import com.bedlessfighter.necroManager.commands.SetWorthCommand;
+import com.bedlessfighter.necroManager.commands.SellCommand;
+import com.bedlessfighter.necroManager.commands.EcoLogCommand;
 import com.bedlessfighter.necroManager.commands.PayCommand;
 import com.bedlessfighter.necroManager.commands.EcoCommand;
 import com.bedlessfighter.necroManager.commands.BaltopCommand;
@@ -291,6 +295,12 @@ public final class Main extends JavaPlugin {
         registerCommand("eco", new EcoCommand());
         registerCommand("baltop", new BaltopCommand());
         registerCommand("paytoggle", new PayToggleCommand());
+        registerCommand("worth", new WorthCommand());
+        registerCommand("setworth", new SetWorthCommand());
+        SellCommand sellCommand = new SellCommand();
+        registerCommand("sell", sellCommand);
+        registerCommand("sellall", sellCommand);
+        registerCommand("ecolog", new EcoLogCommand());
         registerCommand("kit", new KitCommand());
         registerCommand("kitcreate", new KitCreateCommand());
         registerCommand("kitdelete", new KitDeleteCommand());
