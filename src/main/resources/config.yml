@@ -292,3 +292,15 @@ anti-world-downloader:
   enabled: false
   staff-alerts: true
   alert-message: "&c[Anti-WDL] &f%player% sent a World Downloader handshake (&7%channel%&f)."
+
+# Optional feature exclusions by world name (case-insensitive). Empty lists enable everywhere.
+# Supported keys currently include announcements, chat-lock, anti-swear and join-actions.
+world-exclusions:
+  announcements:
+    disabled-worlds: []
+  chat-lock:
+    disabled-worlds: []
+  anti-swear:
+    disabled-worlds: []
+  join-actions:
+    disabled-worlds: []
