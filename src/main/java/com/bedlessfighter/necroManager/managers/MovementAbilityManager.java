@@ -1,5 +1,6 @@
 package com.bedlessfighter.necroManager.managers;
 
+import com.bedlessfighter.necroManager.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -20,7 +21,7 @@ public final class MovementAbilityManager {
     private MovementAbilityManager() { throw new UnsupportedOperationException("Utility class"); }
 
     public static boolean launchpad(Player player, Material material) {
-        FileConfiguration c = Bukkit.getPluginManager().getPlugin("NecroManager").getConfig();
+        FileConfiguration c = Main.getPlugin().getConfig();
         if (!c.getBoolean("movement.launchpads.enabled", false)
                 || !player.hasPermission("necromanager.launchpad")) return false;
         List<String> configured = c.getStringList("movement.launchpads.blocks");
