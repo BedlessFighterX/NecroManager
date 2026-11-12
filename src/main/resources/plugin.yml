@@ -331,6 +331,18 @@ commands:
     permission: necromanager.chatlock
     usage: /<command>
 permissions:
+  necromanager.protection.interact:
+    description: Bypass disabled block interaction
+    default: op
+  necromanager.protection.hunger:
+    description: Bypass disabled hunger changes
+    default: op
+  necromanager.protection.drop:
+    description: Bypass disabled item dropping
+    default: op
+  necromanager.protection.pickup:
+    description: Bypass disabled item pickup
+    default: op
   necromanager.clearinventory:
     description: Clear your own inventory
     default: op
