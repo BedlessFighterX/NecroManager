@@ -59,7 +59,13 @@ public final class MessageManager {
         return prefix() + " " + configured(path, fallback);
     }
 
-    public static void send(CommandSender recipient, String path) { send(recipient, path, ""); }\n\n    public static void send(CommandSender recipient, String path, Map<String, String> placeholders) {\n        send(recipient, path, \"\", placeholders);\n    }\n\n    public static void send(CommandSender recipient, String path, String fallback) {
+    public static void send(CommandSender recipient, String path) { send(recipient, path, ""); }
+
+    public static void send(CommandSender recipient, String path, Map<String, String> placeholders) {
+        send(recipient, path, "", placeholders);
+    }
+
+    public static void send(CommandSender recipient, String path, String fallback) {
         recipient.sendMessage(prefixed(path, fallback));
     }
 
