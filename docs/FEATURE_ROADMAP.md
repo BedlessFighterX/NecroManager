@@ -26,7 +26,8 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Server-selector inventory with configurable entries and BungeeCord proxy connection requests.
 - [x] Player-hider toggle command and join-item action, including visibility synchronization for newly joining players.
 - [x] Protected selector inventory interactions (click/drag) and plugin-channel shutdown cleanup.
-- [ ] Launchpads, double jump and cooldowns.
+- [x] Configurable material-based launchpads with directional velocity, vertical boost, sound, and per-player cooldown.
+- [x] Permission-controlled double jump with configurable boost, sound, cooldown, survival/adventure eligibility, and flight-state cleanup.
 - [x] Staff vanish toggle, target management, hidden-player list, join synchronization, and silent quit.
 - [x] Configurable block-interaction, hunger, item-drop, item-pickup and mob-spawning protections with staff bypass permissions for player-specific restrictions.
 - [x] Void, fire and drowning damage prevention; offhand swap restriction; weather lock; fire spread/burn and leaf-decay protections.
