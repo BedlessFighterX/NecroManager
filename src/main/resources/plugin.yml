@@ -368,6 +368,11 @@ commands:
     description: Toggle visibility of other players
     permission: necromanager.hide
     usage: /<command>
+  vanish:
+    aliases: [v]
+    description: Toggle staff vanish or manage another player's visibility
+    permission: necromanager.vanish
+    usage: /<command> [player|list]
 permissions:
   necromanager.msg:
     description: Send and reply to private messages
@@ -707,3 +712,12 @@ permissions:
   necromanager.hide:
     description: Toggle visibility of other players
     default: true
+  necromanager.vanish:
+    description: Toggle your own staff vanish
+    default: op
+  necromanager.vanish.others:
+    description: Toggle vanish for other players
+    default: op
+  necromanager.vanish.list:
+    description: List online vanished players
+    default: op
