@@ -31,6 +31,7 @@ public final class AnnouncementManager {
 
         String template = messages.get(Math.floorMod(NEXT.getAndIncrement(), messages.size()));
         for (Player player : Bukkit.getOnlinePlayers()) {
+            if (WorldFeatureManager.isDisabled(player, "announcements")) continue;
             if (player.hasPermission("necromanager.announcements.ignore")) continue;
             if (ConfigManager.getStringList("announcements.disabled-worlds")
                     .contains(player.getWorld().getName())) continue;
