@@ -239,6 +239,8 @@ public final class Main extends JavaPlugin {
         command.setExecutor(executor);
         if (executor instanceof org.bukkit.command.TabCompleter tabCompleter) {
             command.setTabCompleter(tabCompleter);
+        } else {
+            command.setTabCompleter(new com.bedlessfighter.necroManager.commands.CommandTabCompleter());
         }
     }
 
