@@ -10,6 +10,12 @@ import com.bedlessfighter.necroManager.commands.KitResetCommand;
 import com.bedlessfighter.necroManager.managers.KitManager;
 import com.bedlessfighter.necroManager.managers.TeleportRequestManager;
 import com.bedlessfighter.necroManager.managers.HomeManager;
+import com.bedlessfighter.necroManager.managers.WarpManager;
+import com.bedlessfighter.necroManager.commands.SetWarpCommand;
+import com.bedlessfighter.necroManager.commands.WarpCommand;
+import com.bedlessfighter.necroManager.commands.WarpsCommand;
+import com.bedlessfighter.necroManager.commands.DelWarpCommand;
+import com.bedlessfighter.necroManager.commands.WarpInfoCommand;
 import com.bedlessfighter.necroManager.commands.SetHomeCommand;
 import com.bedlessfighter.necroManager.commands.HomeCommand;
 import com.bedlessfighter.necroManager.commands.HomesCommand;
@@ -298,6 +304,11 @@ public final class Main extends JavaPlugin {
         registerCommand("homes", new HomesCommand());
         registerCommand("delhome", new DelHomeCommand());
         registerCommand("renamehome", new RenameHomeCommand());
+        registerCommand("setwarp", new SetWarpCommand());
+        registerCommand("warp", new WarpCommand());
+        registerCommand("warps", new WarpsCommand());
+        registerCommand("delwarp", new DelWarpCommand());
+        registerCommand("warpinfo", new WarpInfoCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
