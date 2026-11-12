@@ -126,3 +126,40 @@ messages:
   rules-header: "&6&lServer Rules"
   list: "&aOnline (&f%count%&a): &f%players%"
   death-prefix: "&8[&c☠&8]"
+
+# Hub presentation. Placeholders: %player%, %displayname%, %world%, %online%, %max%.
+hub:
+  scoreboard:
+    enabled: true
+    title: "&a&lNecroManager"
+    lines:
+      - "&7Player"
+      - "&f%player%"
+      - "&8 "
+      - "&7Online"
+      - "&f%online%&7/&f%max%"
+      - "&8  "
+      - "&7World"
+      - "&f%world%"
+  tablist:
+    enabled: true
+    header:
+      - "&a&lNecroManager"
+      - "&7Welcome, &f%displayname%"
+    footer:
+      - "&7Online: &f%online%&7/&f%max%"
+      - "&aHave a great time!"
+
+announcements:
+  enabled: false
+  interval-seconds: 300
+  minimum-online: 1
+  messages:
+    - "&aWelcome! Read /rules to learn the server rules."
+    - "&eThere are currently &f%online%&e players online."
+
+chat:
+  locked: false
+
+command-blocklist:
+  commands: []
