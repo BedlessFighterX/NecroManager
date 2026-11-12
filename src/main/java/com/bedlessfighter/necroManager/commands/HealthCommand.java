@@ -5,7 +5,7 @@ public final class HealthCommand implements CommandExecutor {
  public boolean onCommand(CommandSender s,Command c,String l,String[] a){
   if(!(s instanceof Player p)){MessageManager.sendRaw(s,"&cPlayers only.");return true;}
   if(!PermissionManager.has(s,"necromanager.health")){MessageManager.send(s,"messages.no-permission","&cYou do not have permission.");return true;}
-  MessageManager.sendRaw(s,"&6Health: &e"+p.getHealth()+"/"+p.getAttribute(org.bukkit.attribute.Attribute.MAX_HEALTH).getValue()+" &6Food: &e"+p.getFood()+" &6Saturation: &e"+p.getSaturation());
+  MessageManager.sendRaw(s,"&6Health: &e"+p.getHealth()+"/"+p.getAttribute(org.bukkit.attribute.Attribute.MAX_HEALTH).getValue()+" &6Food: &e"+p.getFoodLevel()+" &6Saturation: &e"+p.getSaturation());
   return true;
  }
 }
