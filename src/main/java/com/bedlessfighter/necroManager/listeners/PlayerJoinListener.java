@@ -1,6 +1,7 @@
 package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
+import com.bedlessfighter.necroManager.managers.HubDisplayManager;
 import com.bedlessfighter.necroManager.managers.EffectManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.PermissionManager;
@@ -16,6 +17,7 @@ public final class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        HubDisplayManager.update(player);
 
         if (!ConfigManager.getBoolean("joins.enabled", true)) {
             event.setJoinMessage(null);
