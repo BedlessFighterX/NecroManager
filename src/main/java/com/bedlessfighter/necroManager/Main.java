@@ -6,6 +6,7 @@ import com.bedlessfighter.necroManager.managers.HubDisplayManager;
 import com.bedlessfighter.necroManager.managers.AnnouncementManager;
 import com.bedlessfighter.necroManager.listeners.ChatControlListener;
 import com.bedlessfighter.necroManager.listeners.CommandBlocklistListener;
+import com.bedlessfighter.necroManager.listeners.ProtectionListener;
 import com.bedlessfighter.necroManager.commands.RepairAllCommand;
 import com.bedlessfighter.necroManager.commands.GamemodeAllCommand;
 import com.bedlessfighter.necroManager.commands.TeleportAllCommand;
@@ -252,6 +253,7 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new DeathListener(), this);
         manager.registerEvents(new ChatControlListener(), this);
         manager.registerEvents(new CommandBlocklistListener(), this);
+        manager.registerEvents(new ProtectionListener(), this);
     }
 
     @Override
