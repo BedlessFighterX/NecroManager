@@ -33,8 +33,8 @@ This document tracks the feature scope supplied for NecroManager. The implementa
 - [x] Void, fire and drowning damage prevention; offhand swap restriction; weather lock; fire spread/burn and leaf-decay protections.
 - [x] Configurable anti-swear word filtering with replacement text, staff alerts and bypass permission.
 - [ ] Command blocklist, bypass and command configuration/custom actions.
-- [ ] Chat lock, bypass, global/player chat clearing.
-- [ ] Anti-world-downloader detection/alerts/bypass, using only reliable signals and avoiding false-positive punishment.
+- [x] Chat lock with explicit on/off/status controls, bypass permission, configurable denial text, and configurable global/self chat clearing.
+- [x] Alert-only World Downloader handshake detection on explicit WDL plugin-message channels, staff alerts, per-player bypass, session deduplication, and no-auto-punishment safeguards.
 - [x] Configurable join MOTD, title/subtitle, actionbar, sound and firework presentation; custom join/quit messages.
 - [x] Shared, argument-aware tab completion for commands that accept player names, modes, weather/time values, or operation options; retain specialized command completers.
 - [x] Configurable ordered join action engine with message, broadcast, title, actionbar, sound, player/console command, gamemode, potion effect, close-inventory, per-action permission and tick delay.
