@@ -1,6 +1,7 @@
 package com.bedlessfighter.necroManager.listeners;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
+import com.bedlessfighter.necroManager.managers.HubDisplayManager;
 import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.PermissionManager;
 import org.bukkit.entity.Player;
@@ -14,6 +15,7 @@ public final class PlayerLeaveListener implements Listener {
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
+        HubDisplayManager.remove(player);
         if (!ConfigManager.getBoolean("quit.enabled", true)) {
             event.setQuitMessage(null);
             return;
