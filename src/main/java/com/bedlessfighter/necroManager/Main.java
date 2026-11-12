@@ -341,14 +341,6 @@ public final class Main extends JavaPlugin {
         registerCommand("deljail", jail);
         registerCommand("jails", jail);
         registerCommand("jailinfo", jail);
-        ModerationCommand moderation = new ModerationCommand();
-        registerCommand("warn", moderation);
-        registerCommand("warnings", moderation);
-        registerCommand("clearwarnings", moderation);
-        registerCommand("mute", moderation);
-        registerCommand("tempmute", moderation);
-        registerCommand("unmute", moderation);
-        registerCommand("kick", moderation);
         registerCommand("ban", moderation);
         registerCommand("tempban", moderation);
         registerCommand("unban", moderation);
