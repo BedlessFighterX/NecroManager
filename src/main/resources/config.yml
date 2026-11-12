@@ -317,3 +317,7 @@ economy:
 # Phase B kits. Kit contents and per-player cooldowns are stored in kits.yml.
 kits:
   maximum-cooldown-seconds: 31536000
+
+# Phase B teleport requests. Requests expire after this many seconds.
+teleport-requests:
+  expiry-seconds: 60
