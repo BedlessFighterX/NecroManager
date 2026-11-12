@@ -251,6 +251,8 @@ anti-swear:
   alert-message: "&c[ChatFilter] &f%player% used a filtered word: &7%message%"
 
 command-blocklist:
+  enabled: true
+  message: "&cThat command is disabled."
   commands: []
 
 # Hub protections. Staff can bypass player-specific restrictions with permissions.
