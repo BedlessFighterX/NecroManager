@@ -536,7 +536,45 @@ commands:
     permission: necromanager.jail.admin
     usage: /<command> <player>
 
+  warn:
+    description: Issue a persistent player warning
+    permission: necromanager.moderation.warn
+    usage: /<command> <player> <reason>
+  warnings:
+    description: View a player's warning history
+    permission: necromanager.moderation.warn
+    usage: /<command> <player>
+  clearwarnings:
+    description: Clear a player's warning history
+    permission: necromanager.moderation.warn
+    usage: /<command> <player>
+  mute:
+    description: Permanently mute an online player
+    permission: necromanager.moderation.mute
+    usage: /<command> <player> <reason>
+  tempmute:
+    description: Temporarily mute an online player
+    permission: necromanager.moderation.mute
+    usage: /<command> <player> <duration> <reason>
+  unmute:
+    description: Remove a player's mute
+    permission: necromanager.moderation.mute
+    usage: /<command> <player>
+  kick:
+    description: Kick an online player with a reason
+    permission: necromanager.moderation.kick
+    usage: /<command> <player> <reason>
+
 permissions:
+  necromanager.moderation.warn:
+    description: Issue and manage player warnings
+    default: op
+  necromanager.moderation.mute:
+    description: Mute and unmute players
+    default: op
+  necromanager.moderation.kick:
+    description: Kick players from the server
+    default: op
   necromanager.msg:
     description: Send and reply to private messages
     default: true
