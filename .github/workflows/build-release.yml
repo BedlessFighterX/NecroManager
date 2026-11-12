@@ -42,7 +42,7 @@ jobs:
 
   release:
     name: Publish GitHub release
-    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -74,9 +74,7 @@ jobs:
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.0
-          target_commitish: main
-          name: NecroManager v1.0.0
+          name: NecroManager ${GITHUB_REF_NAME}
           generate_release_notes: true
           files: |
             build/libs/*.jar
