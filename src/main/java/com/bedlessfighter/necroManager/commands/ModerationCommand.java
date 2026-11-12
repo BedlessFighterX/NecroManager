@@ -43,8 +43,8 @@ public final class ModerationCommand implements CommandExecutor, TabCompleter {
             int start = Math.max(0, entries.size() - 10);
             for (int i = start; i < entries.size(); i++) {
                 Map<?, ?> entry = entries.get(i);
-                sender.sendMessage("§7" + (i + 1) + ". §f" + entry.getOrDefault("reason", "No reason") +
-                        " §8— " + entry.getOrDefault("actor", "Console"));
+                sender.sendMessage("§7" + (i + 1) + ". §f" + (entry.get("reason") == null ? "No reason" : entry.get("reason")) +
+                        " §8— " + (entry.get("actor") == null ? "Console" : entry.get("actor")));
             }
             return true;
         }
@@ -100,7 +100,7 @@ public final class ModerationCommand implements CommandExecutor, TabCompleter {
     private static UUID findKnownPlayer(String name) {
         for (Player online : Bukkit.getOnlinePlayers())
             if (online.getName().equalsIgnoreCase(name)) return online.getUniqueId();
-        return null;
+        return ModerationManager.findPlayerId(name);
     }
     private static String actor(CommandSender sender) { return sender instanceof Player p ? p.getName() : "Console"; }
     private static String join(String[] args, int start) { return String.join(" ", Arrays.copyOfRange(args, start, args.length)); }
