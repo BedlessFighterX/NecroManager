@@ -635,6 +635,12 @@ permissions:
   necromanager.chat.bypass:
     description: Allows chatting while global chat is locked
     default: op
+  necromanager.antiswear.bypass:
+    description: Bypass the configurable chat word filter
+    default: op
+  necromanager.antiswear.alerts:
+    description: Receive staff alerts when filtered chat is detected
+    default: op
   necromanager.commandblocklist.bypass:
     description: Allows use of commands on the configured blocklist
     default: op
