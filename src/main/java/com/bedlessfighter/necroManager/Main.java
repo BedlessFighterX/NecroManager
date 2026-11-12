@@ -6,6 +6,10 @@ import com.bedlessfighter.necroManager.managers.HubDisplayManager;
 import com.bedlessfighter.necroManager.managers.AnnouncementManager;
 import com.bedlessfighter.necroManager.managers.HologramManager;
 import com.bedlessfighter.necroManager.commands.HologramCommand;
+import com.bedlessfighter.necroManager.commands.ServersCommand;
+import com.bedlessfighter.necroManager.commands.HideCommand;
+import com.bedlessfighter.necroManager.listeners.HubItemListener;
+import com.bedlessfighter.necroManager.managers.PlayerHiderManager;
 import com.bedlessfighter.necroManager.listeners.ChatControlListener;
 import com.bedlessfighter.necroManager.listeners.CommandBlocklistListener;
 import com.bedlessfighter.necroManager.listeners.ProtectionListener;
@@ -130,6 +134,7 @@ public final class Main extends JavaPlugin {
             HubDisplayManager.start();
             AnnouncementManager.start();
             HologramManager.load();
+            getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
             getLogger().info("NecroManager v" + getPluginMeta().getVersion() + " enabled.");
         } catch (RuntimeException exception) {
@@ -232,6 +237,8 @@ public final class Main extends JavaPlugin {
         registerCommand("tpcenter", new TeleportCenterCommand());
         registerCommand("chatlock", new ChatLockCommand());
         registerCommand("hologram", new HologramCommand());
+        registerCommand("servers", new ServersCommand());
+        registerCommand("hide", new HideCommand());
     }
 
     private void registerCommand(String name, CommandExecutor executor) {
@@ -260,12 +267,15 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new ChatControlListener(), this);
         manager.registerEvents(new CommandBlocklistListener(), this);
         manager.registerEvents(new ProtectionListener(), this);
+        manager.registerEvents(new HubItemListener(), this);
     }
 
     @Override
     public void onDisable() {
         getServer().getScheduler().cancelTasks(this);
         HologramManager.unload();
+        PlayerHiderManager.clear();
+        getServer().getMessenger().unregisterOutgoingPluginChannel(this, "BungeeCord");
         if (plugin == this) {
             plugin = null;
         }
