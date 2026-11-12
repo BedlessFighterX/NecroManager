@@ -29,7 +29,7 @@ public final class CommandTabCompleter implements TabCompleter {
             "teleportto", "tphere", "teleportall", "worldspawn", "kill", "heal",
             "feed", "fly", "extinguish", "ping", "getpos", "cleareffects",
             "enderchest", "invsee", "spawn", "whois", "ignore", "ptime",
-            "experience", "sethealth", "extinguishall"
+            "whois", "ignore", "msg"
     );
     private static final Set<String> PLAYER_OPTIONAL = Set.of(
             "setlevel", "clearxp", "setfood", "gamemode", "speed"
@@ -54,8 +54,11 @@ public final class CommandTabCompleter implements TabCompleter {
                 if (name.equals("gamemode")) return filter(GAME_MODES, input);
                 return filter(List.of("walk", "fly"), input);
             }
-            if ((name.equals("setlevel") || name.equals("clearxp") || name.equals("setfood"))
-                    && position == 1) return players(input);
+            if (name.equals("clearxp") && position == 0) return players(input);
+            if ((name.equals("setlevel") || name.equals("setfood")
+                    || name.equals("experience") || name.equals("sethealth")) && position == 1) {
+                return players(input);
+            }
             if (name.equals("gamemode") && position == 1
                     && sender.hasPermission("necromanager.gamemode.others")) return players(input);
             if (name.equals("speed") && position == 2
@@ -68,10 +71,9 @@ public final class CommandTabCompleter implements TabCompleter {
             case "timeall" -> position == 0 ? filter(TIME, input) : List.of();
             case "repair" -> position == 0 ? filter(List.of("hand", "all"), input) : List.of();
             case "lore" -> position == 0 ? filter(List.of("add", "clear"), input) : List.of();
-            case "setworldspawn", "worldinfo" -> position == 0 ? worlds(input) : List.of();
-            case "player-time", "ptime" -> position == 0 ? players(input) : List.of();
-            case "experienceall", "setlevelall", "setfoodall", "sethealth",
-                 "experience", "itemdurability" -> position == 0 ? filter(
+            case "ptime" -> position == 0 ? filter(TIME, input) : List.of();
+            case "experienceall", "setlevelall", "setfoodall", "experience",
+                 "sethealth", "itemdurability" -> position == 0 ? filter(
                     List.of("1", "5", "10", "20", "50", "100"), input) : List.of();
             default -> List.of();
         };
