@@ -55,7 +55,7 @@ public final class ModerationManager implements Listener {
 
     private static void record(UUID id, String name, String actor, String action, String reason, long until) {
         String path = "history." + id;
-        List<Map<String, Object>> entries = new ArrayList<>(data.getMapList(path));
+        List<Map<?, ?>> entries = new ArrayList<>(data.getMapList(path));
         Map<String, Object> entry = new LinkedHashMap<>();
         entry.put("actor", actor);
         entry.put("action", action);
@@ -71,7 +71,7 @@ public final class ModerationManager implements Listener {
     public static synchronized void warn(Player target, String actor, String reason) {
         ready();
         String path = "warnings." + target.getUniqueId();
-        List<Map<String, Object>> entries = new ArrayList<>(data.getMapList(path));
+        List<Map<?, ?>> entries = new ArrayList<>(data.getMapList(path));
         Map<String, Object> entry = new LinkedHashMap<>();
         entry.put("actor", actor);
         entry.put("reason", reason);
