@@ -259,3 +259,18 @@ protections:
   block-burn: false
   leaf-decay: false
   weather-lock: false
+
+# Hub movement abilities. Cooldowns are tracked per player and reset on disconnect.
+movement:
+  launchpads:
+    enabled: false
+    blocks: [SLIME_BLOCK]
+    horizontal: 1.8
+    vertical: 1.1
+    cooldown-seconds: 2
+    sound: ENTITY_SLIME_JUMP
+  double-jump:
+    enabled: false
+    vertical: 0.85
+    cooldown-seconds: 3
+    sound: ENTITY_BAT_TAKEOFF
