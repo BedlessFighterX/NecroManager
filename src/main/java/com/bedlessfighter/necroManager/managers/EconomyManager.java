@@ -12,11 +12,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
+import java.util.HashSet;
+import java.util.Set;
 
 /** File-backed, bounded economy ledger. All mutations are serialized and persisted immediately. */
 public final class EconomyManager {
     private static final File FILE = new File(Main.getPlugin().getDataFolder(), "economy.yml");
     private static YamlConfiguration data;
+    private static final Set<UUID> PAYMENT_DISABLED = new HashSet<>();
     private EconomyManager() { throw new UnsupportedOperationException("Utility class"); }
 
     public static synchronized void load() {
@@ -71,6 +74,25 @@ public final class EconomyManager {
         int limit = ConfigManager.getInt("economy.transaction-log-limit", 1000, 10, 10000);
         if (entries.size() > limit) entries = new ArrayList<>(entries.subList(entries.size() - limit, entries.size()));
         data.set("transactions", entries);
+    }
+
+    public static synchronized boolean paymentsDisabled(UUID uuid) { return PAYMENT_DISABLED.contains(uuid); }
+    public static synchronized boolean togglePayments(UUID uuid) {
+        if (!PAYMENT_DISABLED.add(uuid)) { PAYMENT_DISABLED.remove(uuid); return false; }
+        return true;
+    }
+    public static synchronized boolean transfer(org.bukkit.entity.Player from, org.bukkit.entity.Player to, double amount) {
+        ensureLoaded();
+        if (!Double.isFinite(amount) || amount <= 0 || paymentsDisabled(to.getUniqueId())) return false;
+        double fromBalance = balance(from), toBalance = balance(to);
+        if (fromBalance < amount || toBalance + amount > max()) return false;
+        data.set(key(from.getUniqueId()), round(fromBalance - amount));
+        data.set(key(to.getUniqueId()), round(toBalance + amount));
+        data.set("names." + from.getUniqueId(), from.getName());
+        data.set("names." + to.getUniqueId(), to.getName());
+        log(from.getName(), to.getUniqueId(), amount, "player transfer from " + from.getUniqueId());
+        save();
+        return true;
     }
 
     public static synchronized List<Account> top(int limit) {
