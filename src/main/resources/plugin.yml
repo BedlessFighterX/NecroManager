@@ -400,7 +400,30 @@ commands:
     description: Toggle whether you accept player payments
     permission: necromanager.economy.paytoggle
     usage: /<command>
-
+  kit:
+    description: Claim a configured kit or list available kits
+    permission: necromanager.kit.use
+    usage: /<command> [name]
+  kitcreate:
+    description: Create a kit from your current inventory
+    permission: necromanager.kit.admin
+    usage: /<command> <name> [cooldown-seconds]
+  kitdelete:
+    description: Delete a configured kit
+    permission: necromanager.kit.admin
+    usage: /<command> <name>
+  kitlist:
+    description: List configured kits
+    permission: necromanager.kit.use
+    usage: /<command>
+  kitpreview:
+    description: Preview the contents and cooldown of a kit
+    permission: necromanager.kit.use
+    usage: /<command> <name>
+  kitreset:
+    description: Reset a player's cooldown for a kit
+    permission: necromanager.kit.admin
+    usage: /<command> <player> <kit>
 
 permissions:
   necromanager.msg:
@@ -783,10 +806,6 @@ permissions:
   necromanager.economy.paytoggle:
     description: Toggle payment acceptance
     default: true
-
-
-
-permissions:
   necromanager.economy.balance:
     description: View your own economy balance
     default: true
@@ -805,33 +824,6 @@ permissions:
   necromanager.economy.paytoggle:
     description: Toggle payment acceptance
     default: true
-
-  kit:
-    description: Claim a configured kit or list available kits
-    permission: necromanager.kit.use
-    usage: /<command> [name]
-  kitcreate:
-    description: Create a kit from your current inventory
-    permission: necromanager.kit.admin
-    usage: /<command> <name> [cooldown-seconds]
-  kitdelete:
-    description: Delete a configured kit
-    permission: necromanager.kit.admin
-    usage: /<command> <name>
-  kitlist:
-    description: List configured kits
-    permission: necromanager.kit.use
-    usage: /<command>
-  kitpreview:
-    description: Preview the contents and cooldown of a kit
-    permission: necromanager.kit.use
-    usage: /<command> <name>
-  kitreset:
-    description: Reset a player's cooldown for a kit
-    permission: necromanager.kit.admin
-    usage: /<command> <player> <kit>
-
-permissions:
   necromanager.kit.use:
     description: Allows claiming and previewing kits
     default: true
