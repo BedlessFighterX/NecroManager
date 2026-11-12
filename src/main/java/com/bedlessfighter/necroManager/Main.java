@@ -11,6 +11,8 @@ import com.bedlessfighter.necroManager.commands.HideCommand;
 import com.bedlessfighter.necroManager.commands.VanishCommand;
 import com.bedlessfighter.necroManager.listeners.HubItemListener;
 import com.bedlessfighter.necroManager.listeners.VanishListener;
+import com.bedlessfighter.necroManager.listeners.MovementAbilityListener;
+import com.bedlessfighter.necroManager.managers.MovementAbilityManager;
 import com.bedlessfighter.necroManager.managers.PlayerHiderManager;
 import com.bedlessfighter.necroManager.listeners.ChatControlListener;
 import com.bedlessfighter.necroManager.listeners.CommandBlocklistListener;
@@ -272,12 +274,14 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new ProtectionListener(), this);
         manager.registerEvents(new HubItemListener(), this);
         manager.registerEvents(new VanishListener(), this);
+        manager.registerEvents(new MovementAbilityListener(), this);
     }
 
     @Override
     public void onDisable() {
         getServer().getScheduler().cancelTasks(this);
         HologramManager.unload();
+        MovementAbilityManager.clearAll();
         PlayerHiderManager.clear();
         com.bedlessfighter.necroManager.managers.VanishManager.clear();
         getServer().getMessenger().unregisterOutgoingPluginChannel(this, "BungeeCord");
