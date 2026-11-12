@@ -710,6 +710,9 @@ permissions:
   necromanager.commandblocklist.bypass:
     description: Allows use of commands on the configured blocklist
     default: op
+  necromanager.commandblocklist.manage:
+    description: Manage the player command blocklist
+    default: op
 
   necromanager.announcements.ignore:
     description: Opt out of scheduled announcements
