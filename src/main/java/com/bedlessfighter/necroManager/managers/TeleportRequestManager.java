@@ -27,14 +27,14 @@ public final class TeleportRequestManager implements Listener {
         UUID targetId = target.getUniqueId();
         if (INCOMING.containsKey(targetId)) return false;
         Request request = new Request(requester.getUniqueId(), targetId, direction,
-                System.currentTimeMillis() + 60_000L);
+                System.currentTimeMillis() + Math.max(5L, Math.min(300L, Main.getPlugin().getConfig().getLong("teleport-requests.expiry-seconds", 60L))) * 1000L);
         INCOMING.put(targetId, request);
         OUTGOING.put(requester.getUniqueId(), targetId);
         String action = direction == Direction.HERE ? "teleport to you" : "teleport to them";
         target.sendMessage(MessageManager.color("&e" + requester.getName()
                 + " &7wants to " + action + ". Use &a/tpaccept &7or &c/tpdeny&7. &8(60s)"));
         requester.sendMessage(MessageManager.color("&aTeleport request sent to &e" + target.getName() + "&a."));
-        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> expire(request), 1200L);
+        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> expire(request), Math.max(100L, Math.min(6000L, Main.getPlugin().getConfig().getLong("teleport-requests.expiry-seconds", 60L) * 20L)));
         return true;
     }
 
@@ -111,6 +111,12 @@ public final class TeleportRequestManager implements Listener {
     private static void clear(Request request) {
         INCOMING.remove(request.target());
         OUTGOING.remove(request.requester());
+    }
+
+    public static synchronized void clearAll() {
+        INCOMING.clear();
+        OUTGOING.clear();
+        DISABLED.clear();
     }
 
     @EventHandler
