@@ -27,7 +27,7 @@ public final class ChatControlListener implements Listener {
         if (ConfigManager.getBoolean("chat.locked", false)
                 && !PermissionManager.has(player, "necromanager.chat.bypass")) {
             event.setCancelled(true);
-            player.sendMessage(Component.text("Chat is currently locked."));
+            player.sendMessage(net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer.legacyAmpersand().deserialize(ConfigManager.getString("chat.locked-message", "&cChat is currently locked.")));
             return;
         }
 
