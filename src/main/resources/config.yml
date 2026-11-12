@@ -321,3 +321,7 @@ kits:
 # Phase B teleport requests. Requests expire after this many seconds.
 teleport-requests:
   expiry-seconds: 60
+
+# Phase B player homes.
+homes:
+  default-limit: 3
