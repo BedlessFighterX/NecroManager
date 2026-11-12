@@ -2,6 +2,7 @@ package com.bedlessfighter.necroManager.commands;
 
 import com.bedlessfighter.necroManager.managers.ConfigManager;
 import com.bedlessfighter.necroManager.managers.EconomyManager;
+import com.bedlessfighter.necroManager.managers.EconomyFormat;
 import com.bedlessfighter.necroManager.managers.MessageManager;
 import com.bedlessfighter.necroManager.managers.PermissionManager;
 import org.bukkit.Bukkit;
