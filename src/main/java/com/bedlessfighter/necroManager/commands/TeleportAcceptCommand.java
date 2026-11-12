@@ -5,6 +5,7 @@ import com.bedlessfighter.necroManager.managers.TeleportRequestManager;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import java.util.List;
+import java.util.ArrayList;
 
 public final class TeleportAcceptCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -15,5 +16,9 @@ public final class TeleportAcceptCommand implements CommandExecutor, TabComplete
             MessageManager.sendRaw(sender, "&cNo matching teleport request is waiting.");
         return true;
     }
-    public List<String> onTabComplete(CommandSender s, Command c, String a, String[] args) { return List.of(); }
+    public List<String> onTabComplete(CommandSender s, Command c, String a, String[] args) {
+        if (args.length != 1 || !(s instanceof Player player)) return List.of();
+        String name = TeleportRequestManager.pendingRequesterName(player);
+        return name != null && name.toLowerCase().startsWith(args[0].toLowerCase()) ? List.of(name) : new ArrayList<>();
+    }
 }
