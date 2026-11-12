@@ -69,6 +69,11 @@ joins:
     power: 1
     type: BALL
     instant: true
+  # Ordered join actions; each entry supports type, value, delay-ticks and optional permission.
+  # Types: message, broadcast, title, actionbar, sound, command, console, gamemode, effect, close.
+  actions:
+    enabled: false
+    entries: []
   items:
     enabled: false
     entries:
@@ -274,10 +279,3 @@ movement:
     vertical: 0.85
     cooldown-seconds: 3
     sound: ENTITY_BAT_TAKEOFF
-
-# Ordered join actions. Each entry supports type, value, delay-ticks and optional permission.
-# Types: message, broadcast, title, actionbar, sound, command, console, gamemode, effect, close.
-joins:
-  actions:
-    enabled: false
-    entries: []
