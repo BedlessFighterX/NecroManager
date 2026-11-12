@@ -345,6 +345,7 @@ public final class Main extends JavaPlugin {
         manager.registerEvents(new VanishListener(), this);
         manager.registerEvents(new MovementAbilityListener(), this);
         manager.registerEvents(new TeleportRequestManager(), this);
+        manager.registerEvents(new JailManager(), this);
     }
 
     @Override
